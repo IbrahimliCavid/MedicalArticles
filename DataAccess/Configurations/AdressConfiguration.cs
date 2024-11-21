@@ -25,17 +25,19 @@ namespace DataAccess.Configurations
 
             builder.Property(x => x.Phone1)
                 .IsRequired()
-                .HasMaxLength(13);
+                .HasMaxLength(15);
 
             builder.Property(x => x.Phone2)
-           .HasMaxLength(13);
+                .HasDefaultValue(null)
+           .HasMaxLength(15);
 
 
             builder.Property(x => x.Phone3)
-           .HasMaxLength(13);
+                .HasDefaultValue(null)
+           .HasMaxLength(15);
 
 
-   
+
         }
     }
 }

@@ -31,6 +31,10 @@ namespace MedicalArticles
             builder.Services.AddScoped<IAboutService, AboutManager>();
             builder.Services.AddScoped<IAboutDal, AboutDal>();
             builder.Services.AddScoped<IValidator<About>, AboutValidation>();
+            
+            builder.Services.AddScoped<IAdressService, AdressManager>();
+            builder.Services.AddScoped<IAdressDal, AdressDal>();
+            builder.Services.AddScoped<IValidator<Adress>, AdressValidation>();
 
 
             var app = builder.Build();

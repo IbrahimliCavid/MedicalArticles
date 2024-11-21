@@ -8,7 +8,7 @@ namespace Business.Abstract
     {
         IResult Add(AdressCreateDto dto);
         IResult Update(AdressUpdateDto dto);
-        IDataResult<List<Adress>> GetAll();
+        IDataResult<List<AdressDto>> GetAll();
         IDataResult<List<Adress>> GetAllDeleted();
         IDataResult<Adress> GetById(int id);
         IResult SoftDelete(int id);

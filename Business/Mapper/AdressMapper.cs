@@ -31,6 +31,20 @@ namespace Business.Mapper
             return models.Select(x=>ToDto(x)).ToList(); 
         }
 
+        public static AdressUpdateDto ToUpdateDto(Adress model)
+        {
+            AdressUpdateDto dto = new AdressUpdateDto()
+            {
+                Id = model.Id,
+                Location = model.Location,
+                Phone1 = model.Phone1,
+                Phone2 = model.Phone2,
+                Phone3 = model.Phone3,
+                Email = model.Email,
+            };
+
+            return dto;
+        }
 
         public static Adress ToModel(AdressDto dto)
         {

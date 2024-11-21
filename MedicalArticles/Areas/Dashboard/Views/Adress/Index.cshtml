@@ -1,0 +1,71 @@
+﻿ @model List<AdressDto>;
+
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                @if (ViewBag.ShowButton)
+                {
+                    <form action="Adress/Create" method="get">
+                        <p>
+                            <button class="btn btn-primary">Əlavə et</button>
+                        </p>
+                    </form>
+                }
+              
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Adress</th>
+                            <th>E-Poçt</th>
+                            <th>Mobil nömrə</th>
+                            <th style="width:10px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="align-content:center;">@item.Location</td>
+                                <td style="align-content:center;">@item.Email</td>
+                                <td style="text-align:center;">
+                                    @if (!string.IsNullOrEmpty(item.Phone1))
+                                    {
+                                        @item.Phone1
+                                    }
+                                    @if (!string.IsNullOrEmpty(item.Phone2))
+                                    {
+                                        @if (!string.IsNullOrEmpty(item.Phone1))
+                                        {
+                                            <text> -- </text>
+                                        }
+                                        @item.Phone2
+                                    }
+                                    @if (!string.IsNullOrEmpty(item.Phone3))
+                                    {
+                                        @if (!string.IsNullOrEmpty(item.Phone1) || !string.IsNullOrEmpty(item.Phone2))
+                                        {
+                                            <text> -- </text>
+                                        }
+                                        @item.Phone3
+                                    }
+                                </td>
+                                <td style="align-content:center;">
+
+                                    <a asp-action="Edit" asp-route-id="@item.Id" style="cursor:pointer;" title="Redaktə et">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a> 
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IFaqDto
+    public interface IFaqService
     {
         IResult Add(FaqCreateDto dto);
         IResult Update(FaqUpdateDto dto);
         IDataResult<List<FaqDto>> GetAll();
         IDataResult<FaqDto> GetById(int id);
-        IResult Delete(int id);
+        IResult SoftDelete(int id);
+        IResult HardDelete(int id);
 
     }
 }

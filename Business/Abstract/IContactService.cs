@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IContactService
+    public interface IContactService 
     {
         IResult Add(ContactCreateDto dto);
         IResult Update(ContactUpdateDto dto);
         IDataResult<List<ContactDto>> GetAll();
         IDataResult<ContactDto> GetById(int id);
-        IResult Delete(int id);
+        IResult SoftDelete(int id);
+        IResult HardDelete(int id);
     }
 }

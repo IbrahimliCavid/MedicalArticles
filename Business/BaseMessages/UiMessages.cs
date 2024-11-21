@@ -36,6 +36,11 @@ namespace Business.BaseMessages
         public static string NotEmptyMessage (string propName)
         {
             return $"{propName} boş buraxıla bilməz!";
+        }   
+        
+        public static string EmailCheckMessage ()
+        {
+            return $"Email düzgün daxil edin!";
         }
     }
 }

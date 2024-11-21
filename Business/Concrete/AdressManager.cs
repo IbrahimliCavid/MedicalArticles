@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.BaseMessages;
+using Business.Mapper;
 using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Abstract;
@@ -40,9 +41,11 @@ namespace Business.Concrete
             return new SuccessResult(UiMessages.SuccessAddedMessage(model.Email));
         }
 
-        public IDataResult<List<Adress>> GetAll()
+        public IDataResult<List<AdressDto>> GetAll()
         {
-            return new SuccessDataResult<List<Adress>>(_adressDal.GetAll(x => x.Deleted == 0));
+
+            var data = _adressDal.GetAll(x => x.Deleted == 0);
+            return new SuccessDataResult<List<AdressDto>>(AdressMapper.ToDto(data));
         }
 
         public IDataResult<List<Adress>> GetAllDeleted()
