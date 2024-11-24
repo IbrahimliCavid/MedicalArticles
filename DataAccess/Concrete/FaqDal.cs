@@ -1,4 +1,7 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess.Concrete;
+using DataAccess.Abstract;
+using DataAccess.SqlServerDBContext;
+using Entities.TableModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete
 {
-    public class FaqDal : IFaqDal 
+    public class FaqDal : BaseRepository<Faq, ApplicationDbContext>, IFaqDal
     {
     }
 }

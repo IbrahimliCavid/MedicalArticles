@@ -17,6 +17,7 @@ namespace Business.Mapper
                 Id = model.Id,
                Name = model.Name,
                Email = model.Email,
+               Phone = model.Phone,
                Message = model.Message,
                IsAnswer = model.IsAnswer
             };
@@ -37,6 +38,7 @@ namespace Business.Mapper
                 Id = model.Id,
                 Name = model.Name,
                 Email = model.Email,
+                Phone= model.Phone,
                 Message = model.Message,
                 IsAnswer = model.IsAnswer
             };
@@ -70,6 +72,7 @@ namespace Business.Mapper
                 Id = dto.Id,
                Name = dto.Name,
                Email = dto.Email,
+               Phone = dto.Phone,
                Message = dto.Message,
                IsAnswer = dto.IsAnswer
             };
@@ -84,6 +87,7 @@ namespace Business.Mapper
                 Id = updateDto.Id,
                 Name = updateDto.Name,
                 Email = updateDto.Email,
+                Phone = updateDto.Phone,
                 Message = updateDto.Message,
                 IsAnswer = updateDto.IsAnswer
             };

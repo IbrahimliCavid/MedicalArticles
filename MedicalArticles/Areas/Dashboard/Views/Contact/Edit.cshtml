@@ -1,0 +1,39 @@
+﻿@model ContactUpdateDto;
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                
+                <input type="hidden" asp-for="Name" class="form-control" />
+                
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Email" class="form-control" />
+            </div> 
+            
+            <div class="form-group">
+                <input type="hidden" asp-for="Phone" class="form-control" />
+            </div> 
+            
+            <div class="form-group">
+                <input type="hidden" asp-for="Message" class="form-control" />
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <span style="margin-right:1rem;">Cavablandı?:</span>
+                <input asp-for="IsAnswer" type="checkbox" checked="@Model.IsAnswer" />
+            </div>
+
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Təsdiq et" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Geri</a>
+</div>

@@ -1,0 +1,48 @@
+﻿ @model List<ContactDto>;
+
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+              
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Ad</th>
+                            <th>E-Poçt</th>
+                            <th>Mobil Nömrə</th>
+                            <th>Mesaj</th>
+                            <th>Status</th>
+                            <th style="width:10px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                               
+                                <td style="align-content:center;">@item.Name</td>
+                                <td style="align-content:center;">@item.Email</td>
+                                <td style="align-content:center;">@item.Phone</td>
+                                <td style="align-content:center;">@item.Message</td>
+                                <td style="align-content:center;">@(item.IsAnswer ? "Cavablandırılıb" : "Cavablandırılmayıb") </td>
+                                @if (!item.IsAnswer)
+                                {
+                                    <td style="align-content:center;">
+
+                                        <a asp-action="Edit" asp-route-id="@item.Id" style="cursor:pointer;" title="Redaktə et">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
