@@ -11,6 +11,7 @@ namespace Entities.Dtos
         public string Phone { get; set; }
         public string Message { get; set; }
         public bool IsAnswer { get; set; }
+        public bool IsRead {  get; set; }
 
         public static Contact ToContact(ContactUpdateDto dto)
         {
@@ -22,6 +23,7 @@ namespace Entities.Dtos
                 Phone = dto.Phone,
                 Message = dto.Message,
                 IsAnswer = dto.IsAnswer,
+                IsRead = dto.IsRead,
             };
         }
     }

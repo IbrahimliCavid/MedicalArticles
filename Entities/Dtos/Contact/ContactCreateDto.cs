@@ -8,6 +8,7 @@ namespace Entities.Dtos
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Message { get; set; }
+        public bool IsRead {  get; set; }
 
         public static Contact ToContact (ContactCreateDto dto)
         {
@@ -16,6 +17,7 @@ namespace Entities.Dtos
                 Name = dto.Name,
                 Email = dto.Email,
                 Phone = dto.Phone,
+                IsRead = dto.IsRead,
                 Message = dto.Message,
             };
         }

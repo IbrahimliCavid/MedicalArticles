@@ -92,6 +92,12 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ContactDto>>(ContactMapper.ToDto(models));
         }
 
+        public int GetUnreadMessajeCount()
+        {
+            var data = _contactDal.GetAll(x => x.IsRead == false);
+            return data.Count;
+        }
+
         public IDataResult<List<ContactDto>> GetAllDeleted()
         {
             var models = _contactDal.GetAll(x => x.Deleted != 0);

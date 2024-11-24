@@ -14,6 +14,8 @@ namespace Business.Abstract
         IResult Update(ContactUpdateDto dto);
         IDataResult<List<ContactDto>> GetAll();
         IDataResult<ContactDto> GetById(int id);
+        public int GetUnreadMessajeCount();
+        
         IResult SoftDelete(int id);
         IResult HardDelete(int id);
     }

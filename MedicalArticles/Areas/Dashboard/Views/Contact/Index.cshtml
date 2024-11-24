@@ -25,7 +25,14 @@
                                 <td style="align-content:center;">@item.Name</td>
                                 <td style="align-content:center;">@item.Email</td>
                                 <td style="align-content:center;">@item.Phone</td>
-                                <td style="align-content:center;">@item.Message</td>
+                                <td style="align-content:center;">
+                                  @if (item.IsRead == false)
+                                    {
+                                        <span title="Yeni mesaj" class="badge badge-danger badge-counter" style="font-size:10px; justify-content:end;">Yeni mesaj</span>
+
+                                    }
+                                    @item.Message
+                                </td>
                                 <td style="align-content:center;">@(item.IsAnswer ? "Cavablandırılıb" : "Cavablandırılmayıb") </td>
                                 @if (!item.IsAnswer)
                                 {

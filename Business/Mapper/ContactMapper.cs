@@ -19,7 +19,8 @@ namespace Business.Mapper
                Email = model.Email,
                Phone = model.Phone,
                Message = model.Message,
-               IsAnswer = model.IsAnswer
+               IsAnswer = model.IsAnswer,
+               IsRead = model.IsRead,
             };
 
             return dto;
@@ -40,7 +41,8 @@ namespace Business.Mapper
                 Email = model.Email,
                 Phone= model.Phone,
                 Message = model.Message,
-                IsAnswer = model.IsAnswer
+                IsAnswer = model.IsAnswer,
+                IsRead = model.IsRead,
             };
 
             return updateDto;
@@ -59,6 +61,7 @@ namespace Business.Mapper
                 Name = createDto.Name,
                 Email = createDto.Email,
                 Message = createDto.Message,
+                IsRead=createDto.IsRead,
                
             };
 
@@ -74,7 +77,8 @@ namespace Business.Mapper
                Email = dto.Email,
                Phone = dto.Phone,
                Message = dto.Message,
-               IsAnswer = dto.IsAnswer
+               IsAnswer = dto.IsAnswer,
+               IsRead = dto.IsRead,
             };
 
             return model;
@@ -89,7 +93,8 @@ namespace Business.Mapper
                 Email = updateDto.Email,
                 Phone = updateDto.Phone,
                 Message = updateDto.Message,
-                IsAnswer = updateDto.IsAnswer
+                IsAnswer = updateDto.IsAnswer,
+                IsRead = updateDto.IsRead
             };
 
             return model;

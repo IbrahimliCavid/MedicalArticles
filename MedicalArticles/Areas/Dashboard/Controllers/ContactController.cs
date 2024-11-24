@@ -26,6 +26,7 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         public IActionResult Edit(int id) 
         {
             var data = _contactService.GetById(id).Data;
+            data.IsRead = true;
           return View(ContactMapper.ToUpdateDto(ContactMapper.ToModel(data)));
         }
 
@@ -38,6 +39,15 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
                 return View(dto);
             }
             return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public JsonResult GetContactCount()
+        {
+            var count = _contactService.GetUnreadMessajeCount();
+                return Json(count);
+            
         }
     }
 }

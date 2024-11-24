@@ -26,6 +26,8 @@ namespace DataAccess.Configurations
             builder.Property(x => x.Message)
                 .IsRequired()
                 .HasMaxLength(4000);
+            builder.Property(x=>x.IsRead)
+                .HasDefaultValue(false);
         }
     }
 }
