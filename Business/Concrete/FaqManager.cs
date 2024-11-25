@@ -45,7 +45,7 @@ namespace Business.Concrete
 
             _faqDal.Add(model);
 
-            return new SuccessResult(UiMessages.SuccessAddedMessage("Kontakt"));
+            return new SuccessResult(UiMessages.SuccessAddedMessage("Sual"));
         }
         public IResult Update(FaqUpdateDto dto)
         {
@@ -66,7 +66,7 @@ namespace Business.Concrete
             }
 
             _faqDal.Update(model);
-            return new SuccessResult(UiMessages.SuccessUpdatedMessage("Kontakt"));
+            return new SuccessResult(UiMessages.SuccessUpdatedMessage("Sual"));
         }
 
         public IResult SoftDelete(int id)
@@ -75,14 +75,14 @@ namespace Business.Concrete
             data.Deleted = id;
             var model = FaqMapper.ToModel(data);
             _faqDal.Update(model);
-            return new SuccessResult(UiMessages.SuccessDeletedMessage("Kontakt"));
+            return new SuccessResult(UiMessages.SuccessDeletedMessage("Sual"));
         }
         public IResult HardDelete(int id)
         {
             var data = GetById(id).Data;
             var model = FaqMapper.ToModel(data);
             _faqDal.Delete(model);
-            return new SuccessResult(UiMessages.SuccessDeletedMessage("Kontakt"));
+            return new SuccessResult(UiMessages.SuccessDeletedMessage("Sual"));
         }
 
 
@@ -107,7 +107,13 @@ namespace Business.Concrete
             return new SuccessDataResult<FaqDto>(FaqMapper.ToDto(model));
         }
 
-
+        public IResult Restore(int id)
+        {
+            var data = _faqDal.GetById(id);
+            data.Deleted = 0;
+            _faqDal.Update(data);
+            return new SuccessResult();
+        }
     }
 }
 

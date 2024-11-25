@@ -1,0 +1,28 @@
+﻿@model FaqCreateDto;
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Question" class="control-label">Sual</label>
+                <input asp-for="Question" class="form-control" />
+                <span asp-validation-for="Question" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Answer" class="control-label">Cavab</label>
+                <input asp-for="Answer" class="form-control" id="answer" />
+                <span asp-validation-for="Answer" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Əlavə et" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Geri</a>
+</div>

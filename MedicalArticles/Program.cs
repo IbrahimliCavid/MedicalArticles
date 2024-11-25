@@ -40,6 +40,10 @@ namespace MedicalArticles
             builder.Services.AddScoped<IContactDal, ContactDal>();
             builder.Services.AddScoped<IValidator<Contact>, ContactValidation>();
 
+            builder.Services.AddScoped<IFaqService, FaqManager>();
+            builder.Services.AddScoped<IFaqDal, FaqDal>();
+            builder.Services.AddScoped<IValidator<Faq>, FaqValidation>();
+
 
             var app = builder.Build();
          

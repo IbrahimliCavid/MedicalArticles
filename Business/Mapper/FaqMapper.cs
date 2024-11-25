@@ -63,7 +63,8 @@ namespace Business.Mapper
             {
                 Id = dto.Id,
                 Question = dto.Question,
-                Answer = dto.Answer
+                Answer = dto.Answer,
+                Deleted = dto.Deleted
             };
 
             return model;
