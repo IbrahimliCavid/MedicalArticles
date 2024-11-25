@@ -397,10 +397,14 @@
   <script>
         $(document).ready(function () {
             $.ajax({
-                url: '@Url.Action("GetContactCount", "Contact")', 
+                url: '@Url.Action("GetUnreadMessage", "Contact")', 
                 type: 'GET',
                 success: function (data) {
-                    $('#contactCount').text(data);
+                     if (data > 0) {
+                    $('#contactCount').text(data).show();
+                } else {
+                    $('#contactCount').hide();
+                }
                 },
                 error: function () {
                     console.log("Error fetching contact count.");
