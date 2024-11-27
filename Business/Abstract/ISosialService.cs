@@ -14,6 +14,5 @@ namespace Business.Abstract
         IResult Update(SosialUpdateDto dto);
         IDataResult<List<SosialDto>> GetAll();  
         IDataResult<SosialDto> GetById(int id);
-        IResult Delete(int id);
     }
 }

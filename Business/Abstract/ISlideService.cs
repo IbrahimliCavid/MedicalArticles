@@ -14,7 +14,10 @@ namespace Business.Abstract
         IResult Add(SlideCreateDto dto, IFormFile photoUrl, string webRootPath);
         IResult Update(SlideUpdateDto dto, IFormFile photoUrl, string webRootPath);
         IDataResult<List<SlideDto>> GetAll();
-        IDataResult<SlideDto> Get(int id);
-        IResult Delete(int id);
+        IDataResult<List<SlideDto>> GetAllDeleted();
+        IDataResult<SlideDto> GetById(int id);
+        IResult SoftDelete(int id);
+        IResult HardDelete(int id);
+        IResult Restore(int id);    
     }
 }

@@ -49,6 +49,10 @@ namespace MedicalArticles
             builder.Services.AddScoped<ISosialDal, SosialDal>();
             builder.Services.AddScoped<IValidator<Sosial>, SosialValidation>();
 
+            builder.Services.AddScoped<ISlideService, SlideManager>();
+            builder.Services.AddScoped<ISlideDal, SlideDal>();
+            builder.Services.AddScoped<IValidator<Slide>, SlideValidation>();
+
 
             var app = builder.Build();
          

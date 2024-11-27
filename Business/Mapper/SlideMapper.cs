@@ -17,7 +17,9 @@ namespace Business.Mapper
                 Id = model.Id,
                 Content = model.Content,
                 Title = model.Title,
-                PhotoUrl = model.PhotoUrl
+                PhotoUrl = model.PhotoUrl,
+                Deleted = model.Deleted,
+                
             };
 
             return dto;
@@ -36,7 +38,8 @@ namespace Business.Mapper
                 Id = model.Id,
                 Content = model.Content,
                 Title = model.Title,
-                PhotoUrl = model.PhotoUrl
+                PhotoUrl = model.PhotoUrl,
+                Deleted = model.Deleted,
             };
 
             return updateDto;
@@ -54,7 +57,8 @@ namespace Business.Mapper
             {
                 Title = createDto.Title,
                 Content = createDto.Content,
-                PhotoUrl = createDto.PhotoUrl
+                PhotoUrl = createDto.PhotoUrl,
+                Deleted = createDto.Deleted,
             };
 
             return model;
@@ -67,7 +71,8 @@ namespace Business.Mapper
                 Id = dto.Id,
                 Title = dto.Title,
                 Content = dto.Content,
-                PhotoUrl = dto.PhotoUrl
+                PhotoUrl = dto.PhotoUrl,
+                Deleted = dto.Deleted,
             };
 
             return model;
@@ -81,6 +86,7 @@ namespace Business.Mapper
                 Title = updateDto.Title,
                 Content = updateDto.Content,
                 PhotoUrl = updateDto.PhotoUrl,
+                Deleted= updateDto.Deleted,
             };
 
             return model;

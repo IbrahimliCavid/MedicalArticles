@@ -43,11 +43,6 @@ namespace Business.Concrete
             return new SuccessResult(UiMessages.SuccessAddedMessage("Məlumat"));
         }
 
-        public IResult Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public IDataResult<List<SosialDto>> GetAll()
         {
             var data = _sosialDal.GetAll(x => x.Deleted == 0);

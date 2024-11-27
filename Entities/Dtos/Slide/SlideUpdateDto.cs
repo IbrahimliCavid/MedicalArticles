@@ -8,6 +8,7 @@ namespace Entities.Dtos
         public string Title { get; set; }
         public string Content { get; set; }
         public string PhotoUrl { get; set; }
+        public int Deleted {  get; set; }
 
         public static Slide ToSlide(SlideUpdateDto dto)
         {
@@ -17,6 +18,7 @@ namespace Entities.Dtos
                 Title = dto.Title,
                 Content = dto.Content,
                 PhotoUrl = dto.PhotoUrl,
+                Deleted = dto.Deleted,
             };
         }
     }
