@@ -53,6 +53,10 @@ namespace MedicalArticles
             builder.Services.AddScoped<ISlideDal, SlideDal>();
             builder.Services.AddScoped<IValidator<Slide>, SlideValidation>();
 
+            builder.Services.AddScoped<IServiceService, ServiceManager>();
+            builder.Services.AddScoped<IServiceDal, ServiceDal>();
+            builder.Services.AddScoped<IValidator<Service>, ServiceValidation>();
+
 
             var app = builder.Build();
          

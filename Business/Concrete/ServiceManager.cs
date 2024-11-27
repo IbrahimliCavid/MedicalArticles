@@ -5,7 +5,6 @@ using Core.Extension;
 using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Abstract;
-using DataAccess.Concrete;
 using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
@@ -64,6 +63,11 @@ namespace Business.Concrete
         {
             var data = _serviceDal.GetAll(x => x.Deleted != 0);
             return new SuccessDataResult<List<ServiceDto>>(ServiceMapper.ToDto(data));
+        }
+
+        public IDataResult<List<ServiceDto>> GetServiceWithServiceCategoryId()
+        {
+            return new SuccessDataResult<List<ServiceDto>>(_serviceDal.GetServiceWithServiceCategories());
         }
 
         public IDataResult<ServiceDto> GetById(int id)
