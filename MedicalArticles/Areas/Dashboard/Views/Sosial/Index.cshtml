@@ -1,0 +1,58 @@
+﻿ @model List<SosialDto>;
+
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                @if (ViewBag.ShowButton)
+                {
+                    <form action="Sosial/Create" method="get">
+                        <p>
+                            <button class="btn btn-primary">Əlavə et</button>
+                        </p>
+                    </form>
+                }
+
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+
+                            <th>Facebook</th>
+                            <th>Instagram</th>
+                            <th>Twitter</th>
+                            <th>Whatsapp</th>
+                            <th>Telegram</th>
+
+
+                            <th style="width:10px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td style="align-content:center;">@item.FacebookUrl</td>
+                                <td style="align-content:center;">@item.InstagramUrl</td>
+                                <td style="align-content:center;">@item.TwitterUrl</td>
+                                <td style="align-content:center;">@item.WhatsappUrl</td>
+                                <td style="align-content:center;">@item.Telegram</td>
+                                <td style="align-content:center;">
+
+                                    <a asp-action="Edit" asp-route-id="@item.Id" style="cursor:pointer;" title="Redaktə et">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

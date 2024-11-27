@@ -45,6 +45,11 @@ namespace MedicalArticles
             builder.Services.AddScoped<IValidator<Faq>, FaqValidation>();
 
 
+            builder.Services.AddScoped<ISosialService, SosialManager>();
+            builder.Services.AddScoped<ISosialDal, SosialDal>();
+            builder.Services.AddScoped<IValidator<Sosial>, SosialValidation>();
+
+
             var app = builder.Build();
          
             // Configure the HTTP request pipeline.

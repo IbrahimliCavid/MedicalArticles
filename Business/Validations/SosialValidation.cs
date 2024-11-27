@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Business.Validations
 {
-    public class SosialValidators : AbstractValidator<Sosial>
+    public class SosialValidation : AbstractValidator<Sosial>
     {
-        public SosialValidators()
+        public SosialValidation()
         {
             RuleFor(x => x.FacebookUrl)
                 .MaximumLength(500)

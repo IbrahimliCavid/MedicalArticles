@@ -18,19 +18,23 @@ namespace DataAccess.Configurations
                 .UseIdentityColumn(DefaultConstantValues.DEFAULT_PRIMARY_SEED_VALUE, 1);
 
             builder.Property(x => x.WhatsappUrl)
-                .HasMaxLength(500);
+                .HasMaxLength(500)
+                .HasDefaultValue(null);
 
             builder.Property(x => x.FacebookUrl)
                 .HasMaxLength(500);
 
             builder.Property(x => x.InstagramUrl)
-                .HasMaxLength(500);
+                .HasMaxLength(500)
+                .HasDefaultValue(null);
 
             builder.Property(x => x.Telegram)
-                .HasMaxLength(500);
+                .HasMaxLength(500)
+                .HasDefaultValue(null);
 
             builder.Property(x => x.TwitterUrl)
-                .HasMaxLength(500);
+                .HasMaxLength(500)
+                .HasDefaultValue(null);
         }
     }
 }
