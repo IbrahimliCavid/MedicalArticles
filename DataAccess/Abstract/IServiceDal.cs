@@ -12,5 +12,6 @@ namespace DataAccess.Abstract
     public interface IServiceDal : IBaseRepository<Service>
     {
         public List<ServiceDto> GetServiceWithServiceCategories();
+        public List<ServiceDto> GetDeletedServiceWithServiceCategories();
     }
 }

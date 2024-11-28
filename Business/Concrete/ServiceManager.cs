@@ -55,19 +55,13 @@ namespace Business.Concrete
 
         public IDataResult<List<ServiceDto>> GetAll()
         {
-            var data = _serviceDal.GetAll(x => x.Deleted == 0);
-            return new SuccessDataResult<List<ServiceDto>>(ServiceMapper.ToDto(data));
+            return new SuccessDataResult<List<ServiceDto>>(_serviceDal.GetServiceWithServiceCategories());
         }
 
         public IDataResult<List<ServiceDto>> GetAllDeleted()
         {
-            var data = _serviceDal.GetAll(x => x.Deleted != 0);
-            return new SuccessDataResult<List<ServiceDto>>(ServiceMapper.ToDto(data));
-        }
-
-        public IDataResult<List<ServiceDto>> GetServiceWithServiceCategoryId()
-        {
-            return new SuccessDataResult<List<ServiceDto>>(_serviceDal.GetServiceWithServiceCategories());
+            var data = _serviceDal.GetDeletedServiceWithServiceCategories();
+            return new SuccessDataResult<List<ServiceDto>>(data);
         }
 
         public IDataResult<ServiceDto> GetById(int id)

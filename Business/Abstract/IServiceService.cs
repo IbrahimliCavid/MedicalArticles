@@ -15,7 +15,6 @@ namespace Business.Abstract
         IResult Update(ServiceUpdateDto dto, IFormFile photoUrl, string webRootPath);
         IDataResult<List<ServiceDto>> GetAll();
         IDataResult<List<ServiceDto>> GetAllDeleted();
-        IDataResult<List<ServiceDto>> GetServiceWithServiceCategoryId();
         IDataResult<ServiceDto> GetById(int id);
         IResult SoftDelete(int id); 
         IResult HardDelete(int id); 

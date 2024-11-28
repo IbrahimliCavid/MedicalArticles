@@ -1,0 +1,53 @@
+﻿﻿
+@model ServiceUpdateDto;
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Başlıq</label>
+                <input asp-for="Title" class="form-control" id="answer" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label">Kateqoriya</label>
+                <select asp-for="CategoryId" class="form-control">
+                    @foreach (var item in ViewData["Categories"] as IEnumerable<CategoryDto>)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Açıqlama</label>
+                <input asp-for="Description"  class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            
+            <div class="form-group" style="min-height:300px;">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="img-fluid" src="@Model.PhotoUrl" />
+                    </div>
+                    <div class="card p-3 mt-3">
+                        <input type="file" asp-for="PhotoUrl" name="imgUrl" value="@Model.PhotoUrl"/>
+                    </div>
+                </div>
+            </div>
+           
+           
+
+            <div class="form-group">
+                <input type="submit" value="Təsdiq et" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Geri</a>
+</div>

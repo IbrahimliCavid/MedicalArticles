@@ -1,0 +1,122 @@
+﻿ @model List<ServiceDto>;
+
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <p style="font-size:20px; color:#4e73df;">
+                    Zibil qutusu
+                </p>
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Başlıq</th>
+                            <th>Kateqoriya</th>
+                            <th>Açıqlama</th>
+                            <th>Şəkil</th>
+                            <th style="width:30px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="align-content:center;">@item.Title</td>
+                                <td style="align-content:center;">@item.CategoryName</td>
+                                <td style="align-content:center;">@item.Description</td>\
+                                <td style="align-content:center;"><img src="@item.PhotoUrl" alt="Service photo" width="100px"/></td>
+
+                                <td style="align-content:center;">
+                                    <a item-value="@item.Id" item-title="@item.Title" class="btnHardDelete" style="color:red;" title="Sil">
+                                        <i class="fas fa-trash" style=" cursor:pointer;"></i>
+                                    </a>
+                                    |
+                                    <a item-value="@item.Id" item-title="@item.Title" class="btnRestore" style="cursor:pointer;" title="Bərpa et">
+                                        <svg fill="green" width="20px" height="20px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>recycle</title> <path d="M15.966 1.232c-0.97 0.021-1.901 0.261-2.807 0.655l1.404 2.62c0.463-0.165 0.937-0.277 1.404-0.281 1.599 0 3.292 0.853 4.585 3.088l5.333 9.264 1.778-2.901-4.491-7.86c-1.714-2.964-4.434-4.608-7.205-4.585 0 0 0 0 0 0zM7.171 8.811l-4.117 7.205c-1.569 2.715-1.68 5.792-0.374 8.234 0.541 1.012 1.362 1.842 2.339 2.526l1.497-2.526c-0.502-0.397-0.929-0.867-1.216-1.403-0.781-1.46-0.831-3.41 0.281-5.334l5.053-8.702h-3.462zM27.194 21.536c-0.098 0.48-0.239 0.896-0.468 1.311-0.801 1.448-2.372 2.526-4.866 2.526h-10.199l1.778 2.994h8.421c3.402 0 6.146-1.601 7.486-4.023 0.472-0.855 0.732-1.824 0.842-2.807l-2.994 0zM11.272 12.6l-6.728-3.879 6.728-3.879-0 7.759zM22.219 15.005l6.728 3.879 0-7.759-6.729 3.879zM8.193 26.81l6.728-3.879 0 7.759-6.729-3.879z"></path> </g></svg>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(".btnHardDelete").click(function (e) {
+            Swal.fire({
+                title: 'Əminsiniz?',
+                text: "Bu məlumat bir dəfəlik silinəcək!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonText: "Ləğv et",
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Təsdiq et '
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let itemId = e.currentTarget.attributes[0].value;
+                    let itemTitle = e.currentTarget.attributes[1].value;
+                    $.ajax({
+                        method: "POST",
+                    url: "@Url.Action("HardDelete", "Service")",
+                        data: {
+                            id: itemId
+                        }
+                    })
+                    Swal.fire({
+                        title: 'Məlumat silindi',
+                        text: "'" + itemTitle + "' uğurla silindi",
+                        icon: 'success',
+
+                    }).then((result) => {
+                        window.location = ""
+                    })
+
+                }
+            })
+        })
+    </script>
+
+    <script>
+        $(".btnRestore").click(function (e) {
+            Swal.fire({
+                text: "Bu servisi geri qatarmaq istəyirsiniz?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonText: "Xeyr",
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Bəli '
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let itemId = e.currentTarget.attributes[0].value;
+                    let itemTitle = e.currentTarget.attributes[1].value;
+                    $.ajax({
+                        method: "POST",
+                        url: "@Url.Action("Restore", "Service")",
+                        data: {
+                            id: itemId
+                        }
+                    })
+                    Swal.fire({
+                        text: "'" + itemTitle + "' uğurla geri qaytarıldı",
+                        icon: 'success',
+
+                    }).then((result) => {
+                        window.location = ""
+                    })
+
+                }
+            })
+        })
+    </script>
+}
+
