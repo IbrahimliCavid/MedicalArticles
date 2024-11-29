@@ -56,7 +56,7 @@ namespace Business.Mapper
             return model;
         }
 
-        public static HealthTipItem Model(HealthTipItemDto dto)
+        public static HealthTipItem ToModel(HealthTipItemDto dto)
         {
             HealthTipItem model = new HealthTipItem
             {
