@@ -9,7 +9,7 @@ namespace Entities.TableModels
 {
     public class WhyChooseUsItem : BaseEntity
     {
-        public string Titile {  get; set; }
+        public string Title {  get; set; }
         public string Description {  get; set; }
         public int WhyChooseUsId {  get; set; }
         public virtual WhyChooseUs WhyChooseUs { get; set; }

@@ -10,23 +10,22 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Configurations
 {
-    public class ServiceConfiguration : IEntityTypeConfiguration<Service>
+    public class WhyChooseUsConfiguration : IEntityTypeConfiguration<WhyChooseUs>
     {
-        public void Configure(EntityTypeBuilder<Service> builder)
+        public void Configure(EntityTypeBuilder<WhyChooseUs> builder)
         {
-            builder.ToTable("Services");
+            builder.ToTable("WhyChooseUses");
 
             builder.Property(x => x.Id)
                 .UseIdentityColumn(DefaultConstantValues.DEFAULT_PRIMARY_SEED_VALUE, 1);
 
             builder.Property(x => x.Description)
                 .IsRequired()
-                .HasMaxLength(2000);
+                .HasMaxLength(3000);
 
             builder.Property(x => x.PhotoUrl)
                 .IsRequired()
                 .HasMaxLength(200);
-
         }
     }
 }

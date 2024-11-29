@@ -10,22 +10,18 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Configurations
 {
-    public class ServiceConfiguration : IEntityTypeConfiguration<Service>
+    public class HealthTipItemConfiguration : IEntityTypeConfiguration<HealthTipItem>
     {
-        public void Configure(EntityTypeBuilder<Service> builder)
+        public void Configure(EntityTypeBuilder<HealthTipItem> builder)
         {
-            builder.ToTable("Services");
+            builder.ToTable("HealthTipItems");
 
             builder.Property(x => x.Id)
                 .UseIdentityColumn(DefaultConstantValues.DEFAULT_PRIMARY_SEED_VALUE, 1);
 
-            builder.Property(x => x.Description)
+            builder.Property(x => x.Text)
                 .IsRequired()
-                .HasMaxLength(2000);
-
-            builder.Property(x => x.PhotoUrl)
-                .IsRequired()
-                .HasMaxLength(200);
+                .HasMaxLength(300);
 
         }
     }

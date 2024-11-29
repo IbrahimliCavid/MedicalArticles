@@ -8,7 +8,7 @@ namespace Entities.Dtos
 {
     public class WhyChooseUsItemCraeteDto
     {
-        public string Titile { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
     }
 }
