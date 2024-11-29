@@ -10,76 +10,76 @@ namespace Business.Mapper
 {
     public static class WhyChooseUsItemMapper
     {
-        public static WhyChooseUsDto ToDto(WhyChooseUs model)
+        public static WhyChooseUsItemDto ToDto(WhyChooseUsItem model)
         {
-            WhyChooseUsDto dto = new WhyChooseUsDto()
+            WhyChooseUsItemDto dto = new WhyChooseUsItemDto()
             {
                 Id = model.Id,
+                Title = model.Title,
                 Description = model.Description,
-                PhotoUrl = model.PhotoUrl,
                 Deleted = model.Deleted,
             };
 
             return dto;
         }
 
-        public static List<WhyChooseUsDto> ToDto(List<WhyChooseUs> models)
+        public static List<WhyChooseUsItemDto> ToDto(List<WhyChooseUsItem> models)
         {
             return models.Select(x => ToDto(x)).ToList();
         }
 
 
-        public static WhyChooseUsUpdateDto ToUpdateDto(WhyChooseUs model)
+        public static WhyChooseUsItemUpdateDto ToUpdateDto(WhyChooseUsItem model)
         {
-            WhyChooseUsUpdateDto updateDto = new WhyChooseUsUpdateDto()
+            WhyChooseUsItemUpdateDto updateDto = new WhyChooseUsItemUpdateDto()
             {
                 Id = model.Id,
                 Description = model.Description,
-                PhotoUrl = model.PhotoUrl,
+                Title = model.Title,
                 Deleted = model.Deleted,
             };
 
             return updateDto;
         }
 
-        public static List<WhyChooseUsUpdateDto> ToUpdateDto(List<WhyChooseUs> models)
+        public static List<WhyChooseUsItemUpdateDto> ToUpdateDto(List<WhyChooseUsItem> models)
         {
             return models.Select(x => ToUpdateDto(x)).ToList();
         }
 
 
-        public static WhyChooseUs ToModel(WhyChooseUsCreateDto createDto)
+        public static WhyChooseUsItem ToModel(WhyChooseUsItemCraeteDto createDto)
         {
-            WhyChooseUs model = new WhyChooseUs()
+            WhyChooseUsItem model = new WhyChooseUsItem()
             {
                 Description = createDto.Description,
-                PhotoUrl = createDto.PhotoUrl
+                Title = createDto.Title,
             };
 
             return model;
         }
 
-        public static WhyChooseUs ToModel(WhyChooseUsDto dto)
+        public static WhyChooseUsItem ToModel(WhyChooseUsItemDto dto)
         {
-            WhyChooseUs model = new WhyChooseUs
+            WhyChooseUsItem model = new WhyChooseUsItem
             {
                 Id = dto.Id,
                 Description = dto.Description,
-                PhotoUrl = dto.PhotoUrl,
+                Title = dto.Title,
                 Deleted = dto.Deleted,
             };
 
             return model;
         }
 
-        public static WhyChooseUs ToModel(WhyChooseUsUpdateDto updateDto)
+        public static WhyChooseUsItem ToModel(WhyChooseUsItemUpdateDto updateDto)
         {
-            WhyChooseUs model = new WhyChooseUs()
+            WhyChooseUsItem model = new WhyChooseUsItem()
             {
                 Id = updateDto.Id,
                 Description = updateDto.Description,
-                PhotoUrl = updateDto.PhotoUrl,
-                Deleted= updateDto.Deleted,
+                Title = updateDto.Title,
+                Deleted = updateDto.Deleted,
             };
 
             return model;
