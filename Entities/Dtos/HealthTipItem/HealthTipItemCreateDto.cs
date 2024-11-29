@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Dtos
 {
-    public class HealthTipItemCraeteDto
+    public class HealthTipItemCreateDto
     {
         public string Text { get; set; }
        

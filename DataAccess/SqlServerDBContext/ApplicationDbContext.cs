@@ -30,5 +30,12 @@ namespace DataAccess.SqlServerDBContext
         public DbSet<Slide> Slides { get; set; }
         public DbSet<Sosial> Sosials { get; set; }
         public DbSet<Contact> Contacts { get; set; }
-    }
+        public DbSet<HealthTip> HealthTips { get; set; }
+        public DbSet<HealthTipItem> HealthTipItems { get; set; }
+        public DbSet<ServiceAbout> ServiceAbouts { get; set; }
+        public DbSet<ServiceAboutItem> ServiceAboutItems { get; set; }
+        public DbSet<TeamBoard> TeamBoards { get; set; }
+        public DbSet<WhyChooseUs> WhyChooseUses { get; set; }
+        public DbSet<WhyChooseUsItem> WhyChooseUsItems { get; set; }
+    } 
 }
