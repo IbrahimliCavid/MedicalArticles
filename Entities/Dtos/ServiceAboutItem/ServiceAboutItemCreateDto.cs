@@ -9,5 +9,6 @@ namespace Entities.Dtos
     public class ServiceAboutItemCreateDto
     {
         public string Text { get; set; }
+        public int ServiceAboutId {  get; set; }
     }
 }

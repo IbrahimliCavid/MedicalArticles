@@ -61,6 +61,10 @@ namespace MedicalArticles
             builder.Services.AddScoped<IServiceAboutDal, ServiceAboutDal>();
             builder.Services.AddScoped<IValidator<ServiceAbout>, ServiceAboutValidation>();
 
+            builder.Services.AddScoped<IServiceAboutItemService, ServiceAboutItemManager>();
+            builder.Services.AddScoped<IServiceAboutItemDal, ServiceAboutItemDal>();
+            builder.Services.AddScoped<IValidator<ServiceAboutItem>, ServiceAboutItemValidation>();
+
 
 
 

@@ -87,16 +87,16 @@ namespace Business.Concrete
 
         public IDataResult<List<ServiceAboutItemDto>> GetAll()
         {
-            var models = _serviceAboutItemDal.GetAll(x => x.Deleted == 0);
+            var models = _serviceAboutItemDal.GetServiceAboutItem();
 
-            return new SuccessDataResult<List<ServiceAboutItemDto>>(ServiceAboutItemMapper.ToDto(models));
+            return new SuccessDataResult<List<ServiceAboutItemDto>>(models);
         }
 
         public IDataResult<List<ServiceAboutItemDto>> GetAllDeleted()
         {
-            var models = _serviceAboutItemDal.GetAll(x => x.Deleted != 0);
+            var models = _serviceAboutItemDal.GetDeletedServiceAboutItem();
 
-            return new SuccessDataResult<List<ServiceAboutItemDto>>(ServiceAboutItemMapper.ToDto(models));
+            return new SuccessDataResult<List<ServiceAboutItemDto>>(models);
         }
 
         public IDataResult<ServiceAboutItemDto> GetById(int id)

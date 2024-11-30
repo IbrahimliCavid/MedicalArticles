@@ -52,6 +52,7 @@ namespace Business.Mapper
             ServiceAboutItem model = new ServiceAboutItem()
             {
                 Text = createDto.Text,
+                ServiceAboutId = createDto.ServiceAboutId,
             };
 
             return model;
@@ -75,6 +76,7 @@ namespace Business.Mapper
             {
                 Id = updateDto.Id,
                 Text = updateDto.Text,
+                ServiceAboutId = updateDto.ServiceAboutId,
                 Deleted = updateDto.Deleted
             };
 

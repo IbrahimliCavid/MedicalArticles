@@ -13,6 +13,9 @@ namespace Entities.Dtos
         public string Text { get; set; }
         public int Deleted { get; set; }
         public int ServiceAboutId { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string PhotoUrl { get; set; }
         public ServiceAbout ServiceAbout { get; set; }
     }
 }

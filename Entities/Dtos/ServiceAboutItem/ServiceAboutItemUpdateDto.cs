@@ -10,6 +10,7 @@ namespace Entities.Dtos
     {
         public int Id { get; set; }
         public string Text { get; set; }
+        public int ServiceAboutId {get; set; }
         public int Deleted { get; set; }
     }
 }

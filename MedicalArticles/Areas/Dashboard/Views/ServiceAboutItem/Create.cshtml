@@ -1,0 +1,32 @@
+﻿@model ServiceAboutItemCreateDto
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ServiceAboutId" class="control-label">Servis</label>
+                <select asp-for="ServiceAboutId" class="form-control">
+                    @foreach (var item in ViewData["ServiceAbout"] as IEnumerable<ServiceAboutDto>)
+                    {
+                        <option value="@item.Id">@item.Title</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Text" class="control-label">Mətn</label>
+                <input asp-for="Text" class="form-control" id="answer" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Əlavə et" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Geri</a>
+</div>
