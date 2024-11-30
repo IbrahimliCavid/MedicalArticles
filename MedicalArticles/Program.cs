@@ -69,6 +69,10 @@ namespace MedicalArticles
             builder.Services.AddScoped<ITeamBoardDal, TeamBoardDal>();
             builder.Services.AddScoped<IValidator<TeamBoard>, TeamBoardValidation>();
 
+            builder.Services.AddScoped<IHealthTipService, HealthTipManager>();
+            builder.Services.AddScoped<IHealthTipDal, HealthTipDal>();
+            builder.Services.AddScoped<IValidator<HealthTip>, HealthTipValidation>();
+
 
 
 
