@@ -23,10 +23,10 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 
     <style>
-    .ck-editor__editable[role="textbox"] {
-        min-height: 300px;
-    }
-</style>
+        .ck-editor__editable[role="textbox"] {
+            min-height: 300px;
+        }
+    </style>
 
 </head>
 
@@ -49,37 +49,41 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            
+
             <!-- Nav Item - Contact -->
             <li class="nav-item active">
                 <a class="nav-link" asp-action="Index" asp-controller="Contact">
-              <svg fill="#ffffff" width="25px" height="25px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M0 1694.235h1920V226H0v1468.235ZM112.941 376.664V338.94H1807.06v37.723L960 1111.233l-847.059-734.57ZM1807.06 526.198v950.513l-351.134-438.89-88.32 70.475 378.353 472.998H174.042l378.353-472.998-88.32-70.475-351.134 438.89V526.198L960 1260.768l847.059-734.57Z" fill-rule="evenodd"></path> </g></svg>
-                <span>İsmarıclar</span>
-               <span id="contactCount" title="Yeni mesaj" class="badge badge-danger badge-counter" style="font-size:16px;"></span>  
-            </a>
+                    <svg fill="#ffffff" width="25px" height="25px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M0 1694.235h1920V226H0v1468.235ZM112.941 376.664V338.94H1807.06v37.723L960 1111.233l-847.059-734.57ZM1807.06 526.198v950.513l-351.134-438.89-88.32 70.475 378.353 472.998H174.042l378.353-472.998-88.32-70.475-351.134 438.89V526.198L960 1260.768l847.059-734.57Z" fill-rule="evenodd"></path> </g></svg>
+                    <span>İsmarıclar</span>
+                    <span id="contactCount" title="Yeni mesaj" class="badge badge-danger badge-counter" style="font-size:16px;"></span>
+                </a>
             </li>
-   
+
             <!-- Nav Item - About -->
             <li class="nav-item active">
                 <a class="nav-link" asp-action="Index" asp-controller="About">
                     <svg width="30px" height="30px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>about</title> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="about-white" fill="#fff" transform="translate(42.666667, 42.666667)"> <path d="M213.333333,3.55271368e-14 C95.51296,3.55271368e-14 3.55271368e-14,95.51168 3.55271368e-14,213.333333 C3.55271368e-14,331.153707 95.51296,426.666667 213.333333,426.666667 C331.154987,426.666667 426.666667,331.153707 426.666667,213.333333 C426.666667,95.51168 331.154987,3.55271368e-14 213.333333,3.55271368e-14 Z M213.333333,384 C119.227947,384 42.6666667,307.43872 42.6666667,213.333333 C42.6666667,119.227947 119.227947,42.6666667 213.333333,42.6666667 C307.44,42.6666667 384,119.227947 384,213.333333 C384,307.43872 307.44,384 213.333333,384 Z M240.04672,128 C240.04672,143.46752 228.785067,154.666667 213.55008,154.666667 C197.698773,154.666667 186.713387,143.46752 186.713387,127.704107 C186.713387,112.5536 197.99616,101.333333 213.55008,101.333333 C228.785067,101.333333 240.04672,112.5536 240.04672,128 Z M192.04672,192 L234.713387,192 L234.713387,320 L192.04672,320 L192.04672,192 Z" id="Shape"> </path> </g> </g> </g></svg>
                     <span>Haqqımızda</span>
                 </a>
-            </li> 
-               <!-- Nav Item - TeamBoard -->
+            </li>
+            <!-- Nav Item - TeamBoard -->
             <li class="nav-item active">
                 <a class="nav-link" asp-action="Index" asp-controller="TeamBoard">
-<svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" width="25px" height="25px" fill="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:#fff;} </style> <g> <path class="st0" d="M256.494,96.433c26.632,0,48.209-21.592,48.209-48.201C304.703,21.584,283.126,0,256.494,0 c-26.647,0-48.216,21.584-48.216,48.232C208.278,74.84,229.847,96.433,256.494,96.433z"></path> <path class="st0" d="M321.225,126.746l-64.731,64.731l-65.139-65.131c-14.756,9.176-26.412,25.91-26.412,41.718v162.059 c0,11.687,9.466,21.153,21.153,21.153c5.738,0,0,0,14.757,0l8.045,138.214c0,12.433,10.078,22.511,22.519,22.511 c5.236,0,14.92,0,24.583,0c9.67,0,19.34,0,24.591,0c12.432,0,22.503-10.078,22.503-22.511l8.052-138.214c14.757,0,9.003,0,14.757,0 c11.679,0,21.145-9.466,21.145-21.153V168.063C347.049,152.475,335.715,136,321.225,126.746z"></path> <polygon class="st0" points="242.076,165.732 256.463,180.119 269.807,166.784 269.807,140.82 242.076,140.82 "></polygon> <rect x="242.091" y="113.787" class="st0" width="27.691" height="17.747"></rect> <path class="st0" d="M408.711,149.084c23.28,0,42.102-18.854,42.102-42.11c0-23.256-18.822-42.11-42.102-42.11 c-23.249,0-42.094,18.853-42.094,42.11C366.617,130.231,385.462,149.084,408.711,149.084z"></path> <path class="st0" d="M458.065,171.784l-50.202,50.194l-33.123-33.123v141.267c0,13.586-5.62,25.815-14.614,34.669v6.852 l7.025,120.694c0,10.856,8.815,19.662,19.662,19.662c4.592,0,13.029,0,21.475,0c8.453,0,16.899,0,21.474,0 c10.863,0,19.662-8.806,19.662-19.662l7.025-120.694c12.889,0,7.873,0,12.889,0c10.204,0,18.468-8.265,18.468-18.484V211.641 C487.805,195.511,473.936,178.314,458.065,171.784z"></path> <polygon class="st0" points="407.886,210.581 421.073,197.403 421.073,180.323 395.752,180.323 395.752,198.447 "></polygon> <rect x="395.744" y="160.23" class="st0" width="25.344" height="11.648"></rect> <path class="st0" d="M103.289,149.084c23.249,0,42.094-18.854,42.094-42.11c0-23.256-18.845-42.11-42.094-42.11 c-23.28,0-42.102,18.853-42.102,42.11C61.187,130.231,80.009,149.084,103.289,149.084z"></path> <path class="st0" d="M137.26,188.855l-33.123,33.123l-50.202-50.194c-15.87,6.53-29.74,23.727-29.74,39.858v141.518 c0,10.22,8.265,18.484,18.468,18.484c5.015,0,0,0,12.888,0l7.026,120.694c0,10.856,8.798,19.662,19.661,19.662 c4.576,0,13.022,0,21.475,0c8.446,0,16.883,0,21.475,0c10.848,0,19.662-8.806,19.662-19.662l7.025-120.694v-6.852 c-8.994-8.854-14.614-21.083-14.614-34.669V188.855z"></path> <polygon class="st0" points="104.113,210.581 116.248,198.447 116.248,180.323 90.927,180.323 90.927,197.403 "></polygon> <rect x="90.911" y="160.23" class="st0" width="25.345" height="11.648"></rect> </g> </g></svg>                 
-                <span>Komandamız</span>
+                    <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" width="25px" height="25px" fill="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css">
+                                                                                                                                                                                                                                                                                                                                                                                   .st0 {
+                                                                                                                                                                                                                                                                                                                                                                                       fill: #fff;
+                                                                                                                                                                                                                                                                                                                                                                                   }
+</style> <g> <path class="st0" d="M256.494,96.433c26.632,0,48.209-21.592,48.209-48.201C304.703,21.584,283.126,0,256.494,0 c-26.647,0-48.216,21.584-48.216,48.232C208.278,74.84,229.847,96.433,256.494,96.433z"></path> <path class="st0" d="M321.225,126.746l-64.731,64.731l-65.139-65.131c-14.756,9.176-26.412,25.91-26.412,41.718v162.059 c0,11.687,9.466,21.153,21.153,21.153c5.738,0,0,0,14.757,0l8.045,138.214c0,12.433,10.078,22.511,22.519,22.511 c5.236,0,14.92,0,24.583,0c9.67,0,19.34,0,24.591,0c12.432,0,22.503-10.078,22.503-22.511l8.052-138.214c14.757,0,9.003,0,14.757,0 c11.679,0,21.145-9.466,21.145-21.153V168.063C347.049,152.475,335.715,136,321.225,126.746z"></path> <polygon class="st0" points="242.076,165.732 256.463,180.119 269.807,166.784 269.807,140.82 242.076,140.82 "></polygon> <rect x="242.091" y="113.787" class="st0" width="27.691" height="17.747"></rect> <path class="st0" d="M408.711,149.084c23.28,0,42.102-18.854,42.102-42.11c0-23.256-18.822-42.11-42.102-42.11 c-23.249,0-42.094,18.853-42.094,42.11C366.617,130.231,385.462,149.084,408.711,149.084z"></path> <path class="st0" d="M458.065,171.784l-50.202,50.194l-33.123-33.123v141.267c0,13.586-5.62,25.815-14.614,34.669v6.852 l7.025,120.694c0,10.856,8.815,19.662,19.662,19.662c4.592,0,13.029,0,21.475,0c8.453,0,16.899,0,21.474,0 c10.863,0,19.662-8.806,19.662-19.662l7.025-120.694c12.889,0,7.873,0,12.889,0c10.204,0,18.468-8.265,18.468-18.484V211.641 C487.805,195.511,473.936,178.314,458.065,171.784z"></path> <polygon class="st0" points="407.886,210.581 421.073,197.403 421.073,180.323 395.752,180.323 395.752,198.447 "></polygon> <rect x="395.744" y="160.23" class="st0" width="25.344" height="11.648"></rect> <path class="st0" d="M103.289,149.084c23.249,0,42.094-18.854,42.094-42.11c0-23.256-18.845-42.11-42.094-42.11 c-23.28,0-42.102,18.853-42.102,42.11C61.187,130.231,80.009,149.084,103.289,149.084z"></path> <path class="st0" d="M137.26,188.855l-33.123,33.123l-50.202-50.194c-15.87,6.53-29.74,23.727-29.74,39.858v141.518 c0,10.22,8.265,18.484,18.468,18.484c5.015,0,0,0,12.888,0l7.026,120.694c0,10.856,8.798,19.662,19.661,19.662 c4.576,0,13.022,0,21.475,0c8.446,0,16.883,0,21.475,0c10.848,0,19.662-8.806,19.662-19.662l7.025-120.694v-6.852 c-8.994-8.854-14.614-21.083-14.614-34.669V188.855z"></path> <polygon class="st0" points="104.113,210.581 116.248,198.447 116.248,180.323 90.927,180.323 90.927,197.403 "></polygon> <rect x="90.911" y="160.23" class="st0" width="25.345" height="11.648"></rect> </g> </g></svg>
+                    <span>Komandamız</span>
                 </a>
-            </li> 
+            </li>
 
-             <!-- Nav Item - FAQ -->
+            <!-- Nav Item - FAQ -->
             <li class="nav-item active">
                 <a class="nav-link" asp-action="Index" asp-controller="Faq">
                     <svg fill="#fff" height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 502 502" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <g> <path d="M428.483,73.516C381.076,26.108,318.045,0,251,0C183.956,0,120.924,26.108,73.516,73.516S0,183.956,0,251 s26.108,130.076,73.516,177.484C120.924,475.892,183.956,502,251,502c67.045,0,130.076-26.108,177.483-73.516 C475.892,381.076,502,318.044,502,251S475.892,120.924,428.483,73.516z M251,482C123.626,482,20,378.374,20,251 S123.626,20,251,20s231,103.626,231,231S378.374,482,251,482z"></path> <path d="M251,41.36c-71.131,0-129,57.869-129,129c0,19.299,15.701,35,35,35s35-15.701,35-35c0-32.533,26.467-59,59-59 c32.532,0,59,26.467,59,59c0,32.809-26.468,59.5-59,59.5c-19.299,0-35,15.701-35,35v68.781c0,19.299,15.701,35,35,35 s35-15.702,35-34.999v-38.638c25.275-7.181,48.08-22.162,64.871-42.763C369.655,229.195,380,200.116,380,170.36 C380,99.229,322.131,41.36,251,41.36z M273.893,277.422c-4.605,0.992-7.893,5.064-7.893,9.775v46.443c0,8.271-6.729,15-15,15 s-15-6.729-15-15v-68.781c0-8.271,6.729-15,15-15c43.561,0,79-35.664,79-79.5c0-43.561-35.439-79-79-79c-43.561,0-79,35.44-79,79 c0,8.271-6.729,15-15,15s-15-6.729-15-15c0-60.103,48.897-109,109-109c60.103,0,109,48.897,109,109 C360,221.641,323.787,266.667,273.893,277.422z"></path> <path d="M251,386.641c-19.299,0-35,15.701-35,35v4c0,19.299,15.701,35,35,35s35-15.702,35-35v-4 C286,402.342,270.299,386.641,251,386.641z M266,425.641c0,8.271-6.729,15-15,15s-15-6.729-15-15v-4c0-8.271,6.729-15,15-15 s15,6.729,15,15V425.641z"></path> <path d="M59.077,290.972C56.372,277.911,55,264.462,55,251c0-5.523-4.477-10-10-10s-10,4.477-10,10 c0,14.822,1.512,29.636,4.492,44.028c0.979,4.724,5.14,7.974,9.782,7.974c0.672,0,1.355-0.068,2.039-0.21 C56.721,301.672,60.197,296.38,59.077,290.972z"></path> <path d="M172.982,430.859c-43.999-19.113-79.407-53.593-99.701-97.088c-2.335-5.005-8.287-7.169-13.29-4.834 c-5.005,2.335-7.169,8.285-4.834,13.29c22.36,47.925,61.375,85.916,109.856,106.976c1.297,0.564,2.649,0.831,3.979,0.831 c3.862,0,7.54-2.25,9.178-6.019C180.37,438.949,178.047,433.059,172.982,430.859z"></path> </g> </g> </g> </g></svg>                    <span>Suallar</span>
                 </a>
-            </li> 
+            </li>
 
             <!-- Nav Item - Category -->
             <li class="nav-item active">
@@ -89,39 +93,39 @@
                     <span>Kateqoriya</span>
                 </a>
             </li>
-            
+
             <!-- Nav Item - Adress -->
             <li class="nav-item active">
                 <a class="nav-link" asp-action="Index" asp-controller="Adress">
-                <svg width="27px" height="27px" viewBox="-4 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>location</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-104.000000, -411.000000)" fill="#fff"> <path d="M116,426 C114.343,426 113,424.657 113,423 C113,421.343 114.343,420 116,420 C117.657,420 119,421.343 119,423 C119,424.657 117.657,426 116,426 L116,426 Z M116,418 C113.239,418 111,420.238 111,423 C111,425.762 113.239,428 116,428 C118.761,428 121,425.762 121,423 C121,420.238 118.761,418 116,418 L116,418 Z M116,440 C114.337,440.009 106,427.181 106,423 C106,417.478 110.477,413 116,413 C121.523,413 126,417.478 126,423 C126,427.125 117.637,440.009 116,440 L116,440 Z M116,411 C109.373,411 104,416.373 104,423 C104,428.018 114.005,443.011 116,443 C117.964,443.011 128,427.95 128,423 C128,416.373 122.627,411 116,411 L116,411 Z" id="location" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
-                <span>Adress</span>
-            </a>
-            </li > 
-            
+                    <svg width="27px" height="27px" viewBox="-4 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>location</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-104.000000, -411.000000)" fill="#fff"> <path d="M116,426 C114.343,426 113,424.657 113,423 C113,421.343 114.343,420 116,420 C117.657,420 119,421.343 119,423 C119,424.657 117.657,426 116,426 L116,426 Z M116,418 C113.239,418 111,420.238 111,423 C111,425.762 113.239,428 116,428 C118.761,428 121,425.762 121,423 C121,420.238 118.761,418 116,418 L116,418 Z M116,440 C114.337,440.009 106,427.181 106,423 C106,417.478 110.477,413 116,413 C121.523,413 126,417.478 126,423 C126,427.125 117.637,440.009 116,440 L116,440 Z M116,411 C109.373,411 104,416.373 104,423 C104,428.018 114.005,443.011 116,443 C117.964,443.011 128,427.95 128,423 C128,416.373 122.627,411 116,411 L116,411 Z" id="location" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+                    <span>Adress</span>
+                </a>
+            </li>
+
             <!-- Nav Item - Sosial -->
             <li class="nav-item active">
                 <a class="nav-link" asp-action="Index" asp-controller="Sosial">
-                    <svg width="28px" height="28px" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18 7.16C17.94 7.15 17.87 7.15 17.81 7.16C16.43 7.11 15.33 5.98 15.33 4.58C15.33 3.15 16.48 2 17.91 2C19.34 2 20.49 3.16 20.49 4.58C20.48 5.98 19.38 7.11 18 7.16Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M16.9699 14.44C18.3399 14.67 19.8499 14.43 20.9099 13.72C22.3199 12.78 22.3199 11.24 20.9099 10.3C19.8399 9.59004 18.3099 9.35003 16.9399 9.59003" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M5.96998 7.16C6.02998 7.15 6.09998 7.15 6.15998 7.16C7.53998 7.11 8.63998 5.98 8.63998 4.58C8.63998 3.15 7.48998 2 6.05998 2C4.62998 2 3.47998 3.16 3.47998 4.58C3.48998 5.98 4.58998 7.11 5.96998 7.16Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M6.99994 14.44C5.62994 14.67 4.11994 14.43 3.05994 13.72C1.64994 12.78 1.64994 11.24 3.05994 10.3C4.12994 9.59004 5.65994 9.35003 7.02994 9.59003" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 14.63C11.94 14.62 11.87 14.62 11.81 14.63C10.43 14.58 9.32996 13.45 9.32996 12.05C9.32996 10.62 10.48 9.46997 11.91 9.46997C13.34 9.46997 14.49 10.63 14.49 12.05C14.48 13.45 13.38 14.59 12 14.63Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9.08997 17.78C7.67997 18.72 7.67997 20.26 9.08997 21.2C10.69 22.27 13.31 22.27 14.91 21.2C16.32 20.26 16.32 18.72 14.91 17.78C13.32 16.72 10.69 16.72 9.08997 17.78Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>               
+                    <svg width="28px" height="28px" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18 7.16C17.94 7.15 17.87 7.15 17.81 7.16C16.43 7.11 15.33 5.98 15.33 4.58C15.33 3.15 16.48 2 17.91 2C19.34 2 20.49 3.16 20.49 4.58C20.48 5.98 19.38 7.11 18 7.16Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M16.9699 14.44C18.3399 14.67 19.8499 14.43 20.9099 13.72C22.3199 12.78 22.3199 11.24 20.9099 10.3C19.8399 9.59004 18.3099 9.35003 16.9399 9.59003" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M5.96998 7.16C6.02998 7.15 6.09998 7.15 6.15998 7.16C7.53998 7.11 8.63998 5.98 8.63998 4.58C8.63998 3.15 7.48998 2 6.05998 2C4.62998 2 3.47998 3.16 3.47998 4.58C3.48998 5.98 4.58998 7.11 5.96998 7.16Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M6.99994 14.44C5.62994 14.67 4.11994 14.43 3.05994 13.72C1.64994 12.78 1.64994 11.24 3.05994 10.3C4.12994 9.59004 5.65994 9.35003 7.02994 9.59003" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 14.63C11.94 14.62 11.87 14.62 11.81 14.63C10.43 14.58 9.32996 13.45 9.32996 12.05C9.32996 10.62 10.48 9.46997 11.91 9.46997C13.34 9.46997 14.49 10.63 14.49 12.05C14.48 13.45 13.38 14.59 12 14.63Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9.08997 17.78C7.67997 18.72 7.67997 20.26 9.08997 21.2C10.69 22.27 13.31 22.27 14.91 21.2C16.32 20.26 16.32 18.72 14.91 17.78C13.32 16.72 10.69 16.72 9.08997 17.78Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     <span>Sosial şəbəkələr</span>
-            </a>
-            </li >  
-            
+                </a>
+            </li>
+
             <!-- Nav Item - Slide -->
             <li class="nav-item active">
                 <a class="nav-link" asp-action="Index" asp-controller="Slide">
-                    <svg width="25px" height="25px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="si-glyph si-glyph-slide-show"  ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Slide-show</title> <defs> </defs> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g fill="#fff"> <rect x="7" y="0" width="1.906" height="2.219" class="si-glyph-fill"> </rect> <path d="M15.993,2.621 C15.993,2.287 15.674,2.016 15.281,2.016 L0.781,2.016 C0.387,2.016 0.069,2.287 0.069,2.621 L0.069,3.937 L1.031,3.937 L1.031,11.986 L5.465,11.986 L3.17,14.724 C3.009,14.886 3.069,15.209 3.306,15.446 L3.736,15.875 L7.063,12.105 L7.063,15.968 L8.914,15.968 L8.914,12.002 L12.333,15.874 L12.762,15.445 C12.999,15.209 13.06,14.885 12.898,14.723 L10.533,11.985 L14.939,11.985 L14.939,3.936 L15.995,3.936 L15.995,2.621 L15.993,2.621 Z M14.031,11.106 L1.959,11.106 L1.959,3.937 L14.031,3.937 L14.031,11.106 L14.031,11.106 Z" class="si-glyph-fill"> </path> </g> </g> </g></svg>              
+                    <svg width="25px" height="25px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="si-glyph si-glyph-slide-show"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Slide-show</title> <defs> </defs> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g fill="#fff"> <rect x="7" y="0" width="1.906" height="2.219" class="si-glyph-fill"> </rect> <path d="M15.993,2.621 C15.993,2.287 15.674,2.016 15.281,2.016 L0.781,2.016 C0.387,2.016 0.069,2.287 0.069,2.621 L0.069,3.937 L1.031,3.937 L1.031,11.986 L5.465,11.986 L3.17,14.724 C3.009,14.886 3.069,15.209 3.306,15.446 L3.736,15.875 L7.063,12.105 L7.063,15.968 L8.914,15.968 L8.914,12.002 L12.333,15.874 L12.762,15.445 C12.999,15.209 13.06,14.885 12.898,14.723 L10.533,11.985 L14.939,11.985 L14.939,3.936 L15.995,3.936 L15.995,2.621 L15.993,2.621 Z M14.031,11.106 L1.959,11.106 L1.959,3.937 L14.031,3.937 L14.031,11.106 L14.031,11.106 Z" class="si-glyph-fill"> </path> </g> </g> </g></svg>
                     <span>Slaydlar</span>
-            </a>
-            </li >
+                </a>
+            </li>
 
             <!-- Nav Item - Service -->
             <li class="nav-item active">
                 <a class="nav-link" asp-action="Index" asp-controller="Service">
-                    <svg width="28px" height="28px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M0 0h48v48H0z" fill="none"></path> <g id="Shopicon"> <circle cx="20.083" cy="17.997" r="2"></circle> <circle cx="28.002" cy="17.997" r="2"></circle> <path d="M24.083,31.913C28.448,31.913,32,28.363,32,24h-4c0,2.157-1.757,3.913-3.917,3.913S20.166,26.157,20.166,24h-4 C16.166,28.363,19.718,31.913,24.083,31.913z"></path> <path d="M41.369,19.029C39.205,11.517,32.282,6,24.083,6S8.961,11.517,6.797,19.029C5.282,19.177,4.083,20.448,4.083,22v4 c0,1.65,1.35,3,3,3c1.65,0,3-1.35,3-3v-2.002C10.084,16.279,16.364,10,24.083,10c7.72,0,14,6.28,14,14s-6.28,14-14,14v0h-2.014 c-1.65,0-3,1.35-3,3s1.35,3,3,3h4.014c1.552,0,2.824-1.199,2.971-2.714c5.931-1.709,10.606-6.384,12.315-12.315 c1.515-0.147,2.714-1.419,2.714-2.971v-4C44.083,20.448,42.884,19.176,41.369,19.029z"></path> </g> </g></svg>                  
+                    <svg width="28px" height="28px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M0 0h48v48H0z" fill="none"></path> <g id="Shopicon"> <circle cx="20.083" cy="17.997" r="2"></circle> <circle cx="28.002" cy="17.997" r="2"></circle> <path d="M24.083,31.913C28.448,31.913,32,28.363,32,24h-4c0,2.157-1.757,3.913-3.917,3.913S20.166,26.157,20.166,24h-4 C16.166,28.363,19.718,31.913,24.083,31.913z"></path> <path d="M41.369,19.029C39.205,11.517,32.282,6,24.083,6S8.961,11.517,6.797,19.029C5.282,19.177,4.083,20.448,4.083,22v4 c0,1.65,1.35,3,3,3c1.65,0,3-1.35,3-3v-2.002C10.084,16.279,16.364,10,24.083,10c7.72,0,14,6.28,14,14s-6.28,14-14,14v0h-2.014 c-1.65,0-3,1.35-3,3s1.35,3,3,3h4.014c1.552,0,2.824-1.199,2.971-2.714c5.931-1.709,10.606-6.384,12.315-12.315 c1.515-0.147,2.714-1.419,2.714-2.971v-4C44.083,20.448,42.884,19.176,41.369,19.029z"></path> </g> </g></svg>
                     <span>Servislər</span>
                 </a>
-            </li> 
-            
+            </li>
+
             <!-- Nav Item - Service About-->
             <li class="nav-item active">
                 <a class="nav-link" asp-action="Index" asp-controller="ServiceAbout">
@@ -129,9 +133,9 @@
 
                     <span>Servis haqqında</span>
                 </a>
-            </li>   
-            
-            
+            </li>
+
+
             <!-- Nav Item - Service About Item-->
             <li class="nav-item active">
                 <a class="nav-link" asp-action="Index" asp-controller="ServiceAboutItem">
@@ -139,14 +143,26 @@
                     <span>Servis detalları</span>
                 </a>
             </li>
-            
+
             <!-- Nav Item - Health Tip-->
             <li class="nav-item active">
                 <a class="nav-link" asp-action="Index" asp-controller="HealthTip">
                     <svg width="27px" height="27px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>health</title> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="add" fill="#fff" transform="translate(42.666667, 64.000000)"> <path d="M365.491733,234.665926 C339.947827,276.368766 302.121072,321.347032 252.011468,369.600724 L237.061717,383.7547 C234.512147,386.129148 231.933605,388.511322 229.32609,390.901222 L213.333333,405.333333 C205.163121,398.070922 197.253659,390.878044 189.604949,383.7547 L174.655198,369.600724 C124.545595,321.347032 86.7188401,276.368766 61.174934,234.665926 L112.222458,234.666026 C134.857516,266.728129 165.548935,301.609704 204.481843,339.08546 L213.333333,347.498667 L214.816772,346.115558 C257.264819,305.964102 290.400085,268.724113 314.444476,234.665648 L365.491733,234.665926 Z M149.333333,58.9638831 L213.333333,186.944 L245.333333,122.963883 L269.184,170.666667 L426.666667,170.666667 L426.666667,213.333333 L247.850667,213.333333 L213.333333,282.36945 L149.333333,154.368 L119.851392,213.333333 L3.55271368e-14,213.333333 L3.55271368e-14,170.666667 L93.4613333,170.666667 L149.333333,58.9638831 Z M290.133333,0 C353.756537,0 405.333333,51.5775732 405.333333,115.2 C405.333333,126.248908 404.101625,137.626272 401.63821,149.33209 L357.793994,149.332408 C360.62486,138.880112 362.217829,128.905378 362.584434,119.422244 L362.666667,115.2 C362.666667,75.1414099 330.192075,42.6666667 290.133333,42.6666667 C273.651922,42.6666667 258.124715,48.1376509 245.521279,58.0219169 L241.829932,61.1185374 L213.366947,86.6338354 L184.888885,61.1353673 C171.661383,49.2918281 154.669113,42.6666667 136.533333,42.6666667 C96.4742795,42.6666667 64,75.1409461 64,115.2 C64,125.932203 65.6184007,137.316846 68.8727259,149.332605 L25.028457,149.33209 C22.5650412,137.626272 21.3333333,126.248908 21.3333333,115.2 C21.3333333,51.5767968 72.9101302,0 136.533333,0 C166.046194,0 192.966972,11.098031 213.350016,29.348444 C233.716605,11.091061 260.629741,0 290.133333,0 Z" id="Combined-Shape"> </path> </g> </g> </g></svg>
                     <span>Sağlamlıq</span>
                 </a>
-            </li>  
+            </li>
+
+            <!-- Nav Item - WhyChooseUs-->
+            <li class="nav-item active">
+                <a class="nav-link" asp-action="Index" asp-controller="WhyChooseUs">
+                    <svg version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="26px" height="26px" viewBox="0 0 32 32" xml:space="preserve" fill="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css">
+                                                                                                                                                                                                                                                                                                                                                                                                      .puchipuchi_een {
+                                                                                                                                                                                                                                                                                                                                                                                                          fill: #fff;
+                                                                                                                                                                                                                                                                                                                                                                                                      }
+</style> <path class="puchipuchi_een" d="M7,6c0-2.757,2.243-5,5-5s5,2.243,5,5c0,1.627-0.793,3.061-2,3.974V6c0-1.654-1.346-3-3-3 S9,4.346,9,6v3.974C7.793,9.061,7,7.627,7,6z M24,13c-1.104,0-2,0.896-2,2v-1c0-1.104-0.896-2-2-2s-2,0.896-2,2v-1 c0-1.104-0.896-2-2-2s-2,0.896-2,2V6c0-1.104-0.896-2-2-2s-2,0.896-2,2v10.277C9.705,16.106,9.366,16,9,16c-1.104,0-2,0.896-2,2v3 c0,0.454,0.155,0.895,0.438,1.249L11,28h12l2.293-3.293C25.682,24.318,26,23.55,26,23v-8C26,13.896,25.104,13,24,13z M11,29v1 c0,0.552,0.447,1,1,1h10c0.553,0,1-0.448,1-1v-1H11z"></path> </g></svg>
+                    <span>Niyə biz?</span>
+                </a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Sidebar Toggler (Sidebar) -->
@@ -267,7 +283,7 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
-                             
+
                                 <span asp-action="Index" asp-controller="Notifications" class="badge badge-danger badge-counter"></span>
                             </a>
                             <!-- Dropdown - Messages -->
@@ -401,23 +417,23 @@
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-       <div class="modal-dialog" role="document">
-           <div class="modal-content">
-               <div class="modal-header">
-                   <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                   <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                       <span aria-hidden="true">×</span>
-                   </button>
-               </div>
-               <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-               <div class="modal-footer">
-                   <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                   <a  asp-area = "" asp-action="LogOut" asp-controller="Account" >Logout</a>
-               </div>
-           </div>
-       </div>
-   </div>
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a asp-area="" asp-action="LogOut" asp-controller="Account">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="~/admin/vendor/jquery/jquery.min.js"></script>
@@ -449,30 +465,30 @@
 
 
     <script>
-    ClassicEditor
-        .create(document.querySelector('#ckEditor'))
-   </script>
+        ClassicEditor
+            .create(document.querySelector('#ckEditor'))
+    </script>
 
     @RenderSection("Scripts", false)
 
 </body>
 
 </html>
-  <script>
-        $(document).ready(function () {
-            $.ajax({
-                url: '@Url.Action("GetUnreadMessage", "Contact")', 
-                type: 'GET',
-                success: function (data) {
-                     if (data > 0) {
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '@Url.Action("GetUnreadMessage", "Contact")',
+            type: 'GET',
+            success: function (data) {
+                if (data > 0) {
                     $('#contactCount').text(data).show();
                 } else {
                     $('#contactCount').hide();
                 }
-                },
-                error: function () {
-                    console.log("Error fetching contact count.");
-                }
-            });
+            },
+            error: function () {
+                console.log("Error fetching contact count.");
+            }
         });
-    </script>
+    });
+</script>

@@ -73,6 +73,10 @@ namespace MedicalArticles
             builder.Services.AddScoped<IHealthTipDal, HealthTipDal>();
             builder.Services.AddScoped<IValidator<HealthTip>, HealthTipValidation>();
 
+            builder.Services.AddScoped<IWhyChooseUsService, WhyChooseUsManager>();
+            builder.Services.AddScoped<IWhyChooseUsDal, WhyChooseUsDal>();
+            builder.Services.AddScoped<IValidator<WhyChooseUs>, WhyChooseUsValidation>();
+
 
 
 

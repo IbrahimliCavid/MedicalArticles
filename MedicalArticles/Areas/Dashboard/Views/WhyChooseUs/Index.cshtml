@@ -1,0 +1,48 @@
+﻿ @model List<WhyChooseUsDto>;
+
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                @if (ViewBag.ShowButton)
+                {
+                    <form action="WhyChooseUs/Create" method="get">
+                        <p>
+                            <button class="btn btn-primary">Əlavə et</button>
+                        </p>
+                    </form>
+                }
+
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Açıqlama</th>
+                            <th>Şəkil</th>
+                            <th style="width:10px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="align-content:center;">@item.Description</td>
+                                <td><img src="@item.PhotoUrl" alt="Service About Photo" width="100px" /></td>
+                                <td style="align-content:center;">
+
+                                    <a asp-action="Edit" asp-route-id="@item.Id" style="cursor:pointer;" title="Redaktə et">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
