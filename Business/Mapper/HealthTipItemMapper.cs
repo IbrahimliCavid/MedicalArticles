@@ -51,6 +51,7 @@ namespace Business.Mapper
             HealthTipItem model = new HealthTipItem()
             {
                 Text = createDto.Text,
+                HealthTipId = createDto.HealthTipId,
             };
 
             return model;
@@ -62,6 +63,7 @@ namespace Business.Mapper
             {
                 Id = dto.Id,
                 Text= dto.Text,
+                HealthTipId = dto.HealthTipId,
                 Deleted= dto.Deleted
             };
 
@@ -74,6 +76,7 @@ namespace Business.Mapper
             {
                 Id = updateDto.Id,
                 Text = updateDto.Text,
+                HealthTipId = updateDto.HealthTipId,
                 Deleted = updateDto.Deleted
             };
 

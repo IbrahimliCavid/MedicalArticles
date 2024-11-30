@@ -87,16 +87,16 @@ namespace Business.Concrete
 
         public IDataResult<List<HealthTipItemDto>> GetAll()
         {
-            var models = _healthTipItemDal.GetAll(x => x.Deleted == 0);
+            var models = _healthTipItemDal.GetAllJoin();
 
-            return new SuccessDataResult<List<HealthTipItemDto>>(HealthTipItemMapper.ToDto(models));
+            return new SuccessDataResult<List<HealthTipItemDto>>(models);
         }
 
         public IDataResult<List<HealthTipItemDto>> GetAllDeleted()
         {
-            var models = _healthTipItemDal.GetAll(x => x.Deleted != 0);
+            var models = _healthTipItemDal.GetDeleteAllJoin();
 
-            return new SuccessDataResult<List<HealthTipItemDto>>(HealthTipItemMapper.ToDto(models));
+            return new SuccessDataResult<List<HealthTipItemDto>>(models);
         }
 
         public IDataResult<HealthTipItemDto> GetById(int id)
