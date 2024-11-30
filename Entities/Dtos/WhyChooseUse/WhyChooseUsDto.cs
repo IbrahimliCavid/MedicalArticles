@@ -10,7 +10,7 @@ namespace Entities.Dtos
     public class WhyChooseUsDto
     {
         public int Id {  get; set; }
-        public string Description { get; set; }
+        public string Header { get; set; }
         public string PhotoUrl { get; set; }
         public int Deleted {  get; set; }
         public virtual ICollection<WhyChooseUsItem> WhyChooseUsItems { get; set; }

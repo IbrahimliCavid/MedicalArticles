@@ -13,7 +13,7 @@ namespace Business.Validations
     {
         public WhyChooseUsValidation()
         {
-            RuleFor(x => x.Description)
+            RuleFor(x => x.Header)
               .MinimumLength(3)
               .WithMessage(UiMessages.MinLenghtMessage("Açıqlama", 3))
               .MaximumLength(3000)

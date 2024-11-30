@@ -19,7 +19,7 @@ namespace DataAccess.Configurations
             builder.Property(x => x.Id)
                 .UseIdentityColumn(DefaultConstantValues.DEFAULT_PRIMARY_SEED_VALUE, 1);
 
-            builder.Property(x => x.Description)
+            builder.Property(x => x.Header)
                 .IsRequired()
                 .HasMaxLength(3000);
 

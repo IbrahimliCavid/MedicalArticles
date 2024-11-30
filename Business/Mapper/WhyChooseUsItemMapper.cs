@@ -48,12 +48,13 @@ namespace Business.Mapper
         }
 
 
-        public static WhyChooseUsItem ToModel(WhyChooseUsItemCraeteDto createDto)
+        public static WhyChooseUsItem ToModel(WhyChooseUsItemCreateDto createDto)
         {
             WhyChooseUsItem model = new WhyChooseUsItem()
             {
                 Description = createDto.Description,
                 Title = createDto.Title,
+                WhyChooseUsId = createDto.WhyChooseUsId,
             };
 
             return model;
@@ -80,6 +81,7 @@ namespace Business.Mapper
                 Description = updateDto.Description,
                 Title = updateDto.Title,
                 Deleted = updateDto.Deleted,
+                WhyChooseUsId = updateDto.WhyChooseUsId,
             };
 
             return model;

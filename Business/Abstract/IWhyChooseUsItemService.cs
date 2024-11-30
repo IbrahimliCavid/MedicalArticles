@@ -11,7 +11,7 @@ namespace Business.Abstract
 {
     public interface IWhyChooseUsItemService
     {
-        IResult Add(WhyChooseUsItemCraeteDto dto);
+        IResult Add(WhyChooseUsItemCreateDto dto);
         IResult Update(WhyChooseUsItemUpdateDto dto);
         IResult SoftDelete(int id);
         IResult HardDelete(int id);

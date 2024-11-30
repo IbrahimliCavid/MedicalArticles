@@ -77,6 +77,10 @@ namespace MedicalArticles
             builder.Services.AddScoped<IWhyChooseUsDal, WhyChooseUsDal>();
             builder.Services.AddScoped<IValidator<WhyChooseUs>, WhyChooseUsValidation>();
 
+            builder.Services.AddScoped<IWhyChooseUsItemService, WhyChooseUsItemManager>();
+            builder.Services.AddScoped<IWhyChooseUsItemDal, WhyChooseUsItemDal>();
+            builder.Services.AddScoped<IValidator<WhyChooseUsItem>, WhyChooseUsItemValidation>();
+
 
 
 

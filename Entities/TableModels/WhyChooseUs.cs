@@ -13,7 +13,7 @@ namespace Entities.TableModels
         {
             WhyChooseUsItems = new HashSet<WhyChooseUsItem>();
         }
-        public string Description {  get; set; }
+        public string Header {  get; set; }
         public string PhotoUrl { get; set; }
         public virtual ICollection<WhyChooseUsItem> WhyChooseUsItems { get; set; }
     }

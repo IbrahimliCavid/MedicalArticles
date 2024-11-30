@@ -13,6 +13,8 @@ namespace Entities.Dtos
         public string Title { get; set; }
         public string Description { get; set; }
         public int Deleted {  get; set; }
+        public string Header {  get; set; }
+        public string PhotoUrl {  get; set; }
         public int WhyChooseUsId { get; set; }
         public virtual WhyChooseUs WhyChooseUs { get; set; }
     }

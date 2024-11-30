@@ -28,7 +28,7 @@ namespace Business.Concrete
             _validator = validator;
         }
 
-        public IResult Add(WhyChooseUsItemCraeteDto dto)
+        public IResult Add(WhyChooseUsItemCreateDto dto)
         {
             var model = WhyChooseUsItemMapper.ToModel(dto);
             var validator = _validator.Validate(model);

@@ -15,7 +15,7 @@ namespace Business.Mapper
             WhyChooseUsDto dto = new WhyChooseUsDto()
             {
                 Id = model.Id,
-                Description = model.Description,
+                Header = model.Header,
                 PhotoUrl = model.PhotoUrl,
                 Deleted = model.Deleted,
             };
@@ -34,7 +34,7 @@ namespace Business.Mapper
             WhyChooseUsUpdateDto updateDto = new WhyChooseUsUpdateDto()
             {
                 Id = model.Id,
-                Description = model.Description,
+                Header = model.Header,
                 PhotoUrl = model.PhotoUrl,
                 Deleted = model.Deleted,
             };
@@ -52,8 +52,8 @@ namespace Business.Mapper
         {
             WhyChooseUs model = new WhyChooseUs()
             {
-                Description = createDto.Description,
-                PhotoUrl = createDto.PhotoUrl
+                Header = createDto.Header,
+                PhotoUrl = createDto.PhotoUrl,
             };
 
             return model;
@@ -64,7 +64,7 @@ namespace Business.Mapper
             WhyChooseUs model = new WhyChooseUs
             {
                 Id = dto.Id,
-                Description = dto.Description,
+                Header = dto.Header,
                 PhotoUrl = dto.PhotoUrl,
                 Deleted= dto.Deleted,
             };
@@ -77,7 +77,7 @@ namespace Business.Mapper
             WhyChooseUs model = new WhyChooseUs()
             {
                 Id = updateDto.Id,
-                Description = updateDto.Description,
+                Header = updateDto.Header,
                 PhotoUrl = updateDto.PhotoUrl,
                 Deleted = updateDto.Deleted,
             };
