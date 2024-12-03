@@ -14,6 +14,7 @@ namespace MedicalArticles.Controllers
         private readonly ISlideService _slideService;
         public readonly IContactService _contactService;
         public readonly IHealthTipItemService _healthTipItemService;
+        private readonly IServiceAboutService _serviceAboutService;
 
         public HomeController(
             IServiceService serviceService,
@@ -21,7 +22,8 @@ namespace MedicalArticles.Controllers
             ITeamBoardService teamBoardService,
             ISlideService slideService,
             IContactService contactService,
-            IHealthTipItemService healthTipItemService)
+            IHealthTipItemService healthTipItemService,
+            IServiceAboutService serviceAboutService)
         {
             _serviceService = serviceService;
             _serviceAboutItemService = serviceAboutItemService;
@@ -29,6 +31,7 @@ namespace MedicalArticles.Controllers
             _slideService = slideService;
             _contactService = contactService;
             _healthTipItemService = healthTipItemService;
+            _serviceAboutService = serviceAboutService;
         }
 
         public ActionResult Index()
@@ -39,6 +42,7 @@ namespace MedicalArticles.Controllers
             var slideData = _slideService.GetAll().Data;
             var contactData = _contactService.GetAll().Data;
             var healthTipData = _healthTipItemService.GetAll().Data;
+            var serviceAboutData = _serviceAboutService.GetAll().Data;
 
             HomeViewModel viewModel = new()
             {
@@ -47,7 +51,8 @@ namespace MedicalArticles.Controllers
                 TeamBoards = teamData,
                 Slides = slideData,
                 Contacts = contactData,
-                HealthTipItems = healthTipData
+                HealthTipItems = healthTipData,
+                ServiceAbouts = serviceAboutData
             };
 
             return View(viewModel);

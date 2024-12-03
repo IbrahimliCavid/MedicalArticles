@@ -48,12 +48,7 @@
                         <div class="content double-items">
 
                             <div class="col-md-6 info">
-                                <div class="video">
-                                    <a href="https://www.youtube.com/watch?v=5vY-D42NFP4" class="popup-youtube relative light video-play-button item-center">
-                                        <i class="fa fa-play"></i>
-                                    </a>
-                                </div>
-                                <h1 data-animation="animated slideInRight">Best care for your Good health</h1>
+                                    <h1 data-animation="animated slideInRight">Best care for your Good health</h1>
                                 <p data-animation="animated slideInUp">
                                     The ourselves suffering the sincerity. Inhabit her manners adapted age certain. Debating offended at branched striking be subjects.
                                 </p>
@@ -81,27 +76,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                    <!-- Tab Nav -->
-                    <div class="tab-navigation text-center">
-                        <ul class="nav nav-pills">
-                            <li class="active">
-                                <a data-toggle="tab" href="#tab1" aria-expanded="true">
-                                    <i class="flaticon-ambulance-1"></i> Emergency Case
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#tab2" aria-expanded="false">
-                                    <i class="flaticon-24-hours"></i> Opening Hours
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#tab3" aria-expanded="false">
-                                    <i class="flaticon-lung-cancer"></i> Cancer Care
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- End Tab Nav -->
+                
                 </div>
             </div>
         </div>
@@ -111,24 +86,35 @@
             <div class="col-md-10 col-md-offset-1">
                 <!-- Start Tab Content -->
                 <div class="tab-content">
-                    <div id="tab1" class="tab-pane fade active in">
+                    @foreach (var about in Model.ServiceAbouts)
+                    {
+                          <div id="tab1" class="tab-pane fade active in">
                         <div class="row item-flex center">
                             <div class="col-md-5 thumb">
-                                <img src="assets/img/about/1.jpg" alt="Thumb">
+                                <img src="@about.PhotoUrl" alt="Thumb">
                             </div>
                             <div class="col-md-7 info">
-                                <h2>24 Hours emergency services</h2>
+                                <h2>@about.Title</h2>
                                 <p>
-                                    Ample order up in of in ready. Timed blind had now those ought set often which. Or snug dull he show more true wish. No at many deny away miss evil. On in so indeed spirit an mother. Amounted old strictly but marianne admitted. People former is remove remain we praise
+                                    @about.Description
                                 </p>
                                 <ul>
-                                    <li>Fire and Rescue Services</li>
-                                    <li>Pediatric emergencies</li>
+                                    @foreach (var item in Model.ServiceAboutItems)
+                                        {
+                                           <li>@item.Text</li>
+                                            
+                                        }
                                 </ul>
                                 <a class="btn circle btn-theme effect btn-md" href="#">Read More</a>
                             </div>
                         </div>
                     </div>
+                    
+                    }
+                       
+
+
+
                     <div id="tab2" class="tab-pane fade">
                         <div class="row item-flex center">
                             <div class="col-md-5 thumb">
@@ -424,9 +410,9 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="site-heading text-center">
-                    <h2>Meet Our <span>Specialists</span></h2>
+                    <h2>Bizim <span>Komandamız</span></h2>
                     <p>
-                        While mirth large of on front. Ye he greater related adapted proceed entered an. Through it examine express promise no. Past add size game cold girl off how old
+                        Komandamızla tanış olun 
                     </p>
                 </div>
             </div>
