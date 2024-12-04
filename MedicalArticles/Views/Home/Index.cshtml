@@ -45,23 +45,26 @@
             <div class="box-cell">
                 <div class="container">
                     <div class="row">
-                        <div class="content double-items">
+                      @foreach (var item in Model.Slides)
+                        {
+                            <div class="content double-items">
 
-                            <div class="col-md-6 info">
-                                    <h1 data-animation="animated slideInRight">Best care for your Good health</h1>
-                                <p data-animation="animated slideInUp">
-                                    The ourselves suffering the sincerity. Inhabit her manners adapted age certain. Debating offended at branched striking be subjects.
-                                </p>
-                            </div>
-
-                            <!-- Start thumb Form -->
-                            <div class="col-md-6 thumb-box">
-                                <div class="thumb">
-                                    <img src="assets/img/thumb-1.png" alt="Thumb">
+                                <div class="col-md-6 info">
+                                    <h1 data-animation="animated slideInRight">@item.Title</h1>
+                                    <p data-animation="animated slideInUp">
+                                        @item.Content
+                                    </p>
                                 </div>
+
+                                <!-- Start thumb Form -->
+                                <div class="col-md-6 thumb-box">
+                                    <div class="thumb">
+                                        <img src="@item.PhotoUrl" alt="Thumb">
+                                    </div>
+                                </div>
+                                <!-- End thumb Form -->
                             </div>
-                            <!-- End thumb Form -->
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -71,17 +74,60 @@
 <!-- End Banner -->
 <!-- Start top services
 ============================================= -->
-<div class="top-services-area default-padding-bottom">
-    <div class="services-tabs">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                
+<div class="top-services-area default-padding-bottom default-padding-top">
+   <div class="services-area inc-icon carousel-shadow default-padding-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="site-heading text-center">
+                    <h2>Bizim <span>Xidmətlər</span></h2>
+                    <p>
+                            Sizin üçün xüsusi olaraq hazırladığımız ən yüksək standartlara uyğun şəkildə təqdim etdiyimiz peşəkar xidmətlər
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="services-items text-center services-carousel owl-carousel owl-theme"
+                    <!-- Single Item -->
+                    @foreach (var item in Model.Services)
+                        {
+                             <div class="item">
+                        <div class="info" ;">
+                            <h4>
+                                <a href="#">@item.Title</a>
+                            </h4>
+                            <div style="border-radius: 100%; width:100px; height:100px; overflow:hidden; margin-left:auto; margin-right:auto">
+                                   <img src="@item.PhotoUrl" width="100px" />
+                             </div>
+                            <p>
+                                @item.Description
+                            </p>
+                            <a class="btn btn-theme border circle btn-md" href="#">Daha çox</a>
+                        </div>
+                    </div>
+                        }
+                   
+                    <!-- End Single Item -->
+                   
                 </div>
             </div>
         </div>
     </div>
-    <div class="container">
+</div>
+<!-- End Services -->
+    <div class="container default-padding-bottom">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="site-heading text-center">
+                    <h2>Xidmətlərimiz <span>Haqqında</span></h2>
+                    <p>
+                        Biz sizə nələr təklif edirik?
+                    </p>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <!-- Start Tab Content -->
@@ -105,54 +151,12 @@
                                             
                                         }
                                 </ul>
-                                <a class="btn circle btn-theme effect btn-md" href="#">Read More</a>
+                                <a class="btn circle btn-theme effect btn-md" href="#">Daha çox</a>
                             </div>
                         </div>
                     </div>
                     
                     }
-                       
-
-
-
-                    <div id="tab2" class="tab-pane fade">
-                        <div class="row item-flex center">
-                            <div class="col-md-5 thumb">
-                                <img src="assets/img/about/2.jpg" alt="Thumb">
-                            </div>
-                            <div class="col-md-7 info">
-                                <ul class="working-hours">
-                                    <li>Sunday <div class="pull-right"> 6.00 am - 10.00 pm </div></li>
-                                    <li>Monday <div class="pull-right"> 8.00 am - 4.00 pm </div></li>
-                                    <li>Tuesday <div class="pull-right"> 9.00 am - 6.00 pm </div></li>
-                                    <li>Wednesday <div class="pull-right"> 10.00 am - 7.00 pm </div></li>
-                                    <li>Thursday <div class="pull-right"> 11.00 am - 9.00 pm </div></li>
-                                    <li>Friday <div class="pull-right"> 12.00 am - 12.00 pm </div></li>
-                                    <li>Saturday <div class="pull-right closed"> Closed </div></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab3" class="tab-pane fade">
-                        <div class="row item-flex center">
-                            <div class="col-md-5 thumb">
-                                <img src="assets/img/about/3.jpg" alt="Thumb">
-                            </div>
-                            <div class="col-md-7 info">
-                                <h2>Diagnosing and treating cance</h2>
-                                <p>
-                                    Ample order up in of in ready. Timed blind had now those ought set often which. Or snug dull he show more true wish. No at many deny away miss evil. On in so indeed spirit an mother. Amounted old strictly but marianne admitted. People former is remove remain we praise
-                                </p>
-                                <ul>
-                                    <li>Biomarker Testing</li>
-                                    <li>Immunotherapy to Treat Cancer</li>
-                                </ul>
-                                <a class="btn circle btn-theme effect btn-md" href="#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Tab Content -->
             </div>
         </div>
     </div>
@@ -160,107 +164,7 @@
 <!-- End top services -->
 <!-- Start Services
 ============================================= -->
-<div class="services-area inc-icon carousel-shadow default-padding-bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="site-heading text-center">
-                    <h2>Centres of <span>Excellence</span></h2>
-                    <p>
-                        While mirth large of on front. Ye he greater related adapted proceed entered an. Through it examine express promise no. Past add size game cold girl off how old
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="services-items text-center services-carousel owl-carousel owl-theme">
-                    <!-- Single Item -->
-                    <div class="item">
-                        <div class="info">
-                            <h4>
-                                <a href="#">Body Surgery</a>
-                            </h4>
-                            <div class="overlay">
-                                <i class="flaticon-medical"></i>
-                            </div>
-                            <p>
-                                Attachment astonished to on appearance imprudence so collecting in excellence. Tiled way blind lived whose new. The for fully had she there leave merit enjoy forth.
-                            </p>
-                            <a class="btn btn-theme border circle btn-md" href="#">Read More</a>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="item">
-                        <div class="info">
-                            <h4>
-                                <a href="#">Dental Care</a>
-                            </h4>
-                            <div class="overlay">
-                                <i class="flaticon-anesthesia"></i>
-                            </div>
-                            <p>
-                                Attachment astonished to on appearance imprudence so collecting in excellence. Tiled way blind lived whose new. The for fully had she there leave merit enjoy forth.
-                            </p>
-                            <a class="btn btn-theme border circle btn-md" href="#">Read More</a>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="item">
-                        <div class="info">
-                            <h4>
-                                <a href="#">Eye Care</a>
-                            </h4>
-                            <div class="overlay">
-                                <i class="flaticon-anatomy"></i>
-                            </div>
-                            <p>
-                                Attachment astonished to on appearance imprudence so collecting in excellence. Tiled way blind lived whose new. The for fully had she there leave merit enjoy forth.
-                            </p>
-                            <a class="btn btn-theme border circle btn-md" href="#">Read More</a>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="item">
-                        <div class="info">
-                            <h4>
-                                <a href="#">Blood Cancer</a>
-                            </h4>
-                            <div class="overlay">
-                                <i class="flaticon-lung-cancer"></i>
-                            </div>
-                            <p>
-                                Attachment astonished to on appearance imprudence so collecting in excellence. Tiled way blind lived whose new. The for fully had she there leave merit enjoy forth.
-                            </p>
-                            <a class="btn btn-theme border circle btn-md" href="#">Read More</a>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="item">
-                        <div class="info">
-                            <h4>
-                                <a href="#">Neurology Sargery</a>
-                            </h4>
-                            <div class="overlay">
-                                <i class="flaticon-thinking"></i>
-                            </div>
-                            <p>
-                                Attachment astonished to on appearance imprudence so collecting in excellence. Tiled way blind lived whose new. The for fully had she there leave merit enjoy forth.
-                            </p>
-                            <a class="btn btn-theme border circle btn-md" href="#">Read More</a>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Services -->
+
 <!-- Start Fun Factor
 ============================================= -->
 <div class="fun-fact-area default-padding shadow light text-center bg-fixed text-light" style="background-image: url(assets/img/banner/2.jpg);">
