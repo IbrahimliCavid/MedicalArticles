@@ -13,8 +13,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Health tip item</th>
-                            <th>Şəkil</th>
+                            <th>Tövsiyyələr</th>
                             <th style="width:30px;"></th>
                         </tr>
                     </thead>
@@ -23,7 +22,6 @@
                         {
                             <tr>
                                 <td style="align-content:center;">@item.Text</td>
-                                <td><img src="@item.PhotoUrl" alt="Item Photo" width="100px" /></td>
                                 <td style="align-content:center;">
 
                                     <a asp-action="Edit" asp-route-id="@item.Id" style="cursor:pointer;" title="Redaktə et">

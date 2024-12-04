@@ -209,42 +209,56 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="site-heading text-center">
-                    <h2>Health <span>Tips</span></h2>
+                    <h2>Bizim <span>Tövsiyyələrimiz</span></h2>
                     <p>
-                        While mirth large of on front. Ye he greater related adapted proceed entered an. Through it examine express promise no. Past add size game cold girl off how old
+                            Sağlam həyat tərzi bədəninizə və ruhunuza olan qayğı ilə başlayır. Hər birimiz gündəlik həyatımızda kiçik dəyişikliklər edərək daha sağlam bir həyata addım ata bilərik.
                     </p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="health-tips-items tips-carousel owl-carousel owl-theme">
-                <!-- Single Item -->
+
+                    <!-- Single Item -->
+                    @foreach (var info in Model.HealthTips)
+                    {
+                       
+                    
+                
                 <div class="single-item">
-                    <div class="col-md-5">
-                        <div class="thumb">
-                            <img src="assets/img/doctors/1.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="info">
-                            <div class="doctor">
-                                <h4>Dr. Jessica Ronal</h4>
-                                <h5>MPH, Medicine, Surgery</h5>
+                            <div class="col-md-5">
+                                <div class="thumb">
+                                    <img src="@info.PhotoUrl" alt="">
+                                </div>
                             </div>
-                            <h3>How to live a healthy lifestyle?</h3>
-                            <p>
-                                Frequently partiality possession resolution at or appearance unaffected he me. Engaged its was evident pleased husband. Ye goodness felicity do disposal dwelling no. First am plate jokes to began of cause an scale. Subjects he prospect elegance followed no overcame possible it on.
-                            </p>
-                            <h4>Follow the instructions</h4>
+                 
+                    <div class="col-md-7">
+                     
+                        <div class="info">
+                               
+                                    <div class="doctor">
+                                        <h4>@info.Name @info.Surname</h4>
+                                        <h5>@info.Header</h5>
+                                    </div>
+                                    <h3>@info.Title</h3>
+                                    <p>
+                                        @info.Description
+                                    </p>
+                                    <h4>@info.SubTitle</h4>
+
+                         
                             <ul>
-                                <li>Dont just worry about the things you cannot help.</li>
-                                <li>Eat Healthy, work better, do gardening.</li>
-                                <li>Some relationships can kill you. Avoid them at the most.</li>
-                                <li>Focus on the good things that you like</li>
+                                @foreach (var item in Model.HealthTipItems)
+                                    {
+                                        <li>@item.Text</li>
+                                    }
+                               
                             </ul>
                         </div>
                     </div>
                 </div>
+                    }
+
                 <!-- End Single Item -->
                 <!-- Single Item -->
                 <div class="single-item">

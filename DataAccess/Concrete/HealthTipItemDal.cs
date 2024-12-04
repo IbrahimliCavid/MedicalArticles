@@ -29,6 +29,7 @@ namespace DataAccess.Concrete
                          on healthTipItem.HealthTipId equals healthTip.Id
                          where healthTip.Deleted == 0
                          select new HealthTipItemDto { 
+                             Id = healthTip.Id,
                              Text = healthTipItem.Text,
                              Name = healthTip.Name,
                              Surname = healthTip.Surname,
@@ -53,6 +54,7 @@ namespace DataAccess.Concrete
                          where healthTip.Deleted == 0
                          select new HealthTipItemDto
                          {
+                             Id = healthTip.Id,
                              Text = healthTipItem.Text,
                              Name = healthTip.Name,
                              Surname = healthTip.Surname,

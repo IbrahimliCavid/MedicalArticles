@@ -11,6 +11,7 @@ namespace MedicalArticles.ViewModels
         public List<ServiceAboutItemDto> ServiceAboutItems { get; set; }
         public List<ServiceAboutDto> ServiceAbouts { get; set; }
         public List<HealthTipItemDto> HealthTipItems { get; set; }
+        public List<HealthTipDto> HealthTips { get; set; }
         public List<TeamBoardDto> TeamBoards { get; set; }
 
 

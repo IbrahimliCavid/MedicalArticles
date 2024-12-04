@@ -15,6 +15,7 @@ namespace MedicalArticles.Controllers
         public readonly IContactService _contactService;
         public readonly IHealthTipItemService _healthTipItemService;
         private readonly IServiceAboutService _serviceAboutService;
+        private readonly IHealthTipService _healthTipService;
 
         public HomeController(
             IServiceService serviceService,
@@ -23,7 +24,8 @@ namespace MedicalArticles.Controllers
             ISlideService slideService,
             IContactService contactService,
             IHealthTipItemService healthTipItemService,
-            IServiceAboutService serviceAboutService)
+            IServiceAboutService serviceAboutService,
+            IHealthTipService healthTipService)
         {
             _serviceService = serviceService;
             _serviceAboutItemService = serviceAboutItemService;
@@ -32,6 +34,7 @@ namespace MedicalArticles.Controllers
             _contactService = contactService;
             _healthTipItemService = healthTipItemService;
             _serviceAboutService = serviceAboutService;
+            _healthTipService = healthTipService;
         }
 
         public ActionResult Index()
@@ -41,8 +44,9 @@ namespace MedicalArticles.Controllers
             var teamData = _teamBoardService.GetAll().Data;
             var slideData = _slideService.GetAll().Data;
             var contactData = _contactService.GetAll().Data;
-            var healthTipData = _healthTipItemService.GetAll().Data;
+            var healthTipItemData = _healthTipItemService.GetAll().Data;
             var serviceAboutData = _serviceAboutService.GetAll().Data;
+            var healthTipData = _healthTipService.GetAll().Data;
 
             HomeViewModel viewModel = new()
             {
@@ -51,8 +55,9 @@ namespace MedicalArticles.Controllers
                 TeamBoards = teamData,
                 Slides = slideData,
                 Contacts = contactData,
-                HealthTipItems = healthTipData,
-                ServiceAbouts = serviceAboutData
+                HealthTipItems = healthTipItemData,
+                ServiceAbouts = serviceAboutData,
+                HealthTips = healthTipData,
             };
 
             return View(viewModel);
