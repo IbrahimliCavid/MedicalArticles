@@ -1,6 +1,10 @@
-﻿namespace MedicalArticles.ViewModels
+﻿using Entities.Dtos;
+
+namespace MedicalArticles.ViewModels
 {
-    public class ContactViewModels
+    public class ContactViewModel
     {
+        public List<ContactDto> Contacts { get; set; }
+        public List<AdressDto> Adresses { get; set; }
     }
 }
