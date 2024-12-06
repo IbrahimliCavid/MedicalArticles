@@ -125,47 +125,47 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
                         <li class="dropdown">
-                            <a href="/" class="active" data-toggle="dropdown">Ana səhifə</a>
+                            <a href="/" class="active" data-toggle="dropdown">@_localization.GetKey("Home").Value</a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class=" active" data-toggle="dropdown">Pages</a>
+                            <a href="#" class=" active" data-toggle="dropdown">@_localization.GetKey("About").Value</a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class=" active" data-toggle="dropdown">Departments</a>
+                            <a href="#" class=" active" data-toggle="dropdown">@_localization.GetKey("Service").Value</a>
                             <li />
                             
                         </li>
                         <li class="dropdown">
-                            <a href="#" class=" active" data-toggle="dropdown">Doctors</a>
+                            <a href="#" class=" active" data-toggle="dropdown">@_localization.GetKey("Tip").Value</a>
                            
                         </li>
                         <li class="dropdown">
-                            <a href="#" class=" active" data-toggle="dropdown">Gallery</a>
+                            <a href="#" class=" active" data-toggle="dropdown">@_localization.GetKey("Team").Value</a>
                         </li>
                        
                         <li>
-                            <a asp-controller="Contact" asp-action="Index">Əlaqə</a>
+                            <a asp-controller="Contact" asp-action="Index">@_localization.GetKey("Contact").Value</a>
                         </li>
                         
                         <li>
                             <!-- Start Language -->
                         <li>
                             <div class="dropdown m-1">
-                                <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-globe"></i></button>
+                                <button type="button" class="btn dropdown-toggle" style="background:white;" data-toggle="dropdown"> <i class="fa fa-globe"></i></button>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="az-Latn" class="dropdown-item">
-                                            Az
+                                        <a  asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="az-Latn" class="dropdown-item">
+                                            Azərbaycanca
                                         </a>
                                     </li>
                                     <li>
                                         <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US" class="dropdown-item">
-                                            En
+                                            English
                                         </a>
                                     </li>
                                     <li>
                                         <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="ru-RU" class="dropdown-item">
-                                            Ru
+                                            Русский
                                         </a>
                                     </li>
 

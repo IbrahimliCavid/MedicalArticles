@@ -120,4 +120,31 @@
   <data name="Service" xml:space="preserve">
     <value>Наши услуги</value>
   </data>
+  <data name="About" xml:space="preserve">
+    <value>rus about</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home rus</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>asdasd</value>
+  </data>
+  <data name="Service.about" xml:space="preserve">
+    <value>csdfdfsdfs</value>
+  </data>
+  <data name="HealthTip" xml:space="preserve">
+    <value>asdas</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>asfdasfas</value>
+  </data>
+  <data name="ServiceTitle" xml:space="preserve">
+    <value>safas</value>
+  </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>ddasdas</value>
+  </data>
+  <data name="Tip" xml:space="preserve">
+    <value>safsf</value>
+  </data>
 </root>

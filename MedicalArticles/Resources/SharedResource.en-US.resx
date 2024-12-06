@@ -118,6 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Service" xml:space="preserve">
-    <value>Our Services</value>
+    <value>Services</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Service.about" xml:space="preserve">
+    <value>Services About</value>
+  </data>
+  <data name="HealthTip" xml:space="preserve">
+    <value>Our Recommendations</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="ServiceTitle" xml:space="preserve">
+    <value>sdfsa</value>
+  </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>Read More</value>
+  </data>
+  <data name="Tip" xml:space="preserve">
+    <value>Tips</value>
   </data>
 </root>
