@@ -4,7 +4,7 @@ namespace MedicalArticles.ViewModels
 {
     public class ContactViewModel
     {
-        public List<ContactDto> Contacts { get; set; }
+        public ContactCreateDto Contact { get; set; }
         public List<AdressDto> Adresses { get; set; }
     }
 }

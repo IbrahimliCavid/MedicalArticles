@@ -9,9 +9,9 @@
             </div>
             <div class="col-md-6 text-right">
                 <ul class="breadcrumb">
-                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-home"></i> Ana səhifə</a></li>
                     <li><a href="#">Pages</a></li>
-                    <li class="active">Contact</li>
+                    <li class="active">Əlaqə</li>
                 </ul>
             </div>
         </div>
@@ -52,20 +52,18 @@
                             <i class="fas fa-envelope-open"></i>
                             <h4>E-poçt</h4>
                             <p>
-                               @item.Email
+                                @item.Email
                             </p>
                         </div>
                     </div>
                     <!-- End Single Item -->
                 }
-               
+
             </div>
         </div>
     </div>
 </div>
 <!-- End Contact Top Entry -->
-<!-- Start Contact Area
-============================================= -->
 <div class="contact-area bg-gray text-center default-padding">
     <div class="container">
         <div class="row">
@@ -75,54 +73,54 @@
                     <p>
                         Our next drew much you with rank. Tore many held age hold rose than our. She literature sentiments any contrasted. Set aware joy sense young now tears china shy.
                     </p>
-                    <form action="assets/mail/contact.php" method="POST" class="contact-form">
+                    <form id="contactForm" asp-controller="Contact" asp-action="SendMessage" method="POST" class="contact-form">
+
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="form-group">
-                                    <input class="form-control" id="name" name="name" placeholder="Name" type="text">
+                                    <input class="form-control" id="name" name="Name" placeholder="Ad Soyad" type="text">
                                     <span class="alert-error"></span>
                                 </div>
+
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input class="form-control" id="email" name="email" placeholder="Email*" type="email">
+                                    <input class="form-control" id="email" name="Email" placeholder="E-poçt*" type="email">
                                     <span class="alert-error"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input class="form-control" id="phone" name="phone" placeholder="Phone" type="text">
+                                    <input class="form-control" id="phone" name="Phone" placeholder="Telefon*" type="text">
                                     <span class="alert-error"></span>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="form-group comments">
-                                    <textarea class="form-control" id="comments" name="comments" placeholder="Tell Us About Project *"></textarea>
+                                    <textarea class="form-control" id="comments" name="comments" placeholder="Mesaj yazın... *"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="row">
                                 <button type="submit" name="submit" id="submit">
-                                    Send Message <i class="fa fa-paper-plane"></i>
+                                    Göndər <i class="fa fa-paper-plane"></i>
                                 </button>
                             </div>
                         </div>
-                        <!-- Alert Message -->
-                        <div class="col-md-12 alert-notification">
-                            <div id="message" class="alert-msg"></div>
-                        </div>
+                       
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- End Contact Area -->
+<!-- End Contact-->
 <!-- Start Google Maps
 ============================================= -->
 <div class="maps-area">
@@ -135,4 +133,46 @@
     </div>
 </div>
 <!-- End Google Maps -->
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function () {
+                            $("#contactForm").on("submit", function (e) {
+                        e.preventDefault();
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: '@Url.Action("SendMessage", "Contact")',
+                                    data: $(this).serialize(),
+                                    success: function (response) {
+                                        if (response.isSuccess) {
+                                            Swal.fire({
+                                                title: 'Təşəkkürlər',
+                                                text: 'Mesaj uğurla göndərildi, sizinlə tezliklə əlaqə saxlanılacaq',
+                                                icon: 'success',
+                                                confirmButtonText: 'Oldu'
+                                            });
+                                                     $("#contactForm")[0].reset();
+                                        } else {
+                                            Swal.fire({
+                                                title: 'Oops',
+                                                text: 'Mesaj göndərilmədi! Məlumatların doğruluğunu yoxlayın.',
+                                                icon: 'error',
+                                                confirmButtonText: 'Yenidən cəhd et'
+                                            });
+                                        }
+                                    },
+                                    error: function () {
+                                        Swal.fire({
+                                                    title: 'Oops',
+                                                        text: 'Mesaj göndərilmədi! Məlumatların doğruluğunu yoxlayın.',
+                                                        icon: 'error',
+                                                        confirmButtonText: 'Yenidən cəhd et'
+                                        });
+                                    }
+                                });
+                            });
+                        });
+    </script>
+}
 

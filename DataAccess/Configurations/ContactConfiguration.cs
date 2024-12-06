@@ -23,7 +23,7 @@ namespace DataAccess.Configurations
                 .IsRequired()
                 .HasMaxLength(13);
 
-            builder.Property(x => x.Message)
+            builder.Property(x => x.Comments)
                 .IsRequired()
                 .HasMaxLength(4000);
             builder.Property(x=>x.IsRead)

@@ -21,20 +21,20 @@ namespace Business.Validations
                 .MaximumLength(100)
                 .WithMessage(UiMessages.MaxLenghtMessage("Ad", 100));  
             
-            RuleFor(x=> x.Message)
+            RuleFor(x=> x.Comments)
                 .NotEmpty()
-                .WithMessage(UiMessages.NotEmptyMessage("Messaj"))
+                .WithMessage(UiMessages.NotEmptyMessage("Mesaj"))
                 .MinimumLength(3)
                 .WithMessage(UiMessages.MinLenghtMessage("Mesaj", 3))
                 .MaximumLength(4000)
-                .WithMessage(UiMessages.MaxLenghtMessage("Mesaj", 4000));  
-            
-            RuleFor(x=> x.Phone) 
+                .WithMessage(UiMessages.MaxLenghtMessage("Mesaj", 4000));
+
+            RuleFor(x => x.Phone)
                 .NotEmpty()
                 .WithMessage(UiMessages.NotEmptyMessage("Mobil nömrə"))
                 .MaximumLength(13)
-                .WithMessage(UiMessages.MaxLenghtMessage("Mobil nömrə", 13));   
-            
+                .WithMessage(UiMessages.MaxLenghtMessage("Mobil nömrə", 13));
+
             RuleFor(x=> x.Email)
                 .NotEmpty()
                 .WithMessage(UiMessages.NotEmptyMessage("E-poçt"))

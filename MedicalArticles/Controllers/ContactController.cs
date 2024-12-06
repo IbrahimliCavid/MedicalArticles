@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Mapper;
+using Entities.Dtos;
 using MedicalArticles.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,16 +17,27 @@ namespace MedicalArticles.Controllers
             _adressService = adressService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            var contactData = _contactService.GetAll().Data;
             var adressData = _adressService.GetAll().Data;
             ContactViewModel viewModels = new ContactViewModel()
             {
-                Contacts = contactData,
+                Contact = new ContactCreateDto(),
                 Adresses = adressData
             };
             return View(viewModels);
+        }
+
+        [HttpPost]
+        public IActionResult SendMessage(ContactCreateDto dto) 
+        {
+            var result = _contactService.Add(dto);
+            if (!result.IsSuccess)
+            {
+                return Json(new { isSuccess = false });
+            }
+            return Json(new { isSuccess = true });
         }
     }
 }
