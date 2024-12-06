@@ -7,6 +7,13 @@ using DataAccess.SqlServerDBContext;
 using Entities.Concrete.TableModels.Membership;
 using Entities.TableModels;
 using FluentValidation;
+using FluentValidation.Resources;
+using MedicalArticles.Services;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Options;
+using System.Globalization;
+using System.Reflection;
+using static MedicalArticles.Services.LanguageService;
 
 namespace MedicalArticles
 {
@@ -85,6 +92,52 @@ namespace MedicalArticles
             builder.Services.AddScoped<IWhyChooseUsItemDal, WhyChooseUsItemDal>();
             builder.Services.AddScoped<IValidator<WhyChooseUsItem>, WhyChooseUsItemValidation>();
 
+            builder.Services.AddSingleton<LanguageService>();
+            builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            builder.Services.AddMvc().AddViewLocalization().AddDataAnnotationsLocalization(options =>
+            {
+                var assemblyName = new AssemblyName(typeof(SharedResource).Assembly.FullName);
+                options.DataAnnotationLocalizerProvider = (type, factory) =>
+                    factory.Create(nameof(SharedResource), assemblyName.Name);
+            });
+
+            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[] { "az-Latn", "en-US", "ru-RU" };
+                options.DefaultRequestCulture = new RequestCulture("az-Latn", "az-Latn");
+                options.SupportedCultures = supportedCultures.Select(culture => new CultureInfo(culture)).ToList();
+                options.SupportedUICultures = supportedCultures.Select(culture => new CultureInfo(culture)).ToList();
+                options.RequestCultureProviders.Insert(0, new QueryStringRequestCultureProvider());
+            });
+
+
+            //Localization
+
+            //builder.Services.AddSingleton<LanguageService>();
+            //builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+            //builder.Services.AddMvc().AddViewLocalization().AddDataAnnotationsLocalization(options=>
+            //options.DataAnnotationLocalizerProvider = (type, factory) =>
+            //{
+            //    var assemblyName =new AssemblyName(typeof(SharedResource).GetTypeInfo().Assembly.FullName);
+            //    return factory.Create(nameof(SharedResource), assemblyName.Name);
+            //});
+
+            //builder.Services.Configure<RequestLocalizationOptions>(options =>
+            //{
+            //    var supportCultures = new List<CultureInfo>
+            //    {
+            //        new CultureInfo("az"),
+            //        new CultureInfo("en-US"),
+            //        new CultureInfo("ru")
+            //    };
+            //    options.DefaultRequestCulture = new RequestCulture(culture: "az", uiCulture: "az");
+            //    options.SupportedCultures = supportCultures;
+            //    options.SupportedUICultures = supportCultures;
+            //    options.RequestCultureProviders.Insert(0, new QueryStringRequestCultureProvider());
+
+            //});
+
 
 
 
@@ -100,6 +153,8 @@ namespace MedicalArticles
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseRequestLocalization(app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
+            //app.UseRequestLocalization(app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 
             app.UseRouting();
 

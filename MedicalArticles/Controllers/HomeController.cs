@@ -1,6 +1,8 @@
 using Business.Abstract;
 using MedicalArticles.Models;
+using MedicalArticles.Services;
 using MedicalArticles.ViewModels;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -16,6 +18,7 @@ namespace MedicalArticles.Controllers
         public readonly IHealthTipItemService _healthTipItemService;
         private readonly IServiceAboutService _serviceAboutService;
         private readonly IHealthTipService _healthTipService;
+        public readonly LanguageService _localization;
 
         public HomeController(
             IServiceService serviceService,
@@ -25,7 +28,8 @@ namespace MedicalArticles.Controllers
             IContactService contactService,
             IHealthTipItemService healthTipItemService,
             IServiceAboutService serviceAboutService,
-            IHealthTipService healthTipService)
+            IHealthTipService healthTipService,
+            LanguageService localization)
         {
             _serviceService = serviceService;
             _serviceAboutItemService = serviceAboutItemService;
@@ -35,9 +39,10 @@ namespace MedicalArticles.Controllers
             _healthTipItemService = healthTipItemService;
             _serviceAboutService = serviceAboutService;
             _healthTipService = healthTipService;
+            _localization = localization;
         }
 
-        public ActionResult Index()
+        public IActionResult Index()
         {
             var serviceData = _serviceService.GetAll().Data;
             var serviceItemData = _serviceAboutItemService.GetAll().Data;
@@ -47,6 +52,9 @@ namespace MedicalArticles.Controllers
             var healthTipItemData = _healthTipItemService.GetAll().Data;
             var serviceAboutData = _serviceAboutService.GetAll().Data;
             var healthTipData = _healthTipService.GetAll().Data;
+
+            ViewBag.Service = _localization.GetKey("Service").Value;
+            var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
 
             HomeViewModel viewModel = new()
             {
@@ -61,6 +69,16 @@ namespace MedicalArticles.Controllers
             };
 
             return View(viewModel);
+        }
+
+        public IActionResult ChangeLanguage(string culture)
+        {
+            Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)), new CookieOptions()
+                {
+                    Expires = DateTimeOffset.UtcNow.AddYears(1)
+                });
+            return Redirect(Request.Headers["Referer"].ToString());
         }
     }
 }
