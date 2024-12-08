@@ -147,4 +147,7 @@
   <data name="Tip" xml:space="preserve">
     <value>Tövsiyyələrimiz</value>
   </data>
+  <data name="WhyUs" xml:space="preserve">
+    <value>Niyə biz?</value>
+  </data>
 </root>

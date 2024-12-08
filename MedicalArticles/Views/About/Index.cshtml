@@ -72,40 +72,37 @@
 <div class="chose-us-area">
     <div class="container-full">
         <div class="row">
-            <div class="col-md-6 thumb bg-cover" style="background-image: url(assets/img/banner/6.jpg);"></div>
-            <div class="col-md-6 info">
-                <div class="heading">
-                    <h2>Why Chose us</h2>
-                    <p>
-                        Offering confined entrance no. Nay rapturous him see something residence. Highly talked do so vulgar. Her use behaved spirits and natural attempt say feeling. Exquisite mr incommode immediate he something ourselves it of. Law conduct yet chiefly beloved examine village proceed
-                    </p>
-                </div>
-                <ul>
-                    <li>
-                        <div class="info">
-                            <h4>Qualified facilities</h4>
+            
+         
+           @foreach (var whyUs in Model.WhyUs)
+                {
+
+                @*     <div class="col-md-6 thumb bg-cover" style="background-image: url(@whyUs.PhotoUrl);"></div>
+                    <div class="col-md-6 info">
+                        <div class="heading">
+                            <h2>Why Chose us</h2>
                             <p>
-                                Consider may dwelling old him her surprise finished families graceful. Gave led past poor met fine was new.
+                                @whyUs.Header
                             </p>
                         </div>
-                    </li>
-                    <li>
-                        <div class="info">
-                            <h4>Top Level Doctors</h4>
-                            <p>
-                                Consider may dwelling old him her surprise finished families graceful. Gave led past poor met fine was new.
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="info">
-                            <h4>Dedicated patient care</h4>
-                            <p>
-                                Consider may dwelling old him her surprise finished families graceful. Gave led past poor met fine was new.
-                            </p>
-                        </div>
-                    </li>
+ *@
+
+                        <ul>
+                    @foreach (var item in Model.WhyUsItems)
+                        {
+                            <li>
+                                <div class="info">
+                                    <h4>@item.Title</h4>
+                                    <p>
+                                        @item.Description
+                                    </p>
+                                </div>
+                            </li>
+                        }
+                 
+                  
                 </ul>
+                }
             </div>
         </div>
     </div>

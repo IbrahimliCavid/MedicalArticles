@@ -23,13 +23,15 @@ namespace MedicalArticles.Controllers
         public IActionResult Index()
         {
             var teamData = _teamService.GetAll().Data;
+            var whyUsData = _whyUsService.GetAll().Data;    
             var whyUsItemData = _whyUsItemService.GetAll().Data;
             var serviceData = _serviceService.GetAll().Data;
+
 
             AboutViewModel viewModel = new()
             {
                 TeamBoards = teamData,
-                WhyUs = new WhyChooseUsDto(),
+                WhyUs =whyUsData,
                 WhyUsItems = whyUsItemData,
                 Services = serviceData,
             };

@@ -147,4 +147,7 @@
   <data name="Tip" xml:space="preserve">
     <value>Tips</value>
   </data>
+  <data name="WhyUs" xml:space="preserve">
+    <value>Why Choose Us</value>
+  </data>
 </root>
