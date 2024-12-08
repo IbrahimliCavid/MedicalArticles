@@ -1,0 +1,140 @@
+﻿@model NavigationViewModel
+
+<!-- Start Header Top
+  ============================================= -->
+<div class="top-bar-area inline bg-dark text-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 address-info text-left">
+                <div class="info box">
+                    <ul>
+                        @foreach (var item in Model.Adreses)
+                        {
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i> @item.Location
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope-open"></i> @item.Email
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i> @item.Phone1
+                            </li>
+                        }
+                     
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 bar-btn text-right">
+                <a href="#">Make Appoinment</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Header Top -->
+<!-- Header
+============================================= -->
+<header id="home">
+
+    <!-- Start Navigation -->
+    <nav class="navbar navbar-default attr-border navbar-sticky bootsnav">
+
+        <!-- Start Top Search -->
+        <div class="container">
+            <div class="row">
+                <div class="top-search">
+                    <div class="input-group">
+                        <form action="#">
+                            <input type="text" name="text" class="form-control" placeholder="Search">
+                            <button type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Top Search -->
+
+        <div class="container">
+
+            <!-- Start Atribute Navigation -->
+            <div class="attr-nav">
+                <ul>
+                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                    <li class="side-menu"><a href="#"><i class="fa fa-bars"></i></a></li>
+                </ul>
+            </div>
+            <!-- End Atribute Navigation -->
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <img src="~/assets/img/logo.png" class="logo" alt="Logo">
+                </a>
+            </div>
+            <!-- End Header Navigation -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
+                    <li class="dropdown">
+                        <a asp-controller="Home" asp-action="Index" class="active">@_localization.GetKey("Home").Value</a>
+                    </li>
+                    <li class="dropdown">
+                        <a asp-controller="About" asp-action="Index" class=" active">@_localization.GetKey("About").Value</a>
+                    </li>
+                    <li class="dropdown">
+                        <a asp-controller="Service" asp-action="Index" class=" active">@_localization.GetKey("Service").Value</a>
+                    <li />
+
+                    </li>
+                    <li class="dropdown">
+                        <a asp-controller="Tip" asp-action="Index" class=" active">@_localization.GetKey("Tip").Value</a>
+
+                    </li>
+                    <li class="dropdown">
+                        <a asp-controller="Team" asp-action="Index" class=" active">@_localization.GetKey("Team").Value</a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="Contact" asp-action="Index">@_localization.GetKey("Contact").Value</a>
+                    </li>
+
+                    <li>
+                        <!-- Start Language -->
+                    <li>
+                        <div class="dropdown m-1">
+                            <button type="button" class="btn dropdown-toggle" style="background:white;" data-toggle="dropdown"> <i class="fa fa-globe"></i></button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="az-Latn" class="dropdown-item">
+                                        Azərbaycanca
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US" class="dropdown-item">
+                                        English
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="ru-RU" class="dropdown-item">
+                                        Русский
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </li>
+                    <!-- End Language -->
+                    </li>
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+
+
+
+    </nav>
+    <!-- End Navigation -->
