@@ -1,5 +1,82 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model TipViewModel
+
+<!-- Start Breadcrumb
+  ============================================= -->
+<div class="breadcrumb-area shadow dark bg-fixed text-light" style="background-image: url(assets/img/banner/7.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>@_localization.GetKey("HealthTip").Value</h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <ul class="breadcrumb">
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li class="active">Doctors</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumb -->
+<!-- Start Doctors Tips
+============================================= -->
+<div class="doctor-tips-area default-padding bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="site-heading text-center">
+                    <h2><span>@_localization.GetKey("HealthTip").Value</span></h2>
+                    <p>
+                        Sağlam həyat tərzi bədəninizə və ruhunuza olan qayğı ilə başlayır. Hər birimiz gündəlik həyatımızda kiçik dəyişikliklər edərək daha sağlam bir həyata addım ata bilərik.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="health-tips-items tips-carousel owl-carousel owl-theme">
+
+                <!-- Single Item -->
+                @foreach (var info in Model.HealthTips)
+                {
+
+
+
+                    <div class="single-item">
+                        <div class="col-md-5">
+                            <div class="thumb">
+                                <img src="@info.PhotoUrl" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-md-7">
+
+                            <div class="info">
+
+                                <div class="doctor">
+                                    <h4>@info.Name @info.Surname</h4>
+                                    <h5>@info.Header</h5>
+                                </div>
+                                <h3>@info.Title</h3>
+                                <p>
+                                    @info.Description
+                                </p>
+                                <h4>@info.SubTitle</h4>
+
+
+                                <ul>
+                                    @foreach (var item in Model.HealthTipItems)
+                                    {
+                                        <li>@item.Text</li>
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <!-- End Single Item -->
+</div>
+
+</div>
