@@ -40,20 +40,20 @@
                     <!-- Single Item -->
                         @foreach (var item in Model.Services)
                         {
-                                 <div class="item">
-                            <div class="info" ;">
-                                <h4>
-                                    <a href="#">@item.Title</a>
-                                </h4>
-                                <div style="border-radius: 100%; width:100px; height:100px; overflow:hidden; margin-left:auto; margin-right:auto">
-                                       <img src="@item.PhotoUrl" width="100px" />
-                                 </div>
-                                <p>
+                                     <div class="item">
+                                <div class="info" ;">
+                                    <h4>
+                                        <a href="#">@item.Title</a>
+                                    </h4>
+                                    <div style="border-radius: 100%; width:100px; height:100px; overflow:hidden; margin-left:auto; margin-right:auto">
+                                           <img src="@item.PhotoUrl" width="100px" />
+                                     </div>
+                                    <p>
                                         @item.Description
-                                </p>
-                                <a class="btn btn-theme border circle btn-md" href="#">@_localization.GetKey("ReadMore").Value</a>
+                                    </p>
+                                    <a class="btn btn-theme border circle btn-md" href="#">@_localization.GetKey("ReadMore").Value</a>
+                                </div>
                             </div>
-                        </div>
                         }
 
                     <!-- End Single Item -->
@@ -64,95 +64,91 @@
         </div>
     </div>
     <!-- End Services -->
+    <!-- Start Why Chose Us
+    ============================================= -->
+    <div class="chose-us-area">
+        <div class="container-full">
+            <div class="row">
 
 
-
-<!-- Start Why Chose Us
-============================================= -->
-<div class="chose-us-area">
-    <div class="container-full">
-        <div class="row">
-            
-         
-           @foreach (var whyUs in Model.WhyUs)
+                @foreach (var whyUs in Model.WhyUs)
                 {
 
-                @*     <div class="col-md-6 thumb bg-cover" style="background-image: url(@whyUs.PhotoUrl);"></div>
+                    <div class="col-md-6 thumb bg-cover" style="background-image: url(@whyUs.PhotoUrl);"></div>
                     <div class="col-md-6 info">
                         <div class="heading">
-                            <h2>Why Chose us</h2>
+                            <h2>@_localization.GetKey("WhyUs").Value</h2>
                             <p>
                                 @whyUs.Header
                             </p>
                         </div>
- *@
 
                         <ul>
-                    @foreach (var item in Model.WhyUsItems)
-                        {
-                            <li>
-                                <div class="info">
-                                    <h4>@item.Title</h4>
-                                    <p>
-                                        @item.Description
-                                    </p>
-                                </div>
-                            </li>
-                        }
-                 
-                  
-                </ul>
+                            @foreach (var item in Model.WhyUsItems)
+                            {
+                                <li>
+                                    <div class="info">
+                                        <h4>@item.Title</h4>
+                                        <p>
+                                            @item.Description
+                                        </p>
+                                    </div>
+                                </li>
+                            }
+
+
+                        </ul>
+                    </div>
                 }
             </div>
         </div>
     </div>
-</div>
-<!-- End Why Chose Us -->
-<!-- Start Doctors
-============================================= -->
-<div class="doctor-area default-padding bottom-less">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="site-heading text-center">
-                    <h2><span>@_localization.GetKey("Team").Value</span></h2>
-                    <p>
-                        Komandamızla tanış olun
-                    </p>
+    <!-- End Why Chose Us -->
+    <!-- Start Doctors
+    ============================================= -->
+    <div class="doctor-area default-padding bottom-less">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h2><span>@_localization.GetKey("Team").Value</span></h2>
+                        <p>
+                            Komandamızla tanış olun
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="doctor-items text-center">
+            <div class="row">
+                <div class="doctor-items text-center">
 
-                @foreach (var item in Model.TeamBoards)
-                {
-                    <div class="col-md-4 equal-height">
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="@item.PhotoUrl" alt="Thumb">
+                    @foreach (var item in Model.TeamBoards)
+                    {
+                        <div class="col-md-4 equal-height">
+                            <div class="item">
+                                <div class="thumb">
+                                    <img src="@item.PhotoUrl" alt="Thumb">
 
-                                <div class="social">
-                                    <ul>
-                                        <li class="facebook">
-                                            <a href="@item.FacebookUrl"><i class="fab fa-facebook-f"></i></a>
-                                        </li>
-                                        <li class="instagram">
-                                            <a href="@item.InstagramUrl"><i class="fab fa-instagram"></i></a>
-                                        </li>
-                                        <li class="linkedin">
-                                            <a href="@item.LinkedinUrl"><i class="fab fa-linkedin-in"></i></a>
-                                        </li>
-                                    </ul>
+                                    <div class="social">
+                                        <ul>
+                                            <li class="facebook">
+                                                <a href="@item.FacebookUrl"><i class="fab fa-facebook-f"></i></a>
+                                            </li>
+                                            <li class="instagram">
+                                                <a href="@item.InstagramUrl"><i class="fab fa-instagram"></i></a>
+                                            </li>
+                                            <li class="linkedin">
+                                                <a href="@item.LinkedinUrl"><i class="fab fa-linkedin-in"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <h4>@item.Name @item.Surname</h4>
+                                    <h5>@item.Profession</h5>
+
                                 </div>
                             </div>
-                            <div class="info">
-                                <h4>@item.Name @item.Surname</h4>
-                                <h5>@item.Profession</h5>
-
-                            </div>
                         </div>
-                    </div>
-                }
+                    }
 
-                <!-- End Doctors -->
+                    <!-- End Doctors -->

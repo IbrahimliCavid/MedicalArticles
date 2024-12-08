@@ -148,6 +148,9 @@
     <value>Tips</value>
   </data>
   <data name="WhyUs" xml:space="preserve">
-    <value>Why Choose Us</value>
+    <value>Why Choose Us?</value>
+  </data>
+  <data name="Faq" xml:space="preserve">
+    <value>Answer &amp; Questions</value>
   </data>
 </root>

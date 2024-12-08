@@ -150,4 +150,7 @@
   <data name="WhyUs" xml:space="preserve">
     <value>Niyə biz?</value>
   </data>
+  <data name="Faq" xml:space="preserve">
+    <value>Sual  &amp; Cavab</value>
+  </data>
 </root>
