@@ -8,6 +8,7 @@ namespace Entities.Dtos
 {
     public class StatisticUpdateDto
     {
+        public int Id {  get; set; }
         public string Name { get; set; }
         public string Icon { get; set; }
         public int Count { get; set; }
