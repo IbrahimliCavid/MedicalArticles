@@ -18,6 +18,7 @@ namespace MedicalArticles.Controllers
         public readonly IHealthTipItemService _healthTipItemService;
         private readonly IServiceAboutService _serviceAboutService;
         private readonly IHealthTipService _healthTipService;
+        private readonly IStatisticService _statisticService;
         public readonly LanguageService _localization;
 
         public HomeController(
@@ -29,7 +30,8 @@ namespace MedicalArticles.Controllers
             IHealthTipItemService healthTipItemService,
             IServiceAboutService serviceAboutService,
             IHealthTipService healthTipService,
-            LanguageService localization)
+            LanguageService localization,
+            IStatisticService statisticService)
         {
             _serviceService = serviceService;
             _serviceAboutItemService = serviceAboutItemService;
@@ -40,6 +42,7 @@ namespace MedicalArticles.Controllers
             _serviceAboutService = serviceAboutService;
             _healthTipService = healthTipService;
             _localization = localization;
+            _statisticService = statisticService;
         }
 
         public IActionResult Index()
@@ -52,6 +55,7 @@ namespace MedicalArticles.Controllers
             var healthTipItemData = _healthTipItemService.GetAll().Data;
             var serviceAboutData = _serviceAboutService.GetAll().Data;
             var healthTipData = _healthTipService.GetAll().Data;
+            var statisticData = _statisticService.GetAll().Data;
 
             ViewBag.Service = _localization.GetKey("Service").Value;
             var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
@@ -66,6 +70,7 @@ namespace MedicalArticles.Controllers
                 HealthTipItems = healthTipItemData,
                 ServiceAbouts = serviceAboutData,
                 HealthTips = healthTipData,
+                Statistics = statisticData,
             };
 
             return View(viewModel);

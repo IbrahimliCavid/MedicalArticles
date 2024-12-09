@@ -136,34 +136,17 @@
 <div class="fun-fact-area default-padding shadow light text-center bg-fixed text-light" style="background-image: url(assets/img/banner/2.jpg);">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-6 item">
-                <div class="fun-fact">
-                    <i class="flaticon-recovered"></i>
-                    <div class="timer" data-to="230" data-speed="5000"></div>
-                    <span class="medium">Satisfied Patients</span>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 item">
-                <div class="fun-fact">
-                    <i class="flaticon-doctor"></i>
-                    <div class="timer" data-to="89" data-speed="5000"></div>
-                    <span class="medium">Regular Doctors</span>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 item">
-                <div class="fun-fact">
-                    <i class="flaticon-department"></i>
-                    <div class="timer" data-to="50" data-speed="5000"></div>
-                    <span class="medium">Departments</span>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 item">
-                <div class="fun-fact">
-                    <i class="flaticon-nurse"></i>
-                    <div class="timer" data-to="2348" data-speed="5000"></div>
-                    <span class="medium">Servant</span>
-                </div>
-            </div>
+            @foreach (var item in Model.Statistics)
+                {
+                    <div class="col-md-3 col-sm-6 item">
+                        <div class="fun-fact">
+                            <i class="@item.Icon"></i>
+                            <div class="timer" data-to="@item.Count" data-speed="5000"></div>
+                            <span class="medium">@item.Name</span>
+                        </div>
+                    </div>
+                }
+           
         </div>
     </div>
 </div>
