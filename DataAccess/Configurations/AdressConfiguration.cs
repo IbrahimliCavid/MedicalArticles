@@ -1,4 +1,5 @@
-﻿using Entities.TableModels;
+﻿using Core.DefaultValues;
+using Entities.TableModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -14,6 +15,9 @@ namespace DataAccess.Configurations
         public void Configure(EntityTypeBuilder<Adress> builder)
         {
             builder.ToTable("Adresses");
+
+            builder.Property(x => x.Id)
+                .UseIdentityColumn(DefaultConstantValues.DEFAULT_PRIMARY_SEED_VALUE, 1);
 
             builder.Property(x => x.Location)
                 .IsRequired()
