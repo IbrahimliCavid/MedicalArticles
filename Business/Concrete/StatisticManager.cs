@@ -17,12 +17,12 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class SatatisticManager : IStatisticService
+    public class StatisticManager : IStatisticService
     {
         private readonly IStatisticDal _statisticDal;
         private readonly IValidator<Statistic> _validator;
 
-        public SatatisticManager(IStatisticDal statisticDal, IValidator<Statistic> validator)
+        public StatisticManager(IStatisticDal statisticDal, IValidator<Statistic> validator)
         {
             _statisticDal = statisticDal;
             _validator = validator;

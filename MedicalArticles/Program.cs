@@ -1,5 +1,6 @@
 using Business.Abstract;
 using Business.Concrete;
+using Business.Mapper;
 using Business.Validations;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
@@ -91,6 +92,12 @@ namespace MedicalArticles
             builder.Services.AddScoped<IWhyChooseUsItemService, WhyChooseUsItemManager>();
             builder.Services.AddScoped<IWhyChooseUsItemDal, WhyChooseUsItemDal>();
             builder.Services.AddScoped<IValidator<WhyChooseUsItem>, WhyChooseUsItemValidation>();
+
+
+            builder.Services.AddScoped<IStatisticService, StatisticManager>();
+            builder.Services.AddScoped<IStatisticDal, StatisticDal>();
+            builder.Services.AddScoped<IValidator<Statistic>, StatisticValidation>();
+
 
             builder.Services.AddSingleton<LanguageService>();
             builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
