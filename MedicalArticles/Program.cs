@@ -99,6 +99,10 @@ namespace MedicalArticles
             builder.Services.AddScoped<IValidator<Statistic>, StatisticValidation>();
 
 
+            builder.Services.AddScoped<ILanguageService, Business.Concrete.LanguageManager>();
+            builder.Services.AddScoped<ILanguageDal, LanguageDal>();
+
+
             builder.Services.AddSingleton<LanguageService>();
             builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
