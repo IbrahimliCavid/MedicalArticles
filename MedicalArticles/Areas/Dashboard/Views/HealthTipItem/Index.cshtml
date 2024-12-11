@@ -13,7 +13,9 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Tövsiyyələr</th>
+                            <th>Aid olduğu şəxs</th>
+                            <th>Tövsiyyə </th>
+                            <th>Şəkil</th>
                             <th style="width:30px;"></th>
                         </tr>
                     </thead>
@@ -21,13 +23,15 @@
                         @foreach (var item in Model)
                         {
                             <tr>
+                                <td style="align-content:center;">@item.Name</td>
                                 <td style="align-content:center;">@item.Text</td>
+                                <td><img src="@item.PhotoUrl" alt="Item Photo" width="100px"/></td>
                                 <td style="align-content:center;">
 
                                     <a asp-action="Edit" asp-route-id="@item.Id" style="cursor:pointer;" title="Redaktə et">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a> |
-                                    <a item-value="@item.Id" item-title="@item.Text" class="btnHardDelete" style="color:red;" title="Sil">
+                                   <a item-value="@item.Id" item-title="@item.Text" class="btnHardDelete" style="color:red;" title="Sil">
                                         <i class="fas fa-trash" style=" cursor:pointer;"></i>
                                     </a>
                                 </td>
@@ -59,7 +63,7 @@
                     let itemTitle = e.currentTarget.attributes[1].value;
                     $.ajax({
                         method: "POST",
-                        url: "@Url.Action("HardDelete", "HealthTipItem")",
+                    url: "@Url.Action("HardDelete", "HealthTipItem")",
                         data: {
                             id: itemId
                         }

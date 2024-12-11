@@ -16,6 +16,7 @@ namespace Business.Mapper
             {
                 Id = model.Id,
                 Text = model.Text,
+                HealthTipId = model.HealthTipId,
                 Deleted = model.Deleted,
             };
 
@@ -34,6 +35,7 @@ namespace Business.Mapper
             {
                 Id = model.Id,
                 Text = model.Text,
+                HealthTipId = model.HealthTipId,
                 Deleted = model.Deleted
             };
 
