@@ -12,6 +12,8 @@ namespace Entities.Dtos
         public string Title { get; set; }
         public string Content { get; set; }
         public string PhotoUrl { get; set; }
+        public int LanguageId { get; set; }
+
         public int Deleted {  get; set; }
     }
 }

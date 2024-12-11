@@ -6,39 +6,21 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class InitalMig : Migration
+    public partial class InitialMig : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Abouts",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "10000, 1"),
-                    Title = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(3000)", maxLength: 3000, nullable: false),
-                    PhotoUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Deleted = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Abouts", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Adresses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:Identity", "10000, 1"),
                     Location = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
-                    Phone1 = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
-                    Phone2 = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
-                    Phone3 = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
+                    Phone1 = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    Phone2 = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    Phone3 = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Deleted = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -119,8 +101,9 @@ namespace DataAccess.Migrations
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
-                    Message = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: false),
+                    Comments = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: false),
                     IsAnswer = table.Column<bool>(type: "bit", nullable: false),
+                    IsRead = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     Deleted = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -148,13 +131,17 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Slides",
+                name: "HealthTips",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "10000, 1"),
-                    Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Surname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Header = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(3000)", maxLength: 3000, nullable: false),
+                    SubTitle = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
                     PhotoUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Deleted = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -162,7 +149,42 @@ namespace DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Slides", x => x.Id);
+                    table.PrimaryKey("PK_HealthTips", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Languages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "10000, 1"),
+                    Key = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Languages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ServiceAbouts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "10000, 1"),
+                    Title = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(3000)", maxLength: 3000, nullable: false),
+                    PhotoUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServiceAbouts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -171,11 +193,11 @@ namespace DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "10000, 1"),
-                    WhatsappUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    FacebookUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    InstagramUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Telegram = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    TwitterUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    WhatsappUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    FacebookUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    InstagramUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Telegram = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    TwitterUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     Deleted = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -183,6 +205,63 @@ namespace DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sosials", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Statistics",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "10000, 1"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Count = table.Column<int>(type: "int", nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Statistics", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TeamBoards",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "10000, 1"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Surname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Profession = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    PhotoUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    FacebookUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    LinkedinUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    InstagramUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    Deleted = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TeamBoards", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WhyChooseUses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "10000, 1"),
+                    Header = table.Column<string>(type: "nvarchar(3000)", maxLength: 3000, nullable: false),
+                    PhotoUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WhyChooseUses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -316,6 +395,131 @@ namespace DataAccess.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "HealthTipItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "10000, 1"),
+                    Text = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    HealthTipId = table.Column<int>(type: "int", nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HealthTipItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HealthTipItems_HealthTips_HealthTipId",
+                        column: x => x.HealthTipId,
+                        principalTable: "HealthTips",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Abouts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "10000, 1"),
+                    Title = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(3000)", maxLength: 3000, nullable: false),
+                    PhotoUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LanguageId = table.Column<int>(type: "int", nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Abouts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Abouts_Languages_LanguageId",
+                        column: x => x.LanguageId,
+                        principalTable: "Languages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Slides",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "10000, 1"),
+                    Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: false),
+                    PhotoUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    LanguageId = table.Column<int>(type: "int", nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Slides", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Slides_Languages_LanguageId",
+                        column: x => x.LanguageId,
+                        principalTable: "Languages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ServiceAboutItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "10000, 1"),
+                    Text = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    ServiceAboutId = table.Column<int>(type: "int", nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServiceAboutItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ServiceAboutItems_ServiceAbouts_ServiceAboutId",
+                        column: x => x.ServiceAboutId,
+                        principalTable: "ServiceAbouts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WhyChooseUseItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "10000, 1"),
+                    Title = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(3000)", maxLength: 3000, nullable: false),
+                    WhyChooseUsId = table.Column<int>(type: "int", nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WhyChooseUseItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_WhyChooseUseItems_WhyChooseUses_WhyChooseUsId",
+                        column: x => x.WhyChooseUsId,
+                        principalTable: "WhyChooseUses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Abouts_LanguageId",
+                table: "Abouts",
+                column: "LanguageId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -356,9 +560,35 @@ namespace DataAccess.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_HealthTipItems_HealthTipId",
+                table: "HealthTipItems",
+                column: "HealthTipId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ServiceAboutItems_ServiceAboutId",
+                table: "ServiceAboutItems",
+                column: "ServiceAboutId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Services_CategoryId",
                 table: "Services",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Slides_LanguageId",
+                table: "Slides",
+                column: "LanguageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Statistics_Name_Deleted",
+                table: "Statistics",
+                columns: new[] { "Name", "Deleted" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WhyChooseUseItems_WhyChooseUsId",
+                table: "WhyChooseUseItems",
+                column: "WhyChooseUsId");
         }
 
         /// <inheritdoc />
@@ -392,6 +622,12 @@ namespace DataAccess.Migrations
                 name: "Faqs");
 
             migrationBuilder.DropTable(
+                name: "HealthTipItems");
+
+            migrationBuilder.DropTable(
+                name: "ServiceAboutItems");
+
+            migrationBuilder.DropTable(
                 name: "Services");
 
             migrationBuilder.DropTable(
@@ -401,13 +637,34 @@ namespace DataAccess.Migrations
                 name: "Sosials");
 
             migrationBuilder.DropTable(
+                name: "Statistics");
+
+            migrationBuilder.DropTable(
+                name: "TeamBoards");
+
+            migrationBuilder.DropTable(
+                name: "WhyChooseUseItems");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "HealthTips");
+
+            migrationBuilder.DropTable(
+                name: "ServiceAbouts");
+
+            migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Languages");
+
+            migrationBuilder.DropTable(
+                name: "WhyChooseUses");
         }
     }
 }

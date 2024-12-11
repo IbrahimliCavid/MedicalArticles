@@ -7,7 +7,7 @@ namespace Entities.Dtos
         public string Title { get; set; }
         public string Description { get; set; }
         public string PhotoUrl { get; set; }
-
+        public int LanguageId {  get; set; }
         public static About ToAbout(AboutCreateDto dto)
         {
             About about = new About()

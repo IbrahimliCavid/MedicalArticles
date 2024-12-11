@@ -10,11 +10,12 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
     {
         private readonly IAboutService _aboutService;
         private readonly IWebHostEnvironment _webEnv;
-
-        public AboutController(IAboutService aboutService, IWebHostEnvironment webEnv)
+        private readonly ILanguageService _languageService;
+        public AboutController(IAboutService aboutService, IWebHostEnvironment webEnv, ILanguageService languageService)
         {
             _aboutService = aboutService;
             _webEnv = webEnv;
+            _languageService = languageService;
         }
 
         public IActionResult Index()
@@ -34,6 +35,7 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         public IActionResult Create(AboutCreateDto dto, IFormFile photoUrl)
         {
             var result = _aboutService.Add(dto, photoUrl, _webEnv.WebRootPath);
+            ViewData["Langauges"] = _languageService.GetAll().Data; 
             if (!result.IsSuccess)
             {
                 ModelState.AddModelError("Name", result.Message);

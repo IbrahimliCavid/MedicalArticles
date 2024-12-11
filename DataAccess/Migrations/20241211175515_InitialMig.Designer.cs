@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241211155355_LanguageEntityAddedMig")]
-    partial class LanguageEntityAddedMig
+    [Migration("20241211175515_InitialMig")]
+    partial class InitialMig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -256,6 +256,9 @@ namespace DataAccess.Migrations
                         .HasMaxLength(3000)
                         .HasColumnType("nvarchar(3000)");
 
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhotoUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -269,6 +272,8 @@ namespace DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LanguageId");
 
                     b.ToTable("Abouts", (string)null);
                 });
@@ -682,6 +687,9 @@ namespace DataAccess.Migrations
                     b.Property<int>("Deleted")
                         .HasColumnType("int");
 
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhotoUrl")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -696,6 +704,8 @@ namespace DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LanguageId");
 
                     b.ToTable("Slides", (string)null);
                 });
@@ -954,6 +964,17 @@ namespace DataAccess.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Entities.TableModels.About", b =>
+                {
+                    b.HasOne("Entities.TableModels.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+                });
+
             modelBuilder.Entity("Entities.TableModels.HealthTipItem", b =>
                 {
                     b.HasOne("Entities.TableModels.HealthTip", "HealthTip")
@@ -985,6 +1006,17 @@ namespace DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("ServiceAbout");
+                });
+
+            modelBuilder.Entity("Entities.TableModels.Slide", b =>
+                {
+                    b.HasOne("Entities.TableModels.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
                 });
 
             modelBuilder.Entity("Entities.TableModels.WhyChooseUsItem", b =>
