@@ -15,7 +15,9 @@ namespace MedicalArticles.Controllers
 
         public IActionResult Index()
         {
-            var data = _teamService.GetAll().Data;
+            var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
+
+            var data = _teamService.GetAllByLangauge(currentCulture).Data;
             return View(data);
         }
     }

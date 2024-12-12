@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Mapper;
 using Entities.Dtos;
+using MedicalArticles.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
@@ -11,11 +12,13 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         private readonly ITeamBoardService _teamBoardService;
         private readonly IWebHostEnvironment _webEnv;
+        private readonly ILanguageService _languageService;
 
-        public TeamBoardController(ITeamBoardService teamBoardService, IWebHostEnvironment webEnv)
+        public TeamBoardController(ITeamBoardService teamBoardService, IWebHostEnvironment webEnv, ILanguageService languageService)
         {
             _teamBoardService = teamBoardService;
             _webEnv = webEnv;
+            _languageService = languageService;
         }
 
         public IActionResult Index()
@@ -27,6 +30,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             return View();
         }
 
@@ -35,6 +40,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         public IActionResult Create(TeamBoardCreateDto dto, IFormFile photoUrl)
         {
             var result = _teamBoardService.Add(dto, photoUrl, _webEnv.WebRootPath);
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             if (!result.IsSuccess)
             {
                 ModelState.AddModelError("Name", result.Message);
@@ -48,6 +55,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Edit(int id)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var data = _teamBoardService.GetById(id).Data;
             return View(TeamBoardMapper.ToUpdateDto(TeamBoardMapper.ToModel(data)));
         }
@@ -57,6 +66,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         public IActionResult Edit(TeamBoardUpdateDto dto, IFormFile photoUrl)
         {
             var result = _teamBoardService.Update(dto, photoUrl, _webEnv.WebRootPath);
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             if (!result.IsSuccess)
             {
                 ModelState.AddModelError("", result.Message);

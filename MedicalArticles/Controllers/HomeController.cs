@@ -52,7 +52,7 @@ namespace MedicalArticles.Controllers
 
             var serviceData = _serviceService.GetAll().Data;
             var serviceItemData = _serviceAboutItemService.GetAll().Data;
-            var teamData = _teamBoardService.GetAll().Data;
+            var teamData = _teamBoardService.GetAllByLangauge(currentCulture).Data;
             var slideData = _slideService.GetAll(currentCulture).Data;
             var contactData = _contactService.GetAll().Data;
             var healthTipItemData = _healthTipItemService.GetAll().Data;

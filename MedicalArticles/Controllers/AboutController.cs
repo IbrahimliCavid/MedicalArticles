@@ -22,7 +22,9 @@ namespace MedicalArticles.Controllers
 
         public IActionResult Index()
         {
-            var teamData = _teamService.GetAll().Data;
+            var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
+
+            var teamData = _teamService.GetAllByLangauge(currentCulture).Data;
             var whyUsData = _whyUsService.GetAll().Data;    
             var whyUsItemData = _whyUsItemService.GetAll().Data;
             var serviceData = _serviceService.GetAll().Data;

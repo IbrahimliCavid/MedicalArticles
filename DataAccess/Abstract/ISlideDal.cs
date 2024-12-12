@@ -10,6 +10,6 @@ namespace DataAccess.Abstract
 {
     public interface ISlideDal : IBaseRepository<Slide>
     {
-        List<Slide> GetAllByLanguage(string lang);
+        List<Slide> GetAllByLanguage(string culture);
     }
 }

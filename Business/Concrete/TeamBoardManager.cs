@@ -64,6 +64,12 @@ namespace Business.Concrete
             return new SuccessDataResult<List<TeamBoardDto>>(TeamBoardMapper.ToDto(data));
         }
 
+        public IDataResult<List<TeamBoardDto>> GetAllByLangauge(string culture)
+        {
+            var data = _teamBoardDal.GetAllByLanguage(culture);
+            return new SuccessDataResult<List<TeamBoardDto>>(TeamBoardMapper.ToDto(data));
+        }
+
         public IDataResult<TeamBoardDto> GetById(int id)
         {
             var data = _teamBoardDal.GetById(id);

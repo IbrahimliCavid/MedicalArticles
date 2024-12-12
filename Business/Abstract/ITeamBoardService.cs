@@ -17,6 +17,7 @@ namespace Business.Abstract
         IResult SoftDelete(int id);
         IResult HardDelete(int id);
         IDataResult<List<TeamBoardDto>> GetAll();
+        IDataResult<List<TeamBoardDto>> GetAllByLangauge(string culture);
         IDataResult<List<TeamBoardDto>> GetAllDeleted();
         IDataResult<TeamBoardDto> GetById(int id);
         IResult Restore(int id);

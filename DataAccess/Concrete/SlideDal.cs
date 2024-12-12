@@ -19,11 +19,11 @@ namespace DataAccess.Concrete
         {
             _context = context;
         }
-        public List<Slide> GetAllByLanguage(string lang)
+        public List<Slide> GetAllByLanguage(string culture)
         {
            var data = _context.Slides
                 .Include(d => d.Language)
-                .Where(d => d.Language.Key == lang)
+                .Where(d => d.Language.Key == culture)
                 .Where(d=>d.Deleted == 0).ToList();
             return data;
         }
