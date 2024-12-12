@@ -1,5 +1,6 @@
 ﻿using Core.Results.Abstract;
 using Entities.Dtos;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Business.Abstract
         IResult Add(FaqCreateDto dto);
         IResult Update(FaqUpdateDto dto);
         IDataResult<List<FaqDto>> GetAll();
+        IDataResult<List<FaqDto>> GetAllByLanguage(string culture);
         IDataResult<List<FaqDto>> GetAllDeleted();
         IDataResult<FaqDto> GetById(int id);
         IResult Restore(int id);

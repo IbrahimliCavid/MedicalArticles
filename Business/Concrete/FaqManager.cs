@@ -92,6 +92,12 @@ namespace Business.Concrete
 
             return new SuccessDataResult<List<FaqDto>>(FaqMapper.ToDto(models));
         }
+        public IDataResult<List<FaqDto>> GetAllByLanguage(string culture)
+        {
+            var models = _faqDal.GetAllByLanguage(culture);
+
+            return new SuccessDataResult<List<FaqDto>>(FaqMapper.ToDto(models));
+        }
 
         public IDataResult<List<FaqDto>> GetAllDeleted()
         {

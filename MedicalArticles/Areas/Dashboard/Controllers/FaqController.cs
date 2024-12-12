@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Mapper;
 using Entities.Dtos;
+using MedicalArticles.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
@@ -10,10 +11,12 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
     {
 
         private readonly IFaqService _faqService;
+        public readonly ILanguageService _languageService;
 
-        public FaqController(IFaqService faqService)
+        public FaqController(IFaqService faqService, ILanguageService languageService)
         {
             _faqService = faqService;
+            _languageService = languageService;
         }
 
         public IActionResult Index()
@@ -24,14 +27,18 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         [HttpGet]
         public IActionResult Create() 
-        { 
-           return View();
+        {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
+            return View();
         }
 
         [HttpPost]
         public IActionResult Create(FaqCreateDto createDto) 
         {
-          var result = _faqService.Add(createDto);
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
+            var result = _faqService.Add(createDto);
             if (!result.IsSuccess)
             {
                 ModelState.AddModelError("Name", result.Message);
@@ -43,13 +50,16 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id) 
         {
-           var data = _faqService.GetById(id).Data;
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
+            var data = _faqService.GetById(id).Data;
             return View(data);
         }
 
         [HttpPost]
         public IActionResult Edit(FaqUpdateDto dto) {
-         
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var result = _faqService.Update(dto);
             if (!result.IsSuccess) {
             ModelState.AddModelError("", result.Message);

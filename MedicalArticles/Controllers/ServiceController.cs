@@ -21,10 +21,12 @@ namespace MedicalArticles.Controllers
 
         public IActionResult Index()
         {
+            var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
+
             var serviceData = _serviceService.GetAll().Data;
             var whyUsItemData = _whyUsItemService.GetAll().Data;
             var whyUsData = _whyUsService.GetAll().Data;    
-            var faqData = _faqService.GetAll().Data;
+            var faqData = _faqService.GetAllByLanguage(currentCulture).Data;
             ServiceViewModel viewModel = new()
             {
                 Services = serviceData,
