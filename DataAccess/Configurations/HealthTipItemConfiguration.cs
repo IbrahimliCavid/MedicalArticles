@@ -23,6 +23,21 @@ namespace DataAccess.Configurations
                 .IsRequired()
                 .HasMaxLength(300);
 
+            builder.HasOne(x => x.Language)
+                   .WithMany()
+                   .HasForeignKey(x => x.LanguageId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(s => s.Language)
+                .WithMany()
+                .HasForeignKey(s => s.LanguageId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.HealthTip)
+                .WithMany(x => x.HealthTipItems)
+                .HasForeignKey(x => x.HealthTipId)
+                .OnDelete(DeleteBehavior.Cascade);
+
         }
     }
 }

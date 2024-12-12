@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241212094505_InitialMig")]
+    [Migration("20241212191908_InitialMig")]
     partial class InitialMig
     {
         /// <inheritdoc />
@@ -1106,7 +1106,7 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.TableModels.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("HealthTip");
@@ -1125,7 +1125,7 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.TableModels.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -1149,7 +1149,7 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.TableModels.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Entities.TableModels.ServiceAbout", "ServiceAbout")
@@ -1212,7 +1212,7 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.TableModels.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Entities.TableModels.WhyChooseUs", "WhyChooseUs")

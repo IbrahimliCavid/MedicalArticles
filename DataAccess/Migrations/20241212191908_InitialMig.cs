@@ -512,7 +512,7 @@ namespace DataAccess.Migrations
                         column: x => x.LanguageId,
                         principalTable: "Languages",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -542,7 +542,7 @@ namespace DataAccess.Migrations
                         column: x => x.LanguageId,
                         principalTable: "Languages",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -566,7 +566,7 @@ namespace DataAccess.Migrations
                         column: x => x.LanguageId,
                         principalTable: "Languages",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ServiceAboutItems_ServiceAbouts_ServiceAboutId",
                         column: x => x.ServiceAboutId,
@@ -597,7 +597,7 @@ namespace DataAccess.Migrations
                         column: x => x.LanguageId,
                         principalTable: "Languages",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_WhyChooseUseItems_WhyChooseUses_WhyChooseUsId",
                         column: x => x.WhyChooseUsId,

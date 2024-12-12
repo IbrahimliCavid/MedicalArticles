@@ -1103,7 +1103,7 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.TableModels.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("HealthTip");
@@ -1122,7 +1122,7 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.TableModels.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -1146,7 +1146,7 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.TableModels.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Entities.TableModels.ServiceAbout", "ServiceAbout")
@@ -1209,7 +1209,7 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.TableModels.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Entities.TableModels.WhyChooseUs", "WhyChooseUs")

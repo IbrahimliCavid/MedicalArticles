@@ -22,6 +22,22 @@ namespace DataAccess.Configurations
             builder.Property(x => x.Text)
                 .IsRequired()
                 .HasMaxLength(300);
+
+
+            builder.HasOne(x => x.Language)
+                   .WithMany()
+                   .HasForeignKey(x => x.LanguageId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.Language)
+                .WithMany()
+                .HasForeignKey(x => x.LanguageId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.ServiceAbout)
+                .WithMany(x => x.ServiceAboutItems)
+                .HasForeignKey(x => x.ServiceAboutId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
