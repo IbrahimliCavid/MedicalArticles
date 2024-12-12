@@ -8,6 +8,8 @@ namespace Entities.Dtos
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Comments { get; set; }
+        public int LanguageId { get; set; }
+
 
         public static Contact ToContact (ContactCreateDto dto)
         {
@@ -17,6 +19,7 @@ namespace Entities.Dtos
                 Email = dto.Email,
                 Phone = dto.Phone,
                 Comments = dto.Comments,
+                LanguageId = dto.LanguageId,
             };
         }
     }

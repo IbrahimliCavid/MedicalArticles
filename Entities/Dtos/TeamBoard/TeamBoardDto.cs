@@ -17,5 +17,7 @@ namespace Entities.Dtos
         public string? LinkedinUrl { get; set; }
         public string? InstagramUrl { get; set; }
         public int Deleted {  get; set; }
+        public int LanguageId { get; set; }
+
     }
 }

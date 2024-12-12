@@ -1,4 +1,4 @@
-﻿using Business.Abstract;
+﻿    using Business.Abstract;
 using Business.BaseMessages;
 using Business.Mapper;
 using Core.Extension;
@@ -51,9 +51,9 @@ namespace Business.Concrete
             return new SuccessResult(UiMessages.SuccessAddedMessage(model.Title));
         }
 
-        public IDataResult<List<SlideDto>> GetAll()
+        public IDataResult<List<SlideDto>> GetAll(string lang)
         {
-            var data = _slideDal.GetAll(x => x.Deleted == 0);
+            var data = _slideDal.GetAllByLanguage(lang);
             return new SuccessDataResult<List<SlideDto>>(SlideMapper.ToDto(data));
         }
 

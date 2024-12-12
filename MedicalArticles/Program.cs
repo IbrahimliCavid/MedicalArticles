@@ -123,32 +123,6 @@ namespace MedicalArticles
             });
 
 
-            //Localization
-
-            //builder.Services.AddSingleton<LanguageService>();
-            //builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
-            //builder.Services.AddMvc().AddViewLocalization().AddDataAnnotationsLocalization(options=>
-            //options.DataAnnotationLocalizerProvider = (type, factory) =>
-            //{
-            //    var assemblyName =new AssemblyName(typeof(SharedResource).GetTypeInfo().Assembly.FullName);
-            //    return factory.Create(nameof(SharedResource), assemblyName.Name);
-            //});
-
-            //builder.Services.Configure<RequestLocalizationOptions>(options =>
-            //{
-            //    var supportCultures = new List<CultureInfo>
-            //    {
-            //        new CultureInfo("az"),
-            //        new CultureInfo("en-US"),
-            //        new CultureInfo("ru")
-            //    };
-            //    options.DefaultRequestCulture = new RequestCulture(culture: "az", uiCulture: "az");
-            //    options.SupportedCultures = supportCultures;
-            //    options.SupportedUICultures = supportCultures;
-            //    options.RequestCultureProviders.Insert(0, new QueryStringRequestCultureProvider());
-
-            //});
-
 
 
 

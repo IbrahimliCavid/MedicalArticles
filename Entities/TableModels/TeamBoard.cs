@@ -17,5 +17,8 @@ namespace Entities.TableModels
         public string? LinkedinUrl { get; set; }
         public string? InstagramUrl {  get; set; }
 
+        public int LanguageId { get; set; }
+        public virtual Language Language { get; set; }
+
     }
 }

@@ -13,11 +13,12 @@ namespace MedicalArticles.ViewComponents
             _adressService = adressService;
         }
 
+        [HttpGet]
         public async Task<IViewComponentResult> InvokeAsync()
         {
             NavigationViewModel viewModel = new NavigationViewModel()
             {
-                Adreses = _adressService.GetAll().Data,
+                Adresses = _adressService.GetAll().Data,
             };
             return View(viewModel);
         }

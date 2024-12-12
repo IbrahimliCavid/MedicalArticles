@@ -12,5 +12,7 @@ namespace Entities.Dtos
         public string Question { get; set; }
         public string Answer { get; set; }
         public int Deleted {  get; set; }
+        public int LanguageId { get; set; }
+
     }
 }

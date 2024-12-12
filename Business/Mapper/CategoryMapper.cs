@@ -10,21 +10,22 @@ namespace Business.Mapper
 {
     public static class CategoryMapper
     {
-        public static CategoryDto ToDto (Category model)
+        public static CategoryDto ToDto(Category model)
         {
             CategoryDto dto = new CategoryDto()
             {
                 Id = model.Id,
-                Name = model.Name,  
-                IconName = model.IconName
+                Name = model.Name,
+                IconName = model.IconName,
+                LanguageId = model.LanguageId,
             };
 
             return dto;
         }
-        
+
         public static List<CategoryDto> ToDto(List<Category> models)
         {
-            return models.Select(x=>ToDto(x)).ToList();
+            return models.Select(x => ToDto(x)).ToList();
         }
 
         public static Category ToModel(CategoryDto dto)
@@ -34,7 +35,8 @@ namespace Business.Mapper
                 Id = dto.Id,
                 Name = dto.Name,
                 IconName = dto.IconName,
-                Deleted = dto.Deleted
+                Deleted = dto.Deleted,
+                LanguageId = dto.LanguageId,
             };
 
             return model;
@@ -44,7 +46,8 @@ namespace Business.Mapper
             CategoryUpdateDto updateDto = new()
             {
                 Name = dto.Name,
-                IconName = dto.IconName
+                IconName = dto.IconName,
+                LanguageId = dto.LanguageId,
             };
 
             return updateDto;
@@ -52,9 +55,11 @@ namespace Business.Mapper
 
         public static Category ToModel(CategoryCreateDto createDto)
         {
-            Category model = new Category() { 
+            Category model = new Category()
+            {
                 Name = createDto.Name,
-                IconName = createDto.IconName
+                IconName = createDto.IconName,
+                LanguageId = createDto.LanguageId,
             };
 
             return model;
@@ -66,7 +71,8 @@ namespace Business.Mapper
             {
                 Id = updateDto.Id,
                 Name = updateDto.Name,
-                IconName = updateDto.IconName
+                IconName = updateDto.IconName,
+                LanguageId = updateDto.LanguageId,
             };
 
             return model;

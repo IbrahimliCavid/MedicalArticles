@@ -14,5 +14,6 @@ namespace Entities.Dtos
         public string? InstagramUrl { get; set; }
         public string? Telegram { get; set; }
         public string? TwitterUrl { get; set; }
+
     }
 }

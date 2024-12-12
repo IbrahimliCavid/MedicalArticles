@@ -11,6 +11,8 @@ namespace Entities.Dtos
     {
         public string Text { get; set; }
         public int HealthTipId {  get; set; }
-       
+        public int LanguageId { get; set; }
+
+
     }
 }

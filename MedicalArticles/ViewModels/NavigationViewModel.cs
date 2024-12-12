@@ -5,6 +5,6 @@ namespace MedicalArticles.ViewModels
 {
     public class NavigationViewModel
     {
-        public List<AdressDto> Adreses { get; set; }
+        public List<AdressDto> Adresses { get; set; }
     }
 }

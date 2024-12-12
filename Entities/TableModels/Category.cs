@@ -11,5 +11,8 @@ namespace Entities.TableModels
         public string Name { get; set; }
         public string IconName { get; set; }
         public ICollection<Service> Services { get; set; }
+
+        public int LanguageId { get; set; }
+        public virtual Language Language { get; set; }
     }
 }

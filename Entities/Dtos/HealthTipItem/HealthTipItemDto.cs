@@ -19,6 +19,8 @@ namespace Entities.Dtos
         public string SubTitle { get; set; }
         public string PhotoUrl { get; set; }
         public int HealthTipId { get; set; }
+        public int LanguageId { get; set; }
+
         public int Deleted {  get; set; }
         public virtual HealthTip HealthTip { get; set; }
     }

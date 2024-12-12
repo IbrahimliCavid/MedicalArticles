@@ -12,5 +12,8 @@ namespace Entities.TableModels
         public string Text {  get; set; }
         public int ServiceAboutId {  get; set; }
         public ServiceAbout ServiceAbout { get; set; }
+
+        public int LanguageId { get; set; }
+        public virtual Language Language { get; set; }
     }
 }

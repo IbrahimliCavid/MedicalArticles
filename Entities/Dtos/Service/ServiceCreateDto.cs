@@ -8,6 +8,8 @@ namespace Entities.Dtos
         public string Title { get; set; }
         public string PhotoUrl { get; set; }
         public int CategoryId {  get; set; }
+        public int LanguageId { get; set; }
+
 
         public static Service ToService(ServiceCreateDto dto)
         {
@@ -17,6 +19,7 @@ namespace Entities.Dtos
                 Title = dto.Title,
                 PhotoUrl = dto.PhotoUrl,
                 CategoryId = dto.CategoryId,
+                LanguageId = dto.LanguageId,
             };
         }
     }

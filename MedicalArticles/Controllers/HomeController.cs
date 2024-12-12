@@ -1,4 +1,4 @@
-using Business.Abstract;
+    using Business.Abstract;
 using MedicalArticles.Models;
 using MedicalArticles.Services;
 using MedicalArticles.ViewModels;
@@ -20,6 +20,7 @@ namespace MedicalArticles.Controllers
         private readonly IHealthTipService _healthTipService;
         private readonly IStatisticService _statisticService;
         public readonly LanguageService _localization;
+
 
         public HomeController(
             IServiceService serviceService,
@@ -47,10 +48,12 @@ namespace MedicalArticles.Controllers
 
         public IActionResult Index()
         {
+            var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
+
             var serviceData = _serviceService.GetAll().Data;
             var serviceItemData = _serviceAboutItemService.GetAll().Data;
             var teamData = _teamBoardService.GetAll().Data;
-            var slideData = _slideService.GetAll().Data;
+            var slideData = _slideService.GetAll(currentCulture).Data;
             var contactData = _contactService.GetAll().Data;
             var healthTipItemData = _healthTipItemService.GetAll().Data;
             var serviceAboutData = _serviceAboutService.GetAll().Data;
@@ -58,7 +61,6 @@ namespace MedicalArticles.Controllers
             var statisticData = _statisticService.GetAll().Data;
 
             ViewBag.Service = _localization.GetKey("Service").Value;
-            var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
 
             HomeViewModel viewModel = new()
             {

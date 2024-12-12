@@ -16,7 +16,8 @@ namespace Business.Mapper
             {
                 Id = model.Id,
                 Answer = model.Answer,
-                Question = model.Question
+                Question = model.Question,
+                LanguageId = model.LanguageId,
             };
 
             return dto;
@@ -34,7 +35,8 @@ namespace Business.Mapper
             {
                 Id = model.Id,
                 Answer = model.Answer,
-                Question = model.Question
+                Question = model.Question,
+                LanguageId = model.LanguageId,
             };
 
             return updateDto;
@@ -51,7 +53,8 @@ namespace Business.Mapper
             Faq model = new Faq()
             {
                 Question = createDto.Question,
-                Answer = createDto.Answer
+                Answer = createDto.Answer,
+                LanguageId = createDto.LanguageId,
             };
 
             return model;
@@ -64,7 +67,8 @@ namespace Business.Mapper
                 Id = dto.Id,
                 Question = dto.Question,
                 Answer = dto.Answer,
-                Deleted = dto.Deleted
+                Deleted = dto.Deleted,
+                LanguageId = dto.LanguageId,
             };
 
             return model;
@@ -76,7 +80,8 @@ namespace Business.Mapper
             {
                 Id = updateDto.Id,
                 Question = updateDto.Question,
-                Answer = updateDto.Answer
+                Answer = updateDto.Answer,
+                LanguageId = updateDto.LanguageId,
             };
 
             return model;

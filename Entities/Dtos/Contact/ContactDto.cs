@@ -15,6 +15,8 @@ namespace Entities.Dtos
         public string Comments { get; set; }
         public bool IsAnswer {  get; set; }
         public bool IsRead {  get; set; }
+        public int LanguageId { get; set; }
+
         public int Deleted {  get; set; }
     }
 }

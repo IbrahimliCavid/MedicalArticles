@@ -9,5 +9,8 @@ namespace Entities.TableModels
         public string Question {  get; set; }
         public string Answer {  get; set; }
 
+        public int LanguageId { get; set; }
+        public virtual Language Language { get; set; }
+
     }
 }

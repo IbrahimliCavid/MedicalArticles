@@ -17,6 +17,7 @@ namespace Business.Mapper
                 Id = model.Id,
                 Header = model.Header,
                 PhotoUrl = model.PhotoUrl,
+                LanguageId = model.LanguageId,
                 Deleted = model.Deleted,
             };
 
@@ -36,6 +37,7 @@ namespace Business.Mapper
                 Id = model.Id,
                 Header = model.Header,
                 PhotoUrl = model.PhotoUrl,
+                LanguageId=model.LanguageId,
                 Deleted = model.Deleted,
             };
 
@@ -54,6 +56,7 @@ namespace Business.Mapper
             {
                 Header = createDto.Header,
                 PhotoUrl = createDto.PhotoUrl,
+                LanguageId=createDto.LanguageId,
             };
 
             return model;
@@ -66,6 +69,7 @@ namespace Business.Mapper
                 Id = dto.Id,
                 Header = dto.Header,
                 PhotoUrl = dto.PhotoUrl,
+                LanguageId=dto.LanguageId,
                 Deleted= dto.Deleted,
             };
 
@@ -79,6 +83,7 @@ namespace Business.Mapper
                 Id = updateDto.Id,
                 Header = updateDto.Header,
                 PhotoUrl = updateDto.PhotoUrl,
+                LanguageId=updateDto.LanguageId,
                 Deleted = updateDto.Deleted,
             };
 

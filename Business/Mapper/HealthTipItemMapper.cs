@@ -18,6 +18,7 @@ namespace Business.Mapper
                 Text = model.Text,
                 HealthTipId = model.HealthTipId,
                 Deleted = model.Deleted,
+                LanguageId = model.LanguageId,
             };
 
             return dto;
@@ -36,7 +37,8 @@ namespace Business.Mapper
                 Id = model.Id,
                 Text = model.Text,
                 HealthTipId = model.HealthTipId,
-                Deleted = model.Deleted
+                Deleted = model.Deleted,
+                LanguageId = model.LanguageId,
             };
 
             return updateDto;
@@ -54,6 +56,7 @@ namespace Business.Mapper
             {
                 Text = createDto.Text,
                 HealthTipId = createDto.HealthTipId,
+                LanguageId = createDto.LanguageId,
             };
 
             return model;
@@ -66,7 +69,8 @@ namespace Business.Mapper
                 Id = dto.Id,
                 Text= dto.Text,
                 HealthTipId = dto.HealthTipId,
-                Deleted= dto.Deleted
+                Deleted= dto.Deleted,
+                LanguageId = dto.LanguageId,
             };
 
             return model;
@@ -79,7 +83,8 @@ namespace Business.Mapper
                 Id = updateDto.Id,
                 Text = updateDto.Text,
                 HealthTipId = updateDto.HealthTipId,
-                Deleted = updateDto.Deleted
+                Deleted = updateDto.Deleted,
+                LanguageId = updateDto.LanguageId,
             };
 
             return model;

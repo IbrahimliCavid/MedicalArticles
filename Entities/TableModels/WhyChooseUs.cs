@@ -16,5 +16,8 @@ namespace Entities.TableModels
         public string Header {  get; set; }
         public string PhotoUrl { get; set; }
         public virtual ICollection<WhyChooseUsItem> WhyChooseUsItems { get; set; }
+
+        public int LanguageId { get; set; }
+        public virtual Language Language { get; set; }
     }
 }

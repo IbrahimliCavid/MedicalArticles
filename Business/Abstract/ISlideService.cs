@@ -13,7 +13,7 @@ namespace Business.Abstract
     {
         IResult Add(SlideCreateDto dto, IFormFile photoUrl, string webRootPath);
         IResult Update(SlideUpdateDto dto, IFormFile photoUrl, string webRootPath);
-        IDataResult<List<SlideDto>> GetAll();
+        IDataResult<List<SlideDto>> GetAll(string lang);
         IDataResult<List<SlideDto>> GetAllDeleted();
         IDataResult<SlideDto> GetById(int id);
         IResult SoftDelete(int id);

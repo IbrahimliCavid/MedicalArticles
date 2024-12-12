@@ -12,7 +12,9 @@ namespace Entities.Dtos
         public string Name { get; set; }
         public string IconName { get; set; }
         public ICollection<Service> Services { get; set; }
+        public int LanguageId { get; set; }
 
-     
+
+
     }
 }

@@ -19,6 +19,7 @@ namespace Entities.Dtos
                 Id = dto.Id,
                 Title = dto.Title,
                 Content = dto.Content,
+                LanguageId = dto.LanguageId,
                 PhotoUrl = dto.PhotoUrl,
                 Deleted = dto.Deleted,
             };

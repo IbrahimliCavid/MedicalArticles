@@ -18,6 +18,7 @@ namespace Business.Mapper
                 Description = model.Description,
                 Title = model.Title,
                 PhotoUrl = model.PhotoUrl,
+                LanguageId = model.LanguageId,
                 Deleted = model.Deleted,
             };
 
@@ -38,6 +39,7 @@ namespace Business.Mapper
                 Description = model.Description,
                 Title = model.Title,
                 PhotoUrl = model.PhotoUrl,
+                LanguageId = model.LanguageId,
                 Deleted = model.Deleted,
             };
 
@@ -56,6 +58,7 @@ namespace Business.Mapper
             {
                 Title = createDto.Title,
                 Description = createDto.Description,
+                LanguageId=createDto.LanguageId,
                 PhotoUrl = createDto.PhotoUrl
             };
 
@@ -70,6 +73,7 @@ namespace Business.Mapper
                 Title = dto.Title,
                 Description = dto.Description,
                 PhotoUrl = dto.PhotoUrl,
+                LanguageId = dto.LanguageId,
                 Deleted = dto.Deleted,
             };
 
@@ -84,6 +88,7 @@ namespace Business.Mapper
                 Title = updateDto.Title,
                 Description = updateDto.Description,
                 PhotoUrl = updateDto.PhotoUrl,
+                LanguageId = updateDto.LanguageId,
                 Deleted= updateDto.Deleted,
             };
 

@@ -7,6 +7,8 @@ namespace Entities.Dtos
         public int Id { get; set; }
         public string Question { get; set; }
         public string Answer { get; set; }
+        public int LanguageId { get; set; }
+
 
         public static Faq ToFaq(FaqUpdateDto dto)
         {
@@ -15,6 +17,7 @@ namespace Entities.Dtos
                 Id = dto.Id,
                 Question = dto.Question,
                 Answer = dto.Answer,
+                LanguageId = dto.LanguageId,
             };
         }
     }

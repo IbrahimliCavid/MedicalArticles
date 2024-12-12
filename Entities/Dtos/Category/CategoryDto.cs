@@ -14,5 +14,7 @@ namespace Entities.Dtos
         public string IconName { get; set; }
         public int Deleted {  get; set; }
         public virtual ICollection<Service> Services { get; set; }
+        public int LanguageId { get; set; }
+
     }
 }

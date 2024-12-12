@@ -21,7 +21,7 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Index()
         {
-            var data = _slideService.GetAll().Data;
+            var data = _slideService.GetAll("ru-RU").Data;
             return View(data);
         }
 
@@ -51,6 +51,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Edit(int id)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var data = _slideService.GetById(id).Data;
             var model = SlideMapper.ToModel(data);
             return View(SlideMapper.ToUpdateDto(model));
@@ -60,6 +62,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Edit(SlideUpdateDto dto, IFormFile photoUrl)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var result = _slideService.Update(dto, photoUrl, _webEnv.WebRootPath);
             if (!result.IsSuccess)
             {

@@ -12,6 +12,8 @@ namespace Entities.Dtos
         public int Id { get; set; }
         public string Name { get; set; }
         public string IconName { get; set; }
+        public int LanguageId { get; set; }
+
         public ICollection<Service> Services { get; set; }
 
         public static Category ToCategory(CategoryUpdateDto dto)
@@ -20,6 +22,7 @@ namespace Entities.Dtos
             {
                 Id = dto.Id,
                 Name = dto.Name,
+                LanguageId = dto.LanguageId,
                 IconName = dto.IconName,
                 Services = dto.Services
             };

@@ -8,7 +8,7 @@
             <div class="col-md-8 address-info text-left">
                 <div class="info box">
                     <ul>
-                        @foreach (var item in Model.Adreses)
+                        @foreach (var item in Model.Adresses)
                         {
                             <li>
                                 <i class="fas fa-map-marker-alt"></i> @item.Location
@@ -101,14 +101,14 @@
                         <a asp-controller="Contact" asp-action="Index">@_localization.GetKey("Contact").Value</a>
                     </li>
 
-                    <li>
+                    
                         <!-- Start Language -->
                     <li>
                         <div class="dropdown m-1">
                             <button type="button" class="btn dropdown-toggle" style="background:white;" data-toggle="dropdown"> <i class="fa fa-globe"></i></button>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="az-Latn" class="dropdown-item">
+                                    <a asp-controller="Home"  asp-action="ChangeLanguage" asp-route-culture="az-Latn" class="dropdown-item">
                                         Azərbaycanca
                                     </a>
                                 </li>
@@ -128,7 +128,7 @@
                         </div>
                     </li>
                     <!-- End Language -->
-                    </li>
+                   
 
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -138,3 +138,4 @@
 
     </nav>
     <!-- End Navigation -->
+   

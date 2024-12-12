@@ -21,6 +21,7 @@ namespace Business.Mapper
                 Phone2 = model.Phone2,
                 Phone3 = model.Phone3,
                 Email = model.Email,
+                LanguageId = model.LanguageId,
             };
 
             return dto;
@@ -41,6 +42,7 @@ namespace Business.Mapper
                 Phone2 = model.Phone2,
                 Phone3 = model.Phone3,
                 Email = model.Email,
+                LanguageId=model.LanguageId,
             };
 
             return dto;
@@ -55,7 +57,8 @@ namespace Business.Mapper
                 Phone1 = dto.Phone1,
                 Phone2 = dto.Phone2,
                 Phone3 = dto.Phone3,
-                Email = dto.Email
+                Email = dto.Email,
+                LanguageId  = dto.LanguageId,
             };
 
             return model;
@@ -69,7 +72,8 @@ namespace Business.Mapper
                 Phone1 = createDto.Phone1,
                 Phone2 = createDto.Phone2,
                 Phone3 = createDto.Phone3,
-                Email = createDto.Email
+                Email = createDto.Email,
+                LanguageId = createDto.LanguageId,
             };
 
             return model;
@@ -84,7 +88,8 @@ namespace Business.Mapper
                 Phone1 = updateDto.Phone1,
                 Phone2 = updateDto.Phone2,
                 Phone3 = updateDto.Phone3,
-                Email = updateDto.Email
+                Email = updateDto.Email,
+                LanguageId = updateDto.LanguageId,
             };
 
             return model;

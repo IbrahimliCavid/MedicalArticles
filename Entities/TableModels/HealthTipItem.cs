@@ -12,6 +12,8 @@ namespace Entities.TableModels
         public string Text {  get; set; }
         public int HealthTipId {  get; set; }
 
+        public int LanguageId { get; set; }
+        public virtual Language Language { get; set; }
         public virtual HealthTip HealthTip { get; set; }
     }
 }

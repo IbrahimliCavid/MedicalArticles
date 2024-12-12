@@ -11,5 +11,7 @@ namespace Entities.Dtos
         public string Name { get; set; }
         public string Icon { get; set; }
         public int Count { get; set; }
+        public int LanguageId { get; set; }
+
     }
 }
