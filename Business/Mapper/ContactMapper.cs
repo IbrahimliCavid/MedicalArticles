@@ -21,7 +21,6 @@ namespace Business.Mapper
                Comments = model.Comments,
                IsAnswer = model.IsAnswer,
                IsRead = model.IsRead,
-               LanguageId = model.LanguageId,
             };
 
             return dto;
@@ -44,7 +43,6 @@ namespace Business.Mapper
                 Comments = model.Comments,
                 IsAnswer = model.IsAnswer,
                 IsRead = model.IsRead,
-                LanguageId  = model.LanguageId,
             };
 
             return updateDto;
@@ -64,7 +62,6 @@ namespace Business.Mapper
                 Email = createDto.Email,
                 Phone = createDto.Phone,
                 Comments = createDto.Comments,
-                LanguageId=createDto.LanguageId,
                
             };
 
@@ -82,7 +79,6 @@ namespace Business.Mapper
                 Comments = dto.Comments,
                IsAnswer = dto.IsAnswer,
                IsRead = dto.IsRead,
-               LanguageId = dto.LanguageId,
             };
 
             return model;
@@ -99,7 +95,6 @@ namespace Business.Mapper
                 Comments = updateDto.Comments,
                 IsAnswer = updateDto.IsAnswer,
                 IsRead = updateDto.IsRead,
-                LanguageId = updateDto.LanguageId,
             };
 
             return model;

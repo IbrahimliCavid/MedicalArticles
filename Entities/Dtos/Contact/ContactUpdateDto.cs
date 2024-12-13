@@ -12,8 +12,6 @@ namespace Entities.Dtos
         public string Comments { get; set; }
         public bool IsAnswer { get; set; }
         public bool IsRead {  get; set; }
-        public int LanguageId { get; set; }
-
         public static Contact ToContact(ContactUpdateDto dto)
         {
             return new Contact
@@ -25,7 +23,6 @@ namespace Entities.Dtos
                 Comments = dto.Comments,
                 IsAnswer = dto.IsAnswer,
                 IsRead = dto.IsRead,
-                LanguageId = dto.LanguageId,
             };
         }
     }

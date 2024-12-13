@@ -55,6 +55,11 @@ namespace Business.Concrete
             var data = _statisticDal.GetAll(x => x.Deleted == 0);
             return new SuccessDataResult<List<StatisticDto>>(StatisticMapper.ToDto(data));
         }
+         public IDataResult<List<StatisticDto>> GetAllByLanguage(string culture)
+        {
+            var data = _statisticDal.GetAllByLanguage(culture);
+            return new SuccessDataResult<List<StatisticDto>>(StatisticMapper.ToDto(data));
+        }
 
         public IDataResult<List<StatisticDto>> GetAllDeleted()
         {

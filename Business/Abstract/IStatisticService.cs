@@ -17,6 +17,7 @@ namespace Business.Abstract
         IResult SoftDelete(int id);
         IResult HardDelete(int id);
         IDataResult<List<StatisticDto>> GetAll();
+        IDataResult<List<StatisticDto>> GetAllByLanguage(string culture);
         IDataResult<List<StatisticDto>> GetAllDeleted();
         IDataResult<StatisticDto> GetById(int id);
         IResult Restore(int id);

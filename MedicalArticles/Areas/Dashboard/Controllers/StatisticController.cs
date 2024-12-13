@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Mapper;
 using Entities.Dtos;
+using MedicalArticles.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
@@ -9,10 +10,11 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
     public class StatisticController : Controller
     {
         private readonly IStatisticService _statisticService;
-
-        public StatisticController(IStatisticService statisticService)
+        private readonly ILanguageService _languageService;
+        public StatisticController(IStatisticService statisticService, ILanguageService languageService)
         {
             _statisticService = statisticService;
+            _languageService = languageService;
         }
 
         public IActionResult Index()
@@ -24,6 +26,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             return View();
         }
 
@@ -31,6 +35,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Create(StatisticCreateDto dto)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var result = _statisticService.Add(dto);
             if (!result.IsSuccess)
             {
@@ -45,6 +51,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Edit(int id)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var data = _statisticService.GetById(id).Data;
             return View(StatisticMapper.ToUpdateDto(data));
         }
@@ -53,6 +61,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Edit(StatisticUpdateDto dto)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var result = _statisticService.Update(dto);
             if (!result.IsSuccess)
             {

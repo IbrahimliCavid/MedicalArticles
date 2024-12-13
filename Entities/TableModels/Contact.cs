@@ -11,8 +11,6 @@ namespace Entities.TableModels
         public bool IsAnswer { get; set; }
         public bool IsRead { get; set; }
 
-        public int LanguageId { get; set; }
-        public virtual Language Language { get; set; }
 
     }
 }

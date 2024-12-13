@@ -58,7 +58,7 @@ namespace MedicalArticles.Controllers
             var healthTipItemData = _healthTipItemService.GetAll().Data;
             var serviceAboutData = _serviceAboutService.GetAll().Data;
             var healthTipData = _healthTipService.GetAll().Data;
-            var statisticData = _statisticService.GetAll().Data;
+            var statisticData = _statisticService.GetAllByLanguage(currentCulture).Data;
 
             ViewBag.Service = _localization.GetKey("Service").Value;
 

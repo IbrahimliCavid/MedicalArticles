@@ -10,5 +10,7 @@ namespace DataAccess.Abstract
 {
     public interface IStatisticDal : IBaseRepository<Statistic>
     {
+        List<Statistic> GetAllByLanguage(string culture);
+
     }
 }
