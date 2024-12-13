@@ -10,13 +10,11 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
     public class ServiceController : Controller
     {
         private readonly IServiceService  _serviceService;
-        private readonly ICategoryService _categoryService;
         private readonly IWebHostEnvironment _webEnv;
 
-        public ServiceController(IServiceService serviceService, ICategoryService categoryService, IWebHostEnvironment webEnv)
+        public ServiceController(IServiceService serviceService, IWebHostEnvironment webEnv)
         {
             _serviceService = serviceService;
-            _categoryService = categoryService;
             _webEnv = webEnv;
         }
 
@@ -29,7 +27,6 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Create() 
         {
-            ViewData["Categories"] = _categoryService.GetAll().Data;
             return View();
         }
 
@@ -42,7 +39,6 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
             {
                 ModelState.Clear();
                 ModelState.AddModelError($"", result.Message);
-                ViewData["Categories"] = _categoryService.GetAll().Data;
                 return View(dto);
             }
             return RedirectToAction("Index");
@@ -54,7 +50,6 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewData["Categories"] = _categoryService.GetAll().Data;
             var data = _serviceService.GetById(id).Data;
             return View(ServiceMapper.ToUpdateDto(ServiceMapper.ToModel(data)));
         }
@@ -66,7 +61,6 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
             if (!result.IsSuccess)
             {
                 ModelState.AddModelError($"", result.Message);
-                ViewData["Categories"] = _categoryService.GetAll().Data;
                 return View(dto);
             }
             return RedirectToAction("Index");

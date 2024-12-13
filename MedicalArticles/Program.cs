@@ -32,9 +32,6 @@ namespace MedicalArticles
                 .AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            builder.Services.AddScoped<ICategoryService, CategoryManager>();
-            builder.Services.AddScoped<ICategoryDal, CategoryDal>();
-            builder.Services.AddScoped<IValidator<Category>, CategoryValidation>();
 
             builder.Services.AddScoped<IAboutService, AboutManager>();
             builder.Services.AddScoped<IAboutDal, AboutDal>();

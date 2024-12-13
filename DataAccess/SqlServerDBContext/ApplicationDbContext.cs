@@ -24,7 +24,6 @@ namespace DataAccess.SqlServerDBContext
 
         public DbSet<About> Abouts { get; set; }
         public DbSet<Adress> Adresses { get; set; }
-        public DbSet<Category> Categories { get; set; }
         public DbSet<Faq> Faqs { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Slide> Slides { get; set; }

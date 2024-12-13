@@ -7,7 +7,6 @@ namespace Entities.Dtos
         public string Description { get; set; }
         public string Title { get; set; }
         public string PhotoUrl { get; set; }
-        public int CategoryId {  get; set; }
         public int LanguageId { get; set; }
 
 
@@ -18,7 +17,6 @@ namespace Entities.Dtos
                 Description = dto.Description,
                 Title = dto.Title,
                 PhotoUrl = dto.PhotoUrl,
-                CategoryId = dto.CategoryId,
                 LanguageId = dto.LanguageId,
             };
         }

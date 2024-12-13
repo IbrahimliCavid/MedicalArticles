@@ -38,10 +38,6 @@ namespace DataAccess.Configurations
                 .HasForeignKey(x => x.LanguageId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(x => x.Category)
-                .WithMany(x => x.Services)
-                .HasForeignKey(x => x.CategoryId)
-                .OnDelete(DeleteBehavior.Cascade);
 
         }
     }
