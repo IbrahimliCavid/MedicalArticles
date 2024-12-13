@@ -3,6 +3,7 @@ using DataAccess.Abstract;
 using DataAccess.SqlServerDBContext;
 using Entities.Dtos;
 using Entities.TableModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,20 @@ namespace DataAccess.Concrete
 {
     public class ServiceDal : BaseRepository<Service, ApplicationDbContext>, IServiceDal
     {
+        private readonly ApplicationDbContext _context;
+
+        public ServiceDal(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+        public List<Service> GetAllByLanguage(string culture)
+        {
+            var data = _context.Services
+                 .Include(d => d.Language)
+                 .Where(d => d.Language.Key == culture)
+                 .Where(d => d.Deleted == 0).ToList();
+            return data;
+        }
     }
 }
 

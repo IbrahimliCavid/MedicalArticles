@@ -2,6 +2,7 @@
 using Business.Mapper;
 using Core.Results.Concrete;
 using Entities.Dtos;
+using MedicalArticles.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
@@ -11,11 +12,13 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
     {
         private readonly IServiceService  _serviceService;
         private readonly IWebHostEnvironment _webEnv;
+        private readonly ILanguageService _languageService;
 
-        public ServiceController(IServiceService serviceService, IWebHostEnvironment webEnv)
+        public ServiceController(IServiceService serviceService, IWebHostEnvironment webEnv, ILanguageService languageService)
         {
             _serviceService = serviceService;
             _webEnv = webEnv;
+            _languageService = languageService;
         }
 
         public IActionResult Index()
@@ -27,12 +30,16 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Create() 
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(ServiceCreateDto dto, IFormFile photoUrl)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var result = _serviceService.Add(dto, photoUrl, _webEnv.WebRootPath);
 
             if (!result.IsSuccess)
@@ -50,6 +57,7 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
             var data = _serviceService.GetById(id).Data;
             return View(ServiceMapper.ToUpdateDto(ServiceMapper.ToModel(data)));
         }
@@ -57,6 +65,7 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpPost]
         public IActionResult Edit(ServiceUpdateDto dto, IFormFile photoUrl)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
             var result = _serviceService.Update(dto, photoUrl, _webEnv.WebRootPath);
             if (!result.IsSuccess)
             {

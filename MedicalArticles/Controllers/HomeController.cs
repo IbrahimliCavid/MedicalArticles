@@ -50,7 +50,7 @@ namespace MedicalArticles.Controllers
         {
             var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
 
-            var serviceData = _serviceService.GetAll().Data;
+            var serviceData = _serviceService.GetAllByLanguage(currentCulture).Data;
             var serviceItemData = _serviceAboutItemService.GetAll().Data;
             var teamData = _teamBoardService.GetAllByLangauge(currentCulture).Data;
             var slideData = _slideService.GetAll(currentCulture).Data;

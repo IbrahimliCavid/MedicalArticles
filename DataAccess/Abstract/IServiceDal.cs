@@ -11,5 +11,7 @@ namespace DataAccess.Abstract
 {
     public interface IServiceDal : IBaseRepository<Service>
     {
+        List<Service> GetAllByLanguage(string culture);
+
     }
 }
