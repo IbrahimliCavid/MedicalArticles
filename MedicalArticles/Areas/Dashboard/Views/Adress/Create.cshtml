@@ -1,10 +1,21 @@
-﻿@model AdressCreateDto;
+﻿@using Entities.TableModels
+@model AdressCreateDto;
 
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="LanguageId" class="control-label">Dil</label>
+                <select asp-for="LanguageId" class="form-control">
+                    @foreach (var item in ViewData["Languages"] as IEnumerable<Language>)
+                    {
+                        <option value="@item.Id">@item.Value</option>
+                    }
+                </select>
+            </div>
             <div class="form-group">
                 <label asp-for="Location" class="control-label">Adress</label>
                 <input asp-for="Location" class="form-control" />

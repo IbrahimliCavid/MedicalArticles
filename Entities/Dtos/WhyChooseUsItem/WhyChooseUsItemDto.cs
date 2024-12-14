@@ -16,8 +16,6 @@ namespace Entities.Dtos
         public string Header {  get; set; }
         public string PhotoUrl {  get; set; }
         public int WhyChooseUsId { get; set; }
-        public int LanguageId { get; set; }
-
         public virtual WhyChooseUs WhyChooseUs { get; set; }
     }
 }

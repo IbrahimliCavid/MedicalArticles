@@ -1,4 +1,5 @@
 ﻿using Core.DataAccess.Abstract;
+using Entities.Dtos;
 using Entities.TableModels;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,6 @@ namespace DataAccess.Abstract
 {
     public interface IServiceAboutDal : IBaseRepository<ServiceAbout>
     {
+        List<ServiceAboutDto> GetAllServiceWithItems(string culture);
     }
 }

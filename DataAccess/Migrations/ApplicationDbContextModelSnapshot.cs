@@ -491,9 +491,6 @@ namespace DataAccess.Migrations
                     b.Property<int>("HealthTipId")
                         .HasColumnType("int");
 
-                    b.Property<int>("LanguageId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasMaxLength(300)
@@ -505,8 +502,6 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("HealthTipId");
-
-                    b.HasIndex("LanguageId");
 
                     b.ToTable("HealthTipItems", (string)null);
                 });
@@ -640,9 +635,6 @@ namespace DataAccess.Migrations
                     b.Property<int>("Deleted")
                         .HasColumnType("int");
 
-                    b.Property<int>("LanguageId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ServiceAboutId")
                         .HasColumnType("int");
 
@@ -655,8 +647,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LanguageId");
 
                     b.HasIndex("ServiceAboutId");
 
@@ -905,9 +895,6 @@ namespace DataAccess.Migrations
                         .HasMaxLength(3000)
                         .HasColumnType("nvarchar(3000)");
 
-                    b.Property<int>("LanguageId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(300)
@@ -920,8 +907,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LanguageId");
 
                     b.HasIndex("WhyChooseUsId");
 
@@ -1031,15 +1016,7 @@ namespace DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Entities.TableModels.Language", "Language")
-                        .WithMany()
-                        .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("HealthTip");
-
-                    b.Navigation("Language");
                 });
 
             modelBuilder.Entity("Entities.TableModels.Service", b =>
@@ -1066,19 +1043,11 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Entities.TableModels.ServiceAboutItem", b =>
                 {
-                    b.HasOne("Entities.TableModels.Language", "Language")
-                        .WithMany()
-                        .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("Entities.TableModels.ServiceAbout", "ServiceAbout")
                         .WithMany("ServiceAboutItems")
                         .HasForeignKey("ServiceAboutId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Language");
 
                     b.Navigation("ServiceAbout");
                 });
@@ -1129,19 +1098,11 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Entities.TableModels.WhyChooseUsItem", b =>
                 {
-                    b.HasOne("Entities.TableModels.Language", "Language")
-                        .WithMany()
-                        .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("Entities.TableModels.WhyChooseUs", "WhyChooseUs")
                         .WithMany("WhyChooseUsItems")
                         .HasForeignKey("WhyChooseUsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Language");
 
                     b.Navigation("WhyChooseUs");
                 });

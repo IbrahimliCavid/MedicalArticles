@@ -13,7 +13,5 @@ namespace Entities.TableModels
         public int ServiceAboutId {  get; set; }
         public ServiceAbout ServiceAbout { get; set; }
 
-        public int LanguageId { get; set; }
-        public virtual Language Language { get; set; }
     }
 }

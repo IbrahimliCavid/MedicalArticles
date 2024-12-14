@@ -5,14 +5,13 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                @if (ViewBag.ShowButton)
-                {
+
                     <form action="HealthTip/Create" method="get">
                         <p>
                             <button class="btn btn-primary">Əlavə et</button>
                         </p>
                     </form>
-                }
+                
 
 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -21,10 +20,10 @@
 
                             <th>Ad</th>
                             <th>Soyad</th>
-                            <th>Pozisiya</th>
+                            <th>Vəzifə</th>
                             <th>Başlıq</th>
-                            <th>Alt başlıq</th>
                             <th>Açıqlama</th>
+                            <th>Alt başlıq</th>
                             <th>Şəkil</th>
                             <th style="width:10px;"></th>
                         </tr>

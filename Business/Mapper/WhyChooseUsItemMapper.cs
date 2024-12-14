@@ -17,7 +17,6 @@ namespace Business.Mapper
                 Id = model.Id,
                 Title = model.Title,
                 Description = model.Description,
-                LanguageId = model.LanguageId,
                 Deleted = model.Deleted,
             };
 
@@ -37,7 +36,6 @@ namespace Business.Mapper
                 Id = model.Id,
                 Description = model.Description,
                 Title = model.Title,
-                LanguageId = model.LanguageId,
                 Deleted = model.Deleted,
             };
 
@@ -56,7 +54,6 @@ namespace Business.Mapper
             {
                 Description = createDto.Description,
                 Title = createDto.Title,
-                LanguageId = createDto.LanguageId,
                 WhyChooseUsId = createDto.WhyChooseUsId,
             };
 
@@ -70,7 +67,6 @@ namespace Business.Mapper
                 Id = dto.Id,
                 Description = dto.Description,
                 Title = dto.Title,
-                LanguageId = dto.LanguageId,
                 Deleted = dto.Deleted,
             };
 
@@ -84,7 +80,6 @@ namespace Business.Mapper
                 Id = updateDto.Id,
                 Description = updateDto.Description,
                 Title = updateDto.Title,
-                LanguageId = updateDto.LanguageId,
                 Deleted = updateDto.Deleted,
                 WhyChooseUsId = updateDto.WhyChooseUsId,
             };

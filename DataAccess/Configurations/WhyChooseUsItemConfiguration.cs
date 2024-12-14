@@ -27,16 +27,6 @@ namespace DataAccess.Configurations
                 .IsRequired()
                 .HasMaxLength(300);
 
-            builder.HasOne(x => x.Language)
-                   .WithMany()
-                   .HasForeignKey(x => x.LanguageId)
-                   .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasOne(x => x.Language)
-                .WithMany()
-                .HasForeignKey(x => x.LanguageId)
-                .OnDelete(DeleteBehavior.Restrict);
-
             builder.HasOne(x => x.WhyChooseUs)
                 .WithMany(x => x.WhyChooseUsItems)
                 .HasForeignKey(x => x.WhyChooseUsId)

@@ -11,7 +11,7 @@ namespace DataAccess.Abstract
 {
     public interface ITeamBoardDal : IBaseRepository<TeamBoard>
     {
-        List<TeamBoard> GetAllByLanguage(string culture = "az-Latn");
+        List<TeamBoard> GetAllByLanguage(string culture);
 
     }
 }

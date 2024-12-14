@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Mapper;
 using Entities.Dtos;
+using MedicalArticles.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
@@ -10,11 +11,13 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
     {
         private readonly IServiceAboutService _serviceAboutService;
         private readonly IWebHostEnvironment _webEnv;
+        private readonly ILanguageService _languageService;
 
-        public ServiceAboutController(IServiceAboutService serviceAboutService, IWebHostEnvironment webEnv)
+        public ServiceAboutController(IServiceAboutService serviceAboutService, IWebHostEnvironment webEnv, ILanguageService languageService)
         {
             _serviceAboutService = serviceAboutService;
             _webEnv = webEnv;
+            _languageService = languageService;
         }
 
         public IActionResult Index()
@@ -27,12 +30,16 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(ServiceAboutCreateDto dto, IFormFile photoUrl)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var result = _serviceAboutService.Add(dto, photoUrl, _webEnv.WebRootPath);
             if (!result.IsSuccess)
             {
@@ -47,6 +54,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var data = _serviceAboutService.GetById(id).Data;
             var model = ServiceAboutMapper.ToModel(data);
             return View(ServiceAboutMapper.ToUpdateDto(model));
@@ -55,6 +64,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpPost]
         public IActionResult Edit(ServiceAboutUpdateDto dto, IFormFile photoUrl)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var result = _serviceAboutService.Update(dto, photoUrl, _webEnv.WebRootPath);
             if (!result.IsSuccess)
             {

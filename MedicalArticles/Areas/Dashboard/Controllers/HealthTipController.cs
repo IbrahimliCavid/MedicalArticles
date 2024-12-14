@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Mapper;
 using Entities.Dtos;
+using MedicalArticles.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
@@ -10,11 +11,13 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
     {
         private readonly IHealthTipService _healthTipService;
         private readonly IWebHostEnvironment _webEnv;
+        private readonly ILanguageService _languageService;
 
-        public HealthTipController(IHealthTipService healthTipService, IWebHostEnvironment webEnv)
+        public HealthTipController(IHealthTipService healthTipService, IWebHostEnvironment webEnv, ILanguageService languageService)
         {
             _healthTipService = healthTipService;
             _webEnv = webEnv;
+            _languageService = languageService;
         }
 
         public IActionResult Index()
@@ -27,12 +30,16 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(HealthTipCreateDto dto, IFormFile photoUrl)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var result = _healthTipService.Add(dto, photoUrl, _webEnv.WebRootPath);
             if (!result.IsSuccess)
             {
@@ -47,6 +54,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Edit(int id)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var data = _healthTipService.GetById(id).Data;
             return View(HealthTipMapper.ToUpdateDto(data));
         }
@@ -55,6 +64,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Edit(HealthTipUpdateDto dto, IFormFile photoUrl)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var result = _healthTipService.Update(dto, photoUrl, _webEnv.WebRootPath);
             if (!result.IsSuccess)
             {

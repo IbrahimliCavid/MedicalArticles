@@ -55,6 +55,11 @@ namespace Business.Concrete
         {
             var data = _whyChooseUsDal.GetAll(x => x.Deleted == 0);
             return new SuccessDataResult<List<WhyChooseUsDto>>(WhyChooseUsMapper.ToDto(data));
+        } 
+        public IDataResult<List<WhyChooseUsDto>> GetAllByLanguage(string culture)
+        {
+            var data = _whyChooseUsDal.GetAllWhyUsWithItems(culture);
+            return new SuccessDataResult<List<WhyChooseUsDto>>(data);
         }
 
         public IDataResult<List<WhyChooseUsDto>> GetAllDeleted()

@@ -56,6 +56,11 @@ namespace Business.Concrete
             var data = _healthTipDal.GetAll(x => x.Deleted == 0);
             return new SuccessDataResult<List<HealthTipDto>>(HealthTipMapper.ToDto(data));
         }
+        public IDataResult<List<HealthTipDto>> GetAllByLanguage(string culture)
+        {
+            var data = _healthTipDal.GetAllHealthTipWithItems(culture);
+            return new SuccessDataResult<List<HealthTipDto>>(data);
+        }
 
         public IDataResult<List<HealthTipDto>> GetAllDeleted()
         {

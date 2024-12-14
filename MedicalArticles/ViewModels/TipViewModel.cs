@@ -6,6 +6,5 @@ namespace MedicalArticles.ViewModels
     public class TipViewModel
     {
         public List<HealthTipDto> HealthTips { get; set; }
-        public List<HealthTipItemDto> HealthTipItems { get; set; }
     }
 }

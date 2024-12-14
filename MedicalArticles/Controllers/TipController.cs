@@ -7,21 +7,18 @@ namespace MedicalArticles.Controllers
     public class TipController : Controller
     {
         private readonly IHealthTipService _healthTipService;
-        private readonly IHealthTipItemService _healthTipItemService;
 
-        public TipController(IHealthTipService healthTipService, IHealthTipItemService healthTipItemService)
+        public TipController(IHealthTipService healthTipService)
         {
             _healthTipService = healthTipService;
-            _healthTipItemService = healthTipItemService;
         }
 
         public IActionResult Index()
         {
-            var tipData = _healthTipService.GetAll().Data;
-            var tipItemData = _healthTipItemService.GetAll().Data;
+            var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
+            var tipData = _healthTipService.GetAllByLanguage(currentCulture).Data;
             TipViewModel viewModel = new()
             {
-                HealthTipItems = tipItemData,
                 HealthTips = tipData
             };
             return View(viewModel);

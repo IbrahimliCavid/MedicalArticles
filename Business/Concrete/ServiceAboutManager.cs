@@ -57,6 +57,12 @@ namespace Business.Concrete
             var data = _serviceAboutDal.GetAll(x => x.Deleted == 0);
             return new SuccessDataResult<List<ServiceAboutDto>>(ServiceAboutMapper.ToDto(data));
         }
+        
+        public IDataResult<List<ServiceAboutDto>> GetAllByLanguage(string culture)
+        {
+            var data = _serviceAboutDal.GetAllServiceWithItems(culture);
+            return new SuccessDataResult<List<ServiceAboutDto>>(data);
+        }
 
         public IDataResult<List<ServiceAboutDto>> GetAllDeleted()
         {

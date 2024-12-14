@@ -9,14 +9,12 @@ namespace MedicalArticles.Controllers
     {
         private readonly ITeamBoardService _teamService;
         private readonly IWhyChooseUsService _whyUsService;
-        private readonly IWhyChooseUsItemService _whyUsItemService;
         private readonly IServiceService _serviceService;
 
-        public AboutController(ITeamBoardService teamService, IWhyChooseUsService whyUsService, IWhyChooseUsItemService whyUsItemService, IServiceService serviceService)
+        public AboutController(ITeamBoardService teamService, IWhyChooseUsService whyUsService, IServiceService serviceService)
         {
             _teamService = teamService;
             _whyUsService = whyUsService;
-            _whyUsItemService = whyUsItemService;
             _serviceService = serviceService;
         }
 
@@ -25,16 +23,14 @@ namespace MedicalArticles.Controllers
             var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
 
             var teamData = _teamService.GetAllByLangauge(currentCulture).Data;
-            var whyUsData = _whyUsService.GetAll().Data;    
-            var whyUsItemData = _whyUsItemService.GetAll().Data;
-            var serviceData = _serviceService.GetAll().Data;
+            var whyUsData = _whyUsService.GetAllByLanguage(currentCulture).Data;    
+            var serviceData = _serviceService.GetAllByLanguage(currentCulture).Data;
 
 
             AboutViewModel viewModel = new()
             {
                 TeamBoards = teamData,
                 WhyUs =whyUsData,
-                WhyUsItems = whyUsItemData,
                 Services = serviceData,
             };
             return View(viewModel);

@@ -17,7 +17,6 @@ namespace Business.Mapper
             {
                 Id = model.Id,
                 Text = model.Text,
-                LanguageId = model.LanguageId,
                 Deleted = model.Deleted,
             };
 
@@ -36,7 +35,6 @@ namespace Business.Mapper
             {
                 Id = model.Id,
                 Text = model.Text,
-                LanguageId = model.LanguageId,
                 Deleted = model.Deleted
             };
 
@@ -54,7 +52,6 @@ namespace Business.Mapper
             ServiceAboutItem model = new ServiceAboutItem()
             {
                 Text = createDto.Text,
-                LanguageId = createDto.LanguageId,
                 ServiceAboutId = createDto.ServiceAboutId,
             };
 
@@ -67,7 +64,6 @@ namespace Business.Mapper
             {
                 Id = dto.Id,
                 Text = dto.Text,
-                LanguageId = dto.LanguageId,
                 Deleted = dto.Deleted
             };
 
@@ -80,7 +76,6 @@ namespace Business.Mapper
             {
                 Id = updateDto.Id,
                 Text = updateDto.Text,
-                LanguageId = updateDto.LanguageId,
                 ServiceAboutId = updateDto.ServiceAboutId,
                 Deleted = updateDto.Deleted
             };

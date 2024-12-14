@@ -1,10 +1,20 @@
-﻿@model HealthTipUpdateDto;
+﻿@using Entities.TableModels
+@model HealthTipUpdateDto;
 
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LanguageId" class="control-label">Dil</label>
+                <select asp-for="LanguageId" class="form-control">
+                    @foreach (var item in ViewData["Languages"] as IEnumerable<Language>)
+                    {
+                        <option value="@item.Id">@item.Value</option>
+                    }
+                </select>
+            </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label">Ad</label>
                 <input asp-for="Name" class="form-control" />
@@ -18,7 +28,7 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Header" class="control-label">Pozisiya</label>
+                <label asp-for="Header" class="control-label">Vəzifə</label>
                 <input asp-for="Header" class="form-control" />
                 <span asp-validation-for="Header" class="text-danger"></span>
             </div>

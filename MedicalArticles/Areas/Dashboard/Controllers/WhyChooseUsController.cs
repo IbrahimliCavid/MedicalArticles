@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Mapper;
 using Entities.Dtos;
+using MedicalArticles.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
@@ -10,11 +11,13 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
     {
         private readonly IWhyChooseUsService _whyChooseUsService;
         private readonly IWebHostEnvironment _webEnv;
+        private readonly ILanguageService _languageService;
 
-        public WhyChooseUsController(IWhyChooseUsService whyChooseUsService, IWebHostEnvironment webEnv)
+        public WhyChooseUsController(IWhyChooseUsService whyChooseUsService, IWebHostEnvironment webEnv, ILanguageService languageService)
         {
             _whyChooseUsService = whyChooseUsService;
             _webEnv = webEnv;
+            _languageService = languageService;
         }
 
         public IActionResult Index()
@@ -27,12 +30,16 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(WhyChooseUsCreateDto dto, IFormFile photoUrl)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var result = _whyChooseUsService.Add(dto, photoUrl, _webEnv.WebRootPath);
             if (!result.IsSuccess)
             {
@@ -47,6 +54,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Edit(int id)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var data = _whyChooseUsService.GetById(id).Data;
             return View(WhyChooseUsMapper.ToUpdateDto(WhyChooseUsMapper.ToModel(data)));
         }
@@ -55,6 +64,8 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Edit(WhyChooseUsUpdateDto dto, IFormFile photoUrl)
         {
+            ViewData["Languages"] = _languageService.GetAll().Data;
+
             var result = _whyChooseUsService.Update(dto, photoUrl, _webEnv.WebRootPath);
             if (!result.IsSuccess)
             {

@@ -21,7 +21,7 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Index()
         {
-            var data = _slideService.GetAll("ru-RU").Data;
+            var data = _slideService.GetAll().Data;
             return View(data);
         }
 

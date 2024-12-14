@@ -20,7 +20,9 @@ namespace MedicalArticles.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var adressData = _adressService.GetAll().Data;
+             var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
+
+            var adressData = _adressService.GetAllByLanguage(currentCulture).Data;
             ContactViewModel viewModels = new ContactViewModel()
             {
                 Contact = new ContactCreateDto(),

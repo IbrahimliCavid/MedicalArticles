@@ -46,6 +46,12 @@ namespace Business.Concrete
 
             var data = _adressDal.GetAll(x => x.Deleted == 0);
             return new SuccessDataResult<List<AdressDto>>(AdressMapper.ToDto(data));
+        } 
+        public IDataResult<List<AdressDto>> GetAllByLanguage(string culture)
+        {
+
+            var data = _adressDal.GetAllByLanguage(culture);
+            return new SuccessDataResult<List<AdressDto>>(AdressMapper.ToDto(data));
         }
 
         public IDataResult<List<Adress>> GetAllDeleted()

@@ -13,8 +13,9 @@ namespace Business.Abstract
     {
         IResult Add(SlideCreateDto dto, IFormFile photoUrl, string webRootPath);
         IResult Update(SlideUpdateDto dto, IFormFile photoUrl, string webRootPath);
-        IDataResult<List<SlideDto>> GetAll(string lang);
+        IDataResult<List<SlideDto>> GetAllByLanguage(string culture);
         IDataResult<List<SlideDto>> GetAllDeleted();
+        IDataResult<List<SlideDto>> GetAll();
         IDataResult<SlideDto> GetById(int id);
         IResult SoftDelete(int id);
         IResult HardDelete(int id);

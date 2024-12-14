@@ -11,7 +11,6 @@ namespace Entities.Dtos
         public int Id { get; set; } 
         public string Text { get; set; }
         public int HealthTipId { get; set; }
-        public int LanguageId { get; set; }
 
         public int Deleted {  get; set; }
     }

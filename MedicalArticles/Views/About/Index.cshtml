@@ -77,15 +77,13 @@
                         </div>
 
                         <ul>
-                            @foreach (var item in Model.WhyUsItems)
+                            @foreach (var item in whyUs.WhyChooseUsItems)
                             {
                                 <li>
-                                    <div class="info">
                                         <h4>@item.Title</h4>
                                         <p>
                                             @item.Description
                                         </p>
-                                    </div>
                                 </li>
                             }
 

@@ -8,7 +8,6 @@ namespace MedicalArticles.ViewModels
     {
         public List<TeamBoardDto> TeamBoards {  get; set; }
         public List<WhyChooseUsDto> WhyUs { get; set; }
-        public List<WhyChooseUsItemDto> WhyUsItems { get; set; }
         public List<ServiceDto> Services { get; set; }
     }
 }

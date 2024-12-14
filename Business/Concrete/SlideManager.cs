@@ -51,15 +51,20 @@ namespace Business.Concrete
             return new SuccessResult(UiMessages.SuccessAddedMessage(model.Title));
         }
 
-        public IDataResult<List<SlideDto>> GetAll(string lang)
+        public IDataResult<List<SlideDto>> GetAllByLanguage(string culture)
         {
-            var data = _slideDal.GetAllByLanguage(lang);
+            var data = _slideDal.GetAllByLanguage(culture);
             return new SuccessDataResult<List<SlideDto>>(SlideMapper.ToDto(data));
         }
 
         public IDataResult<List<SlideDto>> GetAllDeleted()
         {
             var data = _slideDal.GetAll(x => x.Deleted != 0);
+            return new SuccessDataResult<List<SlideDto>>(SlideMapper.ToDto(data));
+        }
+        public IDataResult<List<SlideDto>> GetAll()
+        {
+            var data = _slideDal.GetAll(x => x.Deleted == 0);
             return new SuccessDataResult<List<SlideDto>>(SlideMapper.ToDto(data));
         }
 

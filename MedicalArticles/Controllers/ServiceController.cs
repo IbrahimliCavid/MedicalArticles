@@ -7,14 +7,12 @@ namespace MedicalArticles.Controllers
     public class ServiceController : Controller
     {
         private readonly IServiceService _serviceService;
-        private readonly IWhyChooseUsItemService _whyUsItemService;
         private readonly IWhyChooseUsService _whyUsService;
         private readonly IFaqService _faqService;
 
-        public ServiceController(IServiceService serviceService, IWhyChooseUsItemService whyUsItemService, IWhyChooseUsService whyUsService, IFaqService faqService)
+        public ServiceController(IServiceService serviceService, IWhyChooseUsService whyUsService, IFaqService faqService)
         {
             _serviceService = serviceService;
-            _whyUsItemService = whyUsItemService;
             _whyUsService = whyUsService;
             _faqService = faqService;
         }
@@ -24,14 +22,12 @@ namespace MedicalArticles.Controllers
             var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
 
             var serviceData = _serviceService.GetAllByLanguage(currentCulture).Data;
-            var whyUsItemData = _whyUsItemService.GetAll().Data;
-            var whyUsData = _whyUsService.GetAll().Data;    
+            var whyUsData = _whyUsService.GetAllByLanguage(currentCulture).Data;    
             var faqData = _faqService.GetAllByLanguage(currentCulture).Data;
             ServiceViewModel viewModel = new()
             {
                 Services = serviceData,
                 WhyUs = whyUsData,
-                WhyUsItems = whyUsItemData,
                 Faqs = faqData
             };
             return View(viewModel);
