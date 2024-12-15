@@ -71,7 +71,7 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="form-group">
-                                    <input class="form-control" id="name" name="Name" placeholder="Ad Soyad" type="text">
+                                    <input class="form-control" id="name" name="Name" placeholder="@_localization.GetKey("FullName").Value" type="text">
                                     <span class="alert-error"></span>
                                 </div>
 
@@ -80,13 +80,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input class="form-control" id="email" name="Email" placeholder="E-poçt*" type="email">
+                                    <input class="form-control" id="email" name="Email" placeholder="@_localization.GetKey("Email").Value" type="email">
                                     <span class="alert-error"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input class="form-control" id="phone" name="Phone" placeholder="Telefon*" type="text">
+                                    <input class="form-control" id="phone" name="Phone" placeholder="@_localization.GetKey("Phone").Value" type="text">
                                     <span class="alert-error"></span>
                                 </div>
                             </div>
@@ -95,14 +95,14 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="form-group comments">
-                                    <textarea class="form-control" id="comments" name="comments" placeholder="Mesaj yazın... *"></textarea>
+                                    <textarea class="form-control" id="comments" name="comments" placeholder="@_localization.GetKey("WriteMessage").Value..."></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="row">
                                 <button type="submit" name="submit" id="submit">
-                                    Göndər <i class="fa fa-paper-plane"></i>
+                                    @_localization.GetKey("Send").Value <i class="fa fa-paper-plane"></i>
                                 </button>
                             </div>
                         </div>

@@ -153,4 +153,19 @@
   <data name="Faq" xml:space="preserve">
     <value>asdfasfasf</value>
   </data>
+  <data name="FullName" xml:space="preserve">
+    <value>rusca ad soyad</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail rus</value>
+  </data>
+  <data name="WriteMessage" xml:space="preserve">
+    <value>Mesaj rus</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone rus</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send rus</value>
+  </data>
 </root>

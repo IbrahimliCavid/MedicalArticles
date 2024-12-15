@@ -153,4 +153,19 @@
   <data name="Faq" xml:space="preserve">
     <value>Sual &amp; Cavab</value>
   </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Ad Soyad</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-poçt</value>
+  </data>
+  <data name="WriteMessage" xml:space="preserve">
+    <value>Mesaj yazın</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Göndər</value>
+  </data>
 </root>
