@@ -38,7 +38,9 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         public IActionResult Create(SlideCreateDto dto, IFormFile photoUrl)
         {
             ViewData["Languages"] = _languageService.GetAll().Data;
+         
             var result = _slideService.Add(dto, photoUrl, _webEnv.WebRootPath, out List<ValidationFailure> errors);
+           
             if (!result.IsSuccess)
             {
                 ModelState.Clear();

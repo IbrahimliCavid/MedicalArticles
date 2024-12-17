@@ -34,12 +34,19 @@ namespace Business.Concrete
         {
             Slide model = SlideCreateDto.ToSlide(dto);
             var validator = _validator.Validate(model);
-            model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
+
 
             errors = validator.Errors;
 
-            if (!validator.IsValid)
+
+            if (!validator.IsValid || photoUrl == null || photoUrl.Length <= 0) {
+                errors.Add(new ValidationFailure("PhotoUrl", UiMessages.NotEmptyMessage("Foto")));
                 return new ErrorResult();
+            }
+                
+
+
+            model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
             _slideDal.Add(model);
 
             return new SuccessResult(UiMessages.SuccessAddedMessage(model.Title));
@@ -100,13 +107,16 @@ namespace Business.Concrete
             var validator = _validator.Validate(model);
             errors = validator.Errors;
 
+
             if (!validator.IsValid)
+            {
                 return new ErrorResult();
+            }
+
             if (photoUrl is null)
                 model.PhotoUrl = existData.PhotoUrl;
             else
                 model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
-
             model.UpdatedDate = DateTime.Now;
             _slideDal.Update(model);
 

@@ -34,12 +34,15 @@ namespace Business.Concrete
         {
             WhyChooseUs model = WhyChooseUsMapper.ToModel(dto);
             var validator = _validator.Validate(model);
-            model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
 
             errors = validator.Errors;
 
-            if (!validator.IsValid)
+            if (!validator.IsValid || photoUrl == null || photoUrl.Length <= 0)
+            {
+                errors.Add(new ValidationFailure("PhotoUrl", UiMessages.NotEmptyMessage("Foto")));
                 return new ErrorResult();
+            }
+            model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
             _whyChooseUsDal.Add(model);
 
             return new SuccessResult(UiMessages.SuccessAddedMessage(""));

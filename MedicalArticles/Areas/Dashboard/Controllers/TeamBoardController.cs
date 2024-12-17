@@ -41,7 +41,6 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Create(TeamBoardCreateDto dto, IFormFile photoUrl)
         {
-            dto.PhotoUrl = photoUrl.ToString();
             var result = _teamBoardService.Add(dto, photoUrl, _webEnv.WebRootPath, out List<ValidationFailure> errors);
             ViewData["Languages"] = _languageService.GetAll().Data;
             if (!result.IsSuccess)

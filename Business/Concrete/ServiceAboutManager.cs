@@ -39,14 +39,15 @@ namespace Business.Concrete
         {
             ServiceAbout model = ServiceAboutMapper.ToModel(dto);
              var validator = _validator.Validate(model);
-            model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
             errors = validator.Errors;
-        
-            if (!validator.IsValid)
+
+            if (!validator.IsValid || photoUrl == null || photoUrl.Length <= 0)
             {
-                   return new ErrorResult();
+                errors.Add(new ValidationFailure("PhotoUrl", UiMessages.NotEmptyMessage("Foto")));
+                return new ErrorResult();
             }
 
+            model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
             _serviceAboutDal.Add(model);
 
             return new SuccessResult(UiMessages.SuccessAddedMessage(model.Title));

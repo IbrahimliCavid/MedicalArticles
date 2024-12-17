@@ -60,9 +60,6 @@ namespace Business.Validations
              .MaximumLength(200).WithMessage(UiMessages.MaxLenghtMessage("Url", 200))
              .NotEmpty().WithMessage(UiMessages.NotEmptyMessage("Url"));
 
-            RuleFor(x => x.PhotoUrl)
-               .NotNull().WithMessage(UiMessages.NotEmptyMessage("photo"));
-
         }
 
     }
