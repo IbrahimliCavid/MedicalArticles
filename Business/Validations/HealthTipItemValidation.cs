@@ -15,11 +15,11 @@ namespace Business.Validations
         {
             RuleFor(x => x.Text)
                .MinimumLength(3)
-               .WithMessage(UiMessages.MinLenghtMessage("Bu xana", 3))
+               .WithMessage(UiMessages.MinLenghtMessage("Mətn", 3))
                .MaximumLength(300)
-               .WithMessage(UiMessages.MaxLenghtMessage("Bu xana", 300))
+               .WithMessage(UiMessages.MaxLenghtMessage("Mətn", 300))
                .NotEmpty()
-               .WithMessage(UiMessages.NotEmptyMessage("Bu xana"));
+               .WithMessage(UiMessages.NotEmptyMessage("Mətn"));
         }
     }
 }

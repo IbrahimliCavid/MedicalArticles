@@ -16,8 +16,8 @@ namespace Business.Validations
             RuleFor(x => x.Question)
                 .NotEmpty()
                 .WithMessage(UiMessages.NotEmptyMessage("Sual"))
-                .MinimumLength(10)
-                .WithMessage(UiMessages.MinLenghtMessage("Sual", 10))
+                .MinimumLength(3)
+                .WithMessage(UiMessages.MinLenghtMessage("Sual", 3))
                 .MaximumLength(2000)
                 .WithMessage(UiMessages.MaxLenghtMessage("Sual", 2000));
 

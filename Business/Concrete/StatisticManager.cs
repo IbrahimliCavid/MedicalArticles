@@ -8,12 +8,14 @@ using DataAccess.Abstract;
 using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Business.Concrete
 {
@@ -28,22 +30,14 @@ namespace Business.Concrete
             _validator = validator;
         }
 
-        public IResult Add(StatisticCreateDto dto)
+        public IResult Add(StatisticCreateDto dto, out List<ValidationFailure> errors)
         {
             Statistic model = StatisticMapper.ToModel(dto);
             var validator = _validator.Validate(model);
-
-            string errorMessage = "";
-
-            foreach (var error in validator.Errors)
-            {
-                errorMessage = error.ErrorMessage;
-            }
+            errors = validator.Errors;
 
             if (!validator.IsValid)
-            {
-                return new ErrorResult(errorMessage);
-            }
+                return new ErrorResult();
 
             _statisticDal.Add(model);
 
@@ -99,23 +93,15 @@ namespace Business.Concrete
             return new SuccessResult(UiMessages.SuccessCopyTrashMessage(data.Name));
         }
 
-        public IResult Update(StatisticUpdateDto dto)
+        public IResult Update(StatisticUpdateDto dto, out List<ValidationFailure> errors)
         {
             Statistic model = StatisticMapper.ToModel(dto);
             Statistic existData =StatisticMapper.ToModel( GetById(model.Id).Data);
             var validator = _validator.Validate(model);
-
-            string errorMessage = "";
-
-            foreach (var error in validator.Errors)
-            {
-                errorMessage = error.ErrorMessage;
-            }
+            errors = validator.Errors;
 
             if (!validator.IsValid)
-            {
-                return new ErrorResult(errorMessage);
-            }
+                return new ErrorResult();
 
             model.UpdatedDate = DateTime.Now;
             _statisticDal.Update(model);

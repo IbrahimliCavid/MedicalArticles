@@ -1,5 +1,6 @@
 ﻿using Core.Results.Abstract;
 using Entities.Dtos;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,8 @@ namespace Business.Abstract
 {
     public interface ISlideService
     {
-        IResult Add(SlideCreateDto dto, IFormFile photoUrl, string webRootPath);
-        IResult Update(SlideUpdateDto dto, IFormFile photoUrl, string webRootPath);
+        IResult Add(SlideCreateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors);
+        IResult Update(SlideUpdateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors);
         IDataResult<List<SlideDto>> GetAllByLanguage(string culture);
         IDataResult<List<SlideDto>> GetAllDeleted();
         IDataResult<List<SlideDto>> GetAll();

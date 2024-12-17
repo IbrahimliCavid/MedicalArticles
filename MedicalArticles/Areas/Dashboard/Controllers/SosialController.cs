@@ -1,7 +1,9 @@
 ﻿using Business.Abstract;
 using Business.Mapper;
 using Entities.Dtos;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
 {
@@ -32,10 +34,14 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpPost]
         public IActionResult Create(SosialCreateDto dto)
         {
-          var result = _sosialService.Add(dto);
-            if (!result.IsSuccess) 
+          var result = _sosialService.Add(dto, out List<ValidationFailure> errors);
+            if (!result.IsSuccess)
             {
-              ModelState.AddModelError("", result.Message);
+                ModelState.Clear();
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+                }
                 return View(dto);
             }
 
@@ -54,10 +60,14 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpPost]
         public IActionResult Edit(SosialUpdateDto dto)
         {
-            var result = _sosialService.Update(dto);
+            var result = _sosialService.Update(dto, out List<ValidationFailure> errors);
             if (!result.IsSuccess)
             {
-                ModelState.AddModelError("", result.Message);
+                ModelState.Clear();
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+                }
                 return View(dto);
             }
 

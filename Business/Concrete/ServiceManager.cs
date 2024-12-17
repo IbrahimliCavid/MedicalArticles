@@ -8,6 +8,7 @@ using DataAccess.Abstract;
 using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
@@ -15,6 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Business.Concrete
 {
@@ -29,23 +31,17 @@ namespace Business.Concrete
             _validator = validator;
         }
 
-        public IResult Add(ServiceCreateDto dto, IFormFile photoUrl, string webRootPath)
+        public IResult Add(ServiceCreateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
             Service model = ServiceCreateDto.ToService(dto);
             var validator = _validator.Validate(model);
             model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
 
-            string errorMessage = "";
-
-            foreach (var error in validator.Errors)
-            {
-                errorMessage = error.ErrorMessage;
-            }
+            errors = validator.Errors;
 
             if (!validator.IsValid)
-            {
-                return new ErrorResult(errorMessage);
-            }
+                return new ErrorResult();
+
 
             _serviceDal.Add(model);
 
@@ -100,10 +96,15 @@ namespace Business.Concrete
             return new SuccessResult(UiMessages.SuccessCopyTrashMessage(data.Title));
         }
 
-        public IResult Update(ServiceUpdateDto dto, IFormFile photoUrl, string webRootPath)
+        public IResult Update(ServiceUpdateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
             Service model = ServiceUpdateDto.ToService(dto);
             Service existData =ServiceMapper.ToModel(GetById(model.Id).Data);
+            var validator = _validator.Validate(model);
+            errors = validator.Errors;
+
+            if (!validator.IsValid)
+                return new ErrorResult();
 
             if (photoUrl is null)
                 model.PhotoUrl = existData.PhotoUrl;

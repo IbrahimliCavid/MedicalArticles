@@ -1,8 +1,10 @@
 ﻿using Business.Abstract;
 using Business.Mapper;
 using Entities.Dtos;
+using FluentValidation.Results;
 using MedicalArticles.Services;
 using Microsoft.AspNetCore.Mvc;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
 {
@@ -39,12 +41,16 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Create(TeamBoardCreateDto dto, IFormFile photoUrl)
         {
-            var result = _teamBoardService.Add(dto, photoUrl, _webEnv.WebRootPath);
+            dto.PhotoUrl = photoUrl.ToString();
+            var result = _teamBoardService.Add(dto, photoUrl, _webEnv.WebRootPath, out List<ValidationFailure> errors);
             ViewData["Languages"] = _languageService.GetAll().Data;
-
             if (!result.IsSuccess)
             {
-                ModelState.AddModelError("Name", result.Message);
+                ModelState.Clear();
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+                }
                 return View(dto);
             }
 
@@ -65,12 +71,16 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Edit(TeamBoardUpdateDto dto, IFormFile photoUrl)
         {
-            var result = _teamBoardService.Update(dto, photoUrl, _webEnv.WebRootPath);
+            var result = _teamBoardService.Update(dto, photoUrl, _webEnv.WebRootPath, out List<ValidationFailure> errors);
             ViewData["Languages"] = _languageService.GetAll().Data;
 
             if (!result.IsSuccess)
             {
-                ModelState.AddModelError("", result.Message);
+                ModelState.Clear();
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+                }
                 return View(dto);
             }
             return RedirectToAction("Index");

@@ -1,8 +1,10 @@
 ﻿using Business.Abstract;
 using Business.Mapper;
 using Entities.Dtos;
+using FluentValidation.Results;
 using MedicalArticles.Services;
 using Microsoft.AspNetCore.Mvc;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
 {
@@ -40,10 +42,15 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         {
             ViewData["Languages"] = _languageService.GetAll().Data;
 
-            var result = _healthTipService.Add(dto, photoUrl, _webEnv.WebRootPath);
+            var result = _healthTipService.Add(dto, photoUrl, _webEnv.WebRootPath, out List<ValidationFailure> errors);
             if (!result.IsSuccess)
             {
-                ModelState.AddModelError("Name", result.Message);
+                ModelState.Clear();
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+
+                }
                 return View(dto);
             }
 
@@ -66,10 +73,15 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         {
             ViewData["Languages"] = _languageService.GetAll().Data;
 
-            var result = _healthTipService.Update(dto, photoUrl, _webEnv.WebRootPath);
+            var result = _healthTipService.Update(dto, photoUrl, _webEnv.WebRootPath, out List<ValidationFailure> errors);
             if (!result.IsSuccess)
             {
-                ModelState.AddModelError("", result.Message);
+                ModelState.Clear();
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+
+                }
                 return View(dto);
             }
             return RedirectToAction("Index");

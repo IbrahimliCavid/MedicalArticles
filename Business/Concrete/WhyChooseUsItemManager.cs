@@ -7,6 +7,7 @@ using DataAccess.Abstract;
 using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -28,47 +29,32 @@ namespace Business.Concrete
             _validator = validator;
         }
 
-        public IResult Add(WhyChooseUsItemCreateDto dto)
+        public IResult Add(WhyChooseUsItemCreateDto dto, out List<ValidationFailure> errors)
         {
             var model = WhyChooseUsItemMapper.ToModel(dto);
             var validator = _validator.Validate(model);
-            string errorMessage = "";
-
-            foreach (var item in validator.Errors)
-            {
-                errorMessage = item.ErrorMessage;
-            }
+            errors = validator.Errors;
 
             if (!validator.IsValid)
-            {
-                return new ErrorResult(errorMessage);
-            }
+                return new ErrorResult();
 
             _whyChooseUsItemDal.Add(model);
 
-            return new SuccessResult(UiMessages.SuccessAddedMessage("Sual"));
+            return new SuccessResult(UiMessages.SuccessAddedMessage(""));
         }
        
-        public IResult Update(WhyChooseUsItemUpdateDto dto)
+        public IResult Update(WhyChooseUsItemUpdateDto dto, out List<ValidationFailure> errors)
         {
             var model = WhyChooseUsItemMapper.ToModel(dto);
             model.UpdatedDate = DateTime.Now;
             var validator = _validator.Validate(model);
-
-            string errorMessage = "";
-
-            foreach (var item in validator.Errors)
-            {
-                errorMessage = item.ErrorMessage;
-            }
+            errors = validator.Errors;
 
             if (!validator.IsValid)
-            {
-                return new ErrorResult(errorMessage);
-            }
+                return new ErrorResult();
 
             _whyChooseUsItemDal.Update(model);
-            return new SuccessResult(UiMessages.SuccessUpdatedMessage("Sual"));
+            return new SuccessResult(UiMessages.SuccessUpdatedMessage(""));
         }
 
         public IResult SoftDelete(int id)
@@ -77,14 +63,14 @@ namespace Business.Concrete
             data.Deleted = id;
             var model = WhyChooseUsItemMapper.ToModel(data);
             _whyChooseUsItemDal.Update(model);
-            return new SuccessResult(UiMessages.SuccessDeletedMessage("Sual"));
+            return new SuccessResult(UiMessages.SuccessDeletedMessage(""));
         }
         public IResult HardDelete(int id)
         {
             var data = GetById(id).Data;
             var model = WhyChooseUsItemMapper.ToModel(data);
             _whyChooseUsItemDal.Delete(model);
-            return new SuccessResult(UiMessages.SuccessDeletedMessage("Sual"));
+            return new SuccessResult(UiMessages.SuccessDeletedMessage(""));
         }
 
 

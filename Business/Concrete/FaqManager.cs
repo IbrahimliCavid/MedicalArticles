@@ -8,11 +8,13 @@ using DataAccess.Concrete;
 using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Business.Concrete
 {
@@ -27,43 +29,29 @@ namespace Business.Concrete
             _validator = validator;
         }
 
-        public IResult Add(FaqCreateDto dto)
+        public IResult Add(FaqCreateDto dto, out List<ValidationFailure> errors)
         {
             var model = FaqMapper.ToModel(dto);
             var validator = _validator.Validate(model);
-            string errorMessage = "";
-
-            foreach (var item in validator.Errors)
-            {
-                errorMessage = item.ErrorMessage;
-            }
+            errors = validator.Errors;
 
             if (!validator.IsValid)
-            {
-                return new ErrorResult(errorMessage);
-            }
+                return new ErrorResult();
 
             _faqDal.Add(model);
 
             return new SuccessResult(UiMessages.SuccessAddedMessage("Sual"));
         }
-        public IResult Update(FaqUpdateDto dto)
+        public IResult Update(FaqUpdateDto dto, out List<ValidationFailure> errors)
         {
             var model = FaqMapper.ToModel(dto);
             model.UpdatedDate = DateTime.Now;
             var validator = _validator.Validate(model);
 
-            string errorMessage = "";
-
-            foreach (var item in validator.Errors)
-            {
-                errorMessage = item.ErrorMessage;
-            }
+            errors = validator.Errors;
 
             if (!validator.IsValid)
-            {
-                return new ErrorResult(errorMessage);
-            }
+                return new ErrorResult();
 
             _faqDal.Update(model);
             return new SuccessResult(UiMessages.SuccessUpdatedMessage("Sual"));

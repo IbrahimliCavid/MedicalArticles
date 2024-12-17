@@ -1,5 +1,6 @@
 ﻿using Core.Results.Abstract;
 using Entities.Dtos;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ namespace Business.Abstract
 {
     public interface IHealthTipItemService
     {
-        IResult Add(HealthTipItemCreateDto dto);
-        IResult Update(HealthTipItemUpdateDto dto);
+        IResult Add(HealthTipItemCreateDto dto, out List<ValidationFailure> errors);
+        IResult Update(HealthTipItemUpdateDto dto, out List<ValidationFailure> errors);
         IDataResult<List<HealthTipItemDto>> GetAll();
         IDataResult<List<HealthTipItemDto>> GetAllDeleted();
         IDataResult<HealthTipItemDto> GetById(int id);

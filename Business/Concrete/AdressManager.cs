@@ -7,6 +7,7 @@ using DataAccess.Abstract;
 using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
+using FluentValidation.Results;
 
 namespace Business.Concrete
 {
@@ -21,20 +22,14 @@ namespace Business.Concrete
             _validator = validator;
         }
 
-        public IResult Add(AdressCreateDto dto)
+        public IResult Add(AdressCreateDto dto, out List<ValidationFailure> errors)
         {
             Adress model = AdressCreateDto.ToAdress(dto);
             var validator = _validator.Validate(model);
-
-            string errorMessage = "";
-
-            foreach(var error in validator.Errors)
-            {
-                errorMessage = error.ErrorMessage;
-            }
+            errors = validator.Errors;
 
             if(!validator.IsValid) 
-                return new ErrorResult(errorMessage);
+                return new ErrorResult();
 
             _adressDal.Add(model);
 
@@ -81,10 +76,14 @@ namespace Business.Concrete
             return new SuccessResult(UiMessages.SuccessCopyTrashMessage(model.Email));
         }
 
-        public IResult Update(AdressUpdateDto dto)
+        public IResult Update(AdressUpdateDto dto, out List<ValidationFailure> errors)
         {
             Adress model = AdressUpdateDto.ToAdress(dto);
             Adress existData = GetById(model.Id).Data;
+            var validator = _validator.Validate(model);
+            errors = validator.Errors;
+            if (!validator.IsValid)
+                return new ErrorResult();
 
             model.UpdatedDate = DateTime.Now;
             _adressDal.Update(model);

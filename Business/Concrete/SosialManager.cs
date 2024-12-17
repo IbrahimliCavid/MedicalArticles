@@ -7,6 +7,7 @@ using DataAccess.Abstract;
 using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,19 +27,14 @@ namespace Business.Concrete
             _validator = validator;
         }
 
-        public IResult Add(SosialCreateDto dto)
+        public IResult Add(SosialCreateDto dto, out List<ValidationFailure> errors)
         {
             Sosial model = SosialMapper.ToModel(dto);
             var validator = _validator.Validate(model);
-
-            string errorMesage = string.Empty;
-            foreach (var error in validator.Errors)
-            {
-                errorMesage = error.ErrorMessage;
-            }
+            errors = validator.Errors;
 
             if (!validator.IsValid)
-                return new ErrorResult(errorMesage);
+                return new ErrorResult();
             _sosialDal.Add(model);
             return new SuccessResult(UiMessages.SuccessAddedMessage("Məlumat"));
         }
@@ -56,9 +52,14 @@ namespace Business.Concrete
             return new SuccessDataResult<SosialDto>(SosialMapper.ToDto(data));
         }
 
-        public IResult Update(SosialUpdateDto dto)
+        public IResult Update(SosialUpdateDto dto, out List<ValidationFailure> errors)
         {
             var model = SosialMapper.ToModel(dto);
+            var validator = _validator.Validate(model);
+            errors = validator.Errors;
+
+            if (!validator.IsValid)
+                return new ErrorResult();
             model.UpdatedDate = DateTime.Now;
             _sosialDal.Update(model);
             return new SuccessResult(UiMessages.SuccessUpdatedMessage("Məlumat"));

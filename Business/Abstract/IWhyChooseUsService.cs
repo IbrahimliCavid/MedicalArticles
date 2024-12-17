@@ -1,5 +1,6 @@
 ﻿using Core.Results.Abstract;
 using Entities.Dtos;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,8 @@ namespace Business.Abstract
 {
     public interface IWhyChooseUsService
     {
-        IResult Add(WhyChooseUsCreateDto dto, IFormFile photoUrl, string webRootPath);
-        IResult Update(WhyChooseUsUpdateDto dto, IFormFile photoUrl, string webRootPath);
+        IResult Add(WhyChooseUsCreateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors);
+        IResult Update(WhyChooseUsUpdateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors);
         IResult SoftDelete(int id);
         IResult HardDelete(int id);
         IDataResult<List<WhyChooseUsDto>> GetAll();

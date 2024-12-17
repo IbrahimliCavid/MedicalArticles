@@ -1,8 +1,10 @@
 ﻿using Business.Abstract;
 using Business.Mapper;
 using Entities.Dtos;
+using FluentValidation.Results;
 using MedicalArticles.Services;
 using Microsoft.AspNetCore.Mvc;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
 {
@@ -36,10 +38,14 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         {
             ViewData["Languages"] = _languageService.GetAll().Data;
 
-            var result = _adressService.Add(dto);
+            var result = _adressService.Add(dto, out List<ValidationFailure> errors);
             if (!result.IsSuccess)
             {
-                ModelState.AddModelError("Name", result.Message);
+                ModelState.Clear();
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+                }
                 return View(dto);
             }
 
@@ -62,10 +68,14 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         {
             ViewData["Languages"] = _languageService.GetAll().Data;
 
-            var result = _adressService.Update(dto);
+            var result = _adressService.Update(dto, out List<ValidationFailure> errors);
             if (!result.IsSuccess)
             {
-                ModelState.AddModelError("", result.Message);
+                 ModelState.Clear();
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+                }
                 return View(dto);
             }
             return RedirectToAction("Index");

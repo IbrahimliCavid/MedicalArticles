@@ -8,12 +8,14 @@ using DataAccess.Abstract;
 using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Business.Concrete
 {
@@ -28,24 +30,16 @@ namespace Business.Concrete
             _whyChooseUsDal = whyChooseUsDal;
         }
 
-        public IResult Add(WhyChooseUsCreateDto dto, IFormFile photoUrl, string webRootPath)
+        public IResult Add(WhyChooseUsCreateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
             WhyChooseUs model = WhyChooseUsMapper.ToModel(dto);
             var validator = _validator.Validate(model);
             model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
 
-            string errorMessage = "";
-
-            foreach (var error in validator.Errors)
-            {
-                errorMessage = error.ErrorMessage;
-            }
+            errors = validator.Errors;
 
             if (!validator.IsValid)
-            {
-                return new ErrorResult(errorMessage);
-            }
-
+                return new ErrorResult();
             _whyChooseUsDal.Add(model);
 
             return new SuccessResult(UiMessages.SuccessAddedMessage(""));
@@ -55,7 +49,7 @@ namespace Business.Concrete
         {
             var data = _whyChooseUsDal.GetAll(x => x.Deleted == 0);
             return new SuccessDataResult<List<WhyChooseUsDto>>(WhyChooseUsMapper.ToDto(data));
-        } 
+        }
         public IDataResult<List<WhyChooseUsDto>> GetAllByLanguage(string culture)
         {
             var data = _whyChooseUsDal.GetAllWhyUsWithItems(culture);
@@ -99,10 +93,15 @@ namespace Business.Concrete
             return new SuccessResult(UiMessages.SuccessCopyTrashMessage(""));
         }
 
-        public IResult Update(WhyChooseUsUpdateDto dto, IFormFile photoUrl, string webRootPath)
+        public IResult Update(WhyChooseUsUpdateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
             WhyChooseUs model = WhyChooseUsMapper.ToModel(dto);
             WhyChooseUs existData = WhyChooseUsMapper.ToModel(GetById(model.Id).Data);
+            var validator = _validator.Validate(model);
+            errors = validator.Errors;
+
+            if (!validator.IsValid)
+                return new ErrorResult();
 
             if (photoUrl is null)
                 model.PhotoUrl = existData.PhotoUrl;

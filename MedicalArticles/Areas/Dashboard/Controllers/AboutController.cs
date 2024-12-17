@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Mapper;
 using Entities.Dtos;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
@@ -34,13 +35,18 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Create(AboutCreateDto dto, IFormFile photoUrl)
         {
-            var result = _aboutService.Add(dto, photoUrl, _webEnv.WebRootPath);
-            ViewData["Langauges"] = _languageService.GetAll().Data; 
+            var result = _aboutService.Add(dto, photoUrl, _webEnv.WebRootPath, out List<ValidationFailure> errors);
+            ViewData["Langauges"] = _languageService.GetAll().Data;
             if (!result.IsSuccess)
             {
-                ModelState.AddModelError("Name", result.Message);
+                ModelState.Clear();
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+                }
                 return View(dto);
             }
+
 
             return RedirectToAction("Index");
         }
@@ -57,12 +63,17 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
 
         public IActionResult Edit(AboutUpdateDto dto, IFormFile photoUrl)
         {
-            var result = _aboutService.Update(dto, photoUrl, _webEnv.WebRootPath);
+            var result = _aboutService.Update(dto, photoUrl, _webEnv.WebRootPath, out List<ValidationFailure> errors);
             if (!result.IsSuccess)
             {
-                ModelState.AddModelError("", result.Message);
+                ModelState.Clear();
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+                }
                 return View(dto);
             }
+
             return RedirectToAction("Index");
         }
 

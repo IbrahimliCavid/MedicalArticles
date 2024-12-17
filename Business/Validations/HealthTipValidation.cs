@@ -31,19 +31,19 @@ namespace Business.Validations
 
             RuleFor(x => x.Header)
                .MinimumLength(3)
-               .WithMessage(UiMessages.MinLenghtMessage("Başlıq", 3))
+               .WithMessage(UiMessages.MinLenghtMessage("Vəzifə", 3))
                .MaximumLength(300)
-               .WithMessage(UiMessages.MaxLenghtMessage("Başlıq", 300))
+               .WithMessage(UiMessages.MaxLenghtMessage("Vəzifə", 300))
                .NotEmpty()
-               .WithMessage(UiMessages.NotEmptyMessage("Başlıq"));
+               .WithMessage(UiMessages.NotEmptyMessage("Vəzifə"));
 
             RuleFor(x => x.Title)
                 .MinimumLength(3)
-                .WithMessage(UiMessages.MinLenghtMessage("Bu xana", 3))
+                .WithMessage(UiMessages.MinLenghtMessage("Mövzu", 3))
                 .MaximumLength(300)
-                .WithMessage(UiMessages.MaxLenghtMessage("Bu xana", 300))
+                .WithMessage(UiMessages.MaxLenghtMessage("Mövzu", 300))
                 .NotEmpty()
-                .WithMessage(UiMessages.NotEmptyMessage("Bu xana"));
+                .WithMessage(UiMessages.NotEmptyMessage("Mövzu"));
 
             RuleFor(x => x.Description)
                 .MinimumLength(3)

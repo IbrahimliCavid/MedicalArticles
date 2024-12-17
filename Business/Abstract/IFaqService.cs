@@ -1,5 +1,6 @@
 ﻿using Core.Results.Abstract;
 using Entities.Dtos;
+using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,8 @@ namespace Business.Abstract
 {
     public interface IFaqService
     {
-        IResult Add(FaqCreateDto dto);
-        IResult Update(FaqUpdateDto dto);
+        IResult Add(FaqCreateDto dto, out List<ValidationFailure> errors);
+        IResult Update(FaqUpdateDto dto, out List<ValidationFailure> errors);
         IDataResult<List<FaqDto>> GetAll();
         IDataResult<List<FaqDto>> GetAllByLanguage(string culture);
         IDataResult<List<FaqDto>> GetAllDeleted();

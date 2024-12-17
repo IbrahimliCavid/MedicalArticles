@@ -7,6 +7,7 @@ using DataAccess.Abstract;
 using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,43 +27,30 @@ namespace Business.Concrete
             _validator = validator;
         }
 
-        public IResult Add(HealthTipItemCreateDto dto)
+        public IResult Add(HealthTipItemCreateDto dto, out List<ValidationFailure> errors)
         {
             var model = HealthTipItemMapper.ToModel(dto);
             var validator = _validator.Validate(model);
-            string errorMessage = "";
 
-            foreach (var item in validator.Errors)
-            {
-                errorMessage = item.ErrorMessage;
-            }
+            errors = validator.Errors;
 
             if (!validator.IsValid)
-            {
-                return new ErrorResult(errorMessage);
-            }
+                return new ErrorResult();
 
             _healthTipItemDal.Add(model);
 
             return new SuccessResult(UiMessages.SuccessAddedMessage("Sual"));
         }
-        public IResult Update(HealthTipItemUpdateDto dto)
+        public IResult Update(HealthTipItemUpdateDto dto, out List<ValidationFailure> errors)
         {
             var model = HealthTipItemMapper.ToModel(dto);
             model.UpdatedDate = DateTime.Now;
             var validator = _validator.Validate(model);
 
-            string errorMessage = "";
-
-            foreach (var item in validator.Errors)
-            {
-                errorMessage = item.ErrorMessage;
-            }
+            errors = validator.Errors;
 
             if (!validator.IsValid)
-            {
-                return new ErrorResult(errorMessage);
-            }
+                return new ErrorResult();
 
             _healthTipItemDal.Update(model);
             return new SuccessResult(UiMessages.SuccessUpdatedMessage("Sual"));

@@ -8,9 +8,11 @@ using DataAccess.Abstract;
 using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,23 +30,21 @@ namespace Business.Concrete
             _validator = validator;
             _serviceAboutDal = serviceAboutDal;
         }
-
-        public IResult Add(ServiceAboutCreateDto dto, IFormFile photoUrl, string webRootPath)
+        public class Test
+        {
+            public string PropertyName { get; set; }
+            public string ErrorMessage { get; set; }
+        } 
+        public IResult Add(ServiceAboutCreateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
             ServiceAbout model = ServiceAboutMapper.ToModel(dto);
-            var validator = _validator.Validate(model);
+             var validator = _validator.Validate(model);
             model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
-
-            string errorMessage = "";
-
-            foreach (var error in validator.Errors)
-            {
-                errorMessage = error.ErrorMessage;
-            }
-
+            errors = validator.Errors;
+        
             if (!validator.IsValid)
             {
-                return new ErrorResult(errorMessage);
+                   return new ErrorResult();
             }
 
             _serviceAboutDal.Add(model);
@@ -101,11 +101,16 @@ namespace Business.Concrete
             return new SuccessResult(UiMessages.SuccessCopyTrashMessage(data.Title));
         }
 
-        public IResult Update(ServiceAboutUpdateDto dto, IFormFile photoUrl, string webRootPath)
+        public IResult Update(ServiceAboutUpdateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
             ServiceAbout model = ServiceAboutMapper.ToModel(dto);
             ServiceAbout existData = ServiceAboutMapper.ToModel(GetById(model.Id).Data);
-
+            var validator = _validator.Validate(model);
+            errors = validator.Errors;
+            if (!validator.IsValid)
+            {
+                return new ErrorResult();
+            }
             if (photoUrl is null)
                 model.PhotoUrl = existData.PhotoUrl;
             else

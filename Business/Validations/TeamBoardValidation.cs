@@ -1,6 +1,7 @@
 ﻿using Business.BaseMessages;
 using Entities.TableModels;
 using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,9 @@ namespace Business.Validations
 {
     public class TeamBoardValidation : AbstractValidator<TeamBoard>
     {
-        public TeamBoardValidation() {
+
+        public TeamBoardValidation()
+        {
             RuleFor(x => x.Name)
                  .MinimumLength(3)
                  .WithMessage(UiMessages.MinLenghtMessage("Ad", 3))
@@ -53,12 +56,14 @@ namespace Business.Validations
              .WithMessage(UiMessages.NotEmptyMessage("Url"));
 
             RuleFor(x => x.InstagramUrl)
-             .MinimumLength(3)
-             .WithMessage(UiMessages.MinLenghtMessage("Url", 3))
-             .MaximumLength(200)
-             .WithMessage(UiMessages.MaxLenghtMessage("Url", 200))
-             .NotEmpty()
-             .WithMessage(UiMessages.NotEmptyMessage("Url"));
+             .MinimumLength(3).WithMessage(UiMessages.MinLenghtMessage("Url", 3))
+             .MaximumLength(200).WithMessage(UiMessages.MaxLenghtMessage("Url", 200))
+             .NotEmpty().WithMessage(UiMessages.NotEmptyMessage("Url"));
+
+            RuleFor(x => x.PhotoUrl)
+               .NotNull().WithMessage(UiMessages.NotEmptyMessage("photo"));
+
         }
+
     }
 }

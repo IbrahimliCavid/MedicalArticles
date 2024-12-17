@@ -1,5 +1,6 @@
 ﻿using Core.Results.Abstract;
 using Entities.Dtos;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,8 @@ namespace Business.Abstract
 {
     public interface IWhyChooseUsItemService
     {
-        IResult Add(WhyChooseUsItemCreateDto dto);
-        IResult Update(WhyChooseUsItemUpdateDto dto);
+        IResult Add(WhyChooseUsItemCreateDto dto, out List<ValidationFailure> errors);
+        IResult Update(WhyChooseUsItemUpdateDto dto, out List<ValidationFailure> errors);
         IResult SoftDelete(int id);
         IResult HardDelete(int id);
         IDataResult<List<WhyChooseUsItemDto>> GetAll();

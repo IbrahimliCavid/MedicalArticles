@@ -2,7 +2,9 @@
 using Business.Mapper;
 using DataAccess.Abstract;
 using Entities.Dtos;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
 {
@@ -35,12 +37,16 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpPost]
         public IActionResult Create(HealthTipItemCreateDto dto)
         {
-            var result = _healthTipItemService.Add(dto);
+            var result = _healthTipItemService.Add(dto, out List<ValidationFailure> errors);
 
             if (!result.IsSuccess)
             {
                 ModelState.Clear();
-                ModelState.AddModelError($"", result.Message);
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+                }
+               
                 ViewData["HealthTip"] = _healthTipService.GetAll().Data;
                 return View(dto);
             }
@@ -61,10 +67,15 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpPost]
         public IActionResult Edit(HealthTipItemUpdateDto dto)
         {
-            var result = _healthTipItemService.Update(dto);
+            var result = _healthTipItemService.Update(dto, out List<ValidationFailure> errors);
             if (!result.IsSuccess)
             {
-                ModelState.AddModelError($"", result.Message);
+                ModelState.Clear();
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+                }
+
                 ViewData["HealthTip"] = _healthTipService.GetAll().Data;
                 return View(dto);
             }

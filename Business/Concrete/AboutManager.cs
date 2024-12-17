@@ -8,7 +8,9 @@ using DataAccess.Abstract;
 using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace Business.Concrete
 {
@@ -23,23 +25,16 @@ namespace Business.Concrete
             _aboutDal = aboutDal;
         }
 
-        public IResult Add(AboutCreateDto dto, IFormFile photoUrl, string webRootPath)
+        public IResult Add(AboutCreateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
             About model = AboutCreateDto.ToAbout(dto);
             var validator = _validator.Validate(model);
-            model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);  
+            model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
 
-            string errorMessage = "";
+            errors = validator.Errors;
 
-            foreach(var error in validator.Errors)
-            {
-                errorMessage = error.ErrorMessage;
-            }
-
-            if(!validator.IsValid)
-            {
-                return new ErrorResult(errorMessage);
-            }
+            if (!validator.IsValid)
+                return new ErrorResult();
 
             _aboutDal.Add(model);
 
@@ -88,12 +83,16 @@ namespace Business.Concrete
             return new  SuccessResult(UiMessages.SuccessCopyTrashMessage(data.Title));
         }
 
-        public IResult Update(AboutUpdateDto dto, IFormFile photoUrl, string webRootPath)
+        public IResult Update(AboutUpdateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
             About model = AboutUpdateDto.ToAbout(dto);
             About existData = GetById(model.Id).Data;
-            
-            if(photoUrl is null)
+            var validator = _validator.Validate(model);
+            errors = validator.Errors;
+
+            if (!validator.IsValid)
+                return new ErrorResult();
+            if (photoUrl is null)
                 model.PhotoUrl = existData.PhotoUrl;
             else
                 model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);

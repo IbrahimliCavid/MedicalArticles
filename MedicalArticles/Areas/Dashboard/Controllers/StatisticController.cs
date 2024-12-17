@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Mapper;
 using Entities.Dtos;
+using FluentValidation.Results;
 using MedicalArticles.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,10 +38,14 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         {
             ViewData["Languages"] = _languageService.GetAll().Data;
 
-            var result = _statisticService.Add(dto);
+            var result = _statisticService.Add(dto, out List<ValidationFailure> errors);
             if (!result.IsSuccess)
             {
-                ModelState.AddModelError("", result.Message);
+                ModelState.Clear();
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+                }
                 return View(dto);
             }
 
@@ -63,10 +68,14 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         {
             ViewData["Languages"] = _languageService.GetAll().Data;
 
-            var result = _statisticService.Update(dto);
+            var result = _statisticService.Update(dto, out List<ValidationFailure> errors);
             if (!result.IsSuccess)
             {
-                ModelState.AddModelError("", result.Message);
+                ModelState.Clear();
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+                }
                 return View(dto);
             }
             return RedirectToAction("Index");

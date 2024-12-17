@@ -8,9 +8,11 @@ using DataAccess.Abstract;
 using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,23 +30,16 @@ namespace Business.Concrete
             _healthTipDal = healthTipDal;
         }
 
-        public IResult Add(HealthTipCreateDto dto, IFormFile photoUrl, string webRootPath)
+        public IResult Add(HealthTipCreateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
             HealthTip model = HealthTipMapper.ToModel(dto);
             var validator = _validator.Validate(model);
             model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
-
-            string errorMessage = "";
-
-            foreach (var error in validator.Errors)
-            {
-                errorMessage = error.ErrorMessage;
-            }
+            errors = validator.Errors;
 
             if (!validator.IsValid)
-            {
-                return new ErrorResult(errorMessage);
-            }
+                return new ErrorResult();
+          
 
             _healthTipDal.Add(model);
 
@@ -98,11 +93,15 @@ namespace Business.Concrete
             return new SuccessResult(UiMessages.SuccessCopyTrashMessage(data.Title));
         }
 
-        public IResult Update(HealthTipUpdateDto dto, IFormFile photoUrl, string webRootPath)
+        public IResult Update(HealthTipUpdateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
             HealthTip model = HealthTipMapper.ToModel(dto);
             HealthTip existData = GetById(model.Id).Data;
+            var validator = _validator.Validate(model);
+            errors = validator.Errors;
 
+            if (!validator.IsValid)
+                return new ErrorResult();
             if (photoUrl is null)
                 model.PhotoUrl = existData.PhotoUrl;
             else

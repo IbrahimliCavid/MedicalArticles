@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Mapper;
 using Entities.Dtos;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
@@ -33,12 +34,15 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpPost]
         public IActionResult Create(WhyChooseUsItemCreateDto dto)
         {
-            var result = _usItemService.Add(dto);
-
+            var result = _usItemService.Add(dto, out List<ValidationFailure> errors);
             if (!result.IsSuccess)
             {
                 ModelState.Clear();
-                ModelState.AddModelError($"", result.Message);
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+
+                }
                 ViewData["WhyUs"] = _usService.GetAll().Data;
                 return View(dto);
             }
@@ -59,10 +63,14 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         [HttpPost]
         public IActionResult Edit(WhyChooseUsItemUpdateDto dto)
         {
-            var result = _usItemService.Update(dto);
+            var result = _usItemService.Update(dto, out List<ValidationFailure> errors);
             if (!result.IsSuccess)
             {
-                ModelState.AddModelError($"", result.Message);
+                ModelState.Clear();
+                foreach (var error in errors) { 
+                ModelState.AddModelError($"{error.PropertyName}", error.ErrorMessage);
+
+                }
                 ViewData["WhyUs"] = _usService.GetAll().Data;
                 return View(dto);
             }

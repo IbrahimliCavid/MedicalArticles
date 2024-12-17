@@ -1,5 +1,6 @@
 ﻿using Core.Results.Abstract;
 using Entities.Dtos;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,8 @@ namespace Business.Abstract
 {
     public interface IServiceService
     {
-        IResult Add(ServiceCreateDto dto, IFormFile photoUrl, string webRootPath);
-        IResult Update(ServiceUpdateDto dto, IFormFile photoUrl, string webRootPath);
+        IResult Add(ServiceCreateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors);
+        IResult Update(ServiceUpdateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors);
         IDataResult<List<ServiceDto>> GetAll();
         IDataResult<List<ServiceDto>> GetAllByLanguage(string culture);
         IDataResult<List<ServiceDto>> GetAllDeleted();
