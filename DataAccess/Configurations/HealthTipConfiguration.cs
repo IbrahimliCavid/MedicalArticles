@@ -49,7 +49,9 @@ namespace DataAccess.Configurations
                 .IsRequired()
                 .HasMaxLength(200);
 
-            
+            builder.HasIndex(x => x.LanguageId)
+               .IsUnique();
+
         }
     }
 }

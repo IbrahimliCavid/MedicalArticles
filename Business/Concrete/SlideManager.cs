@@ -23,17 +23,18 @@ namespace Business.Concrete
     {
         private readonly ISlideDal _slideDal;
         private readonly IValidator<Slide> _validator;
+        private readonly IValidator<SlideCreateDto> _validatorCreate;
 
-        public SlideManager(IValidator<Slide> validator, ISlideDal slideDal)
+        public SlideManager(IValidator<Slide> validator, ISlideDal slideDal, IValidator<SlideCreateDto> validatorCreate)
         {
             _validator = validator;
             _slideDal = slideDal;
+            _validatorCreate = validatorCreate;
         }
 
         public IResult Add(SlideCreateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
-            Slide model = SlideCreateDto.ToSlide(dto);
-            var validator = _validator.Validate(model);
+            var validator = _validatorCreate.Validate(dto);
 
 
             errors = validator.Errors;
@@ -46,6 +47,7 @@ namespace Business.Concrete
                 
 
 
+            Slide model = SlideCreateDto.ToSlide(dto);
             model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
             _slideDal.Add(model);
 

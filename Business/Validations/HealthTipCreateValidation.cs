@@ -1,5 +1,6 @@
 ﻿using Business.BaseMessages;
 using DataAccess.SqlServerDBContext;
+using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
 using System;
@@ -10,10 +11,15 @@ using System.Threading.Tasks;
 
 namespace Business.Validations
 {
-    public class HealthTipValidation : AbstractValidator<HealthTip>
+    public class HealthTipCreateValidation : AbstractValidator<HealthTipCreateDto>
     {
-        public HealthTipValidation()
+        private readonly ApplicationDbContext _context;
+        public HealthTipCreateValidation(ApplicationDbContext context)
         {
+            _context = context;
+            RuleFor(x => x.LanguageId)
+            .Must(languageId => !_context.HealthTips.Any(a => a.LanguageId == languageId))
+            .WithMessage(UiMessages.DublicatLanguageMessage("məlumat"));
 
             RuleFor(x => x.Name)
                 .MinimumLength(3)

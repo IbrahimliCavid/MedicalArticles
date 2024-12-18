@@ -24,11 +24,13 @@ namespace Business.Concrete
     {
         private readonly IServiceAboutDal _serviceAboutDal;
         private readonly IValidator<ServiceAbout> _validator;
+        private readonly IValidator<ServiceAboutCreateDto> _validatorCreate;
 
-        public ServiceAboutManager(IValidator<ServiceAbout> validator, IServiceAboutDal serviceAboutDal)
+        public ServiceAboutManager(IValidator<ServiceAbout> validator, IServiceAboutDal serviceAboutDal, IValidator<ServiceAboutCreateDto> validatorCreate)
         {
             _validator = validator;
             _serviceAboutDal = serviceAboutDal;
+            _validatorCreate = validatorCreate;
         }
         public class Test
         {
@@ -37,8 +39,7 @@ namespace Business.Concrete
         } 
         public IResult Add(ServiceAboutCreateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
-            ServiceAbout model = ServiceAboutMapper.ToModel(dto);
-             var validator = _validator.Validate(model);
+             var validator = _validatorCreate.Validate(dto);
             errors = validator.Errors;
 
             if (!validator.IsValid || photoUrl == null || photoUrl.Length <= 0)
@@ -47,6 +48,7 @@ namespace Business.Concrete
                 return new ErrorResult();
             }
 
+            ServiceAbout model = ServiceAboutMapper.ToModel(dto);
             model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
             _serviceAboutDal.Add(model);
 

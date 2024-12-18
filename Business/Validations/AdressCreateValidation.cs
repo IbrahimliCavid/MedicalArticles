@@ -1,5 +1,6 @@
 ﻿using Business.BaseMessages;
 using DataAccess.SqlServerDBContext;
+using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +12,15 @@ using System.Threading.Tasks;
 
 namespace Business.Validations
 {
-    public class AdressValidation : AbstractValidator<Adress>
+    public class AdressCreateValidation : AbstractValidator<AdressCreateDto>
     {
-        public AdressValidation()
+        private readonly ApplicationDbContext _context;
+        public AdressCreateValidation(ApplicationDbContext context)
         {
+            _context = context;
+            RuleFor(x => x.LanguageId)
+            .Must(languageId => !_context.Adresses.Any(a => a.LanguageId == languageId))
+            .WithMessage(UiMessages.DublicatLanguageMessage("adress"));
 
             RuleFor(x => x.Location)
                 .NotEmpty()
@@ -41,6 +47,7 @@ namespace Business.Validations
               .WithMessage(UiMessages.MaxLenghtMessage("Telefon nömrəsi", 300))
               .MinimumLength(3)
               .WithMessage(UiMessages.MinLenghtMessage("Telefon nömrəsi", 3));
+            _context = context;
         }
 
     }

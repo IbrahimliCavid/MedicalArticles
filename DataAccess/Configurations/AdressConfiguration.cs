@@ -40,6 +40,9 @@ namespace DataAccess.Configurations
                 .HasDefaultValue(null)
            .HasMaxLength(15);
 
+            builder.HasIndex(x => x.LanguageId)
+                .IsUnique();
+
 
 
         }

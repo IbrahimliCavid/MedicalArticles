@@ -26,6 +26,9 @@ namespace DataAccess.Configurations
             builder.Property(x => x.PhotoUrl)
                 .IsRequired()
                 .HasMaxLength(200);
+
+            builder.HasIndex(x => x.LanguageId)
+               .IsUnique();
         }
     }
 }

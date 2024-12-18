@@ -23,17 +23,18 @@ namespace Business.Concrete
     {
         private readonly IHealthTipDal _healthTipDal;
         private readonly IValidator<HealthTip> _validator;
+        private readonly IValidator<HealthTipCreateDto> _validatorCreate;
 
-        public HealthTipManager(IValidator<HealthTip> validator, IHealthTipDal healthTipDal)
+        public HealthTipManager(IValidator<HealthTip> validator, IHealthTipDal healthTipDal, IValidator<HealthTipCreateDto> validatorCreate)
         {
             _validator = validator;
             _healthTipDal = healthTipDal;
+            _validatorCreate = validatorCreate;
         }
 
         public IResult Add(HealthTipCreateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
-            HealthTip model = HealthTipMapper.ToModel(dto);
-            var validator = _validator.Validate(model);
+            var validator = _validatorCreate.Validate(dto);
             errors = validator.Errors;
 
             if (!validator.IsValid || photoUrl == null || photoUrl.Length <= 0)
@@ -43,6 +44,7 @@ namespace Business.Concrete
             }
 
 
+            HealthTip model = HealthTipMapper.ToModel(dto);
             model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
             _healthTipDal.Add(model);
 

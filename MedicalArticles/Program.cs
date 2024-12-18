@@ -6,6 +6,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataAccess.SqlServerDBContext;
 using Entities.Concrete.TableModels.Membership;
+using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
 using FluentValidation.Resources;
@@ -40,6 +41,7 @@ namespace MedicalArticles
             builder.Services.AddScoped<IAdressService, AdressManager>();
             builder.Services.AddScoped<IAdressDal, AdressDal>();
             builder.Services.AddScoped<IValidator<Adress>, AdressValidation>();
+            builder.Services.AddScoped<IValidator<AdressCreateDto>, AdressCreateValidation>();
 
             builder.Services.AddScoped<IContactService, ContactManager>();
             builder.Services.AddScoped<IContactDal, ContactDal>();
@@ -57,6 +59,7 @@ namespace MedicalArticles
             builder.Services.AddScoped<ISlideService, SlideManager>();
             builder.Services.AddScoped<ISlideDal, SlideDal>();
             builder.Services.AddScoped<IValidator<Slide>, SlideValidation>();
+            builder.Services.AddScoped<IValidator<SlideCreateDto>, SlideCreateValidation>();
 
             builder.Services.AddScoped<IServiceService, ServiceManager>();
             builder.Services.AddScoped<IServiceDal, ServiceDal>();
@@ -65,6 +68,7 @@ namespace MedicalArticles
             builder.Services.AddScoped<IServiceAboutService, ServiceAboutManager>();
             builder.Services.AddScoped<IServiceAboutDal, ServiceAboutDal>();
             builder.Services.AddScoped<IValidator<ServiceAbout>, ServiceAboutValidation>();
+            builder.Services.AddScoped<IValidator<ServiceAboutCreateDto>, ServiceAboutCreateValidation>();
 
             builder.Services.AddScoped<IServiceAboutItemService, ServiceAboutItemManager>();
             builder.Services.AddScoped<IServiceAboutItemDal, ServiceAboutItemDal>();
@@ -77,6 +81,7 @@ namespace MedicalArticles
             builder.Services.AddScoped<IHealthTipService, HealthTipManager>();
             builder.Services.AddScoped<IHealthTipDal, HealthTipDal>();
             builder.Services.AddScoped<IValidator<HealthTip>, HealthTipValidation>();
+            builder.Services.AddScoped<IValidator<HealthTipCreateDto>, HealthTipCreateValidation>();
 
             builder.Services.AddScoped<IHealthTipItemService, HealthTipItemManager>();
             builder.Services.AddScoped<IHealthTipItemDal, HealthTipItemDal>();
@@ -85,6 +90,7 @@ namespace MedicalArticles
             builder.Services.AddScoped<IWhyChooseUsService, WhyChooseUsManager>();
             builder.Services.AddScoped<IWhyChooseUsDal, WhyChooseUsDal>();
             builder.Services.AddScoped<IValidator<WhyChooseUs>, WhyChooseUsValidation>();
+            builder.Services.AddScoped<IValidator<WhyChooseUsCreateDto>, WhyChooseUsCreateValidation>();
 
             builder.Services.AddScoped<IWhyChooseUsItemService, WhyChooseUsItemManager>();
             builder.Services.AddScoped<IWhyChooseUsItemDal, WhyChooseUsItemDal>();

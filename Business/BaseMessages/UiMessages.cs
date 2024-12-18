@@ -42,5 +42,10 @@ namespace Business.BaseMessages
         {
             return $"Email düzgün daxil edin!";
         }
+
+        public static string DublicatLanguageMessage(string propName)
+        {
+            return $"Bu dildə {propName} artıq mövcuddur! Başqa dil ilə əlavə et.";
+        }
     }
 }

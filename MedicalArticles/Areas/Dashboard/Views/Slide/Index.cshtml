@@ -5,11 +5,14 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <form action="Slide/Create" method="get">
-                    <p>
-                        <button class="btn btn-primary">Əlavə et</button>
-                    </p>
-                </form>
+                @if (ViewBag.ShowButton)
+                {
+                    <form action="Slide/Create" method="get">
+                        <p>
+                            <button class="btn btn-primary">Əlavə et</button>
+                        </p>
+                    </form>
+                }
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>

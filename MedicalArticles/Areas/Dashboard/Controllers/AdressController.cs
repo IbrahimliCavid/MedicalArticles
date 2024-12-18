@@ -22,7 +22,7 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
         public IActionResult Index()
         {
             var data = _adressService.GetAll().Data;
-            ViewBag.ShowButton = data.Count == 0;
+            ViewBag.ShowButton = data.Count < 3;
             return View(data);
         }
 

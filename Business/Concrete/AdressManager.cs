@@ -15,22 +15,24 @@ namespace Business.Concrete
     {
         private readonly IAdressDal _adressDal;
         private readonly IValidator<Adress> _validator;
+        private readonly IValidator<AdressCreateDto> _validatorCreate;
 
-        public AdressManager(IAdressDal adressDal, IValidator<Adress> validator)
+        public AdressManager(IAdressDal adressDal, IValidator<Adress> validator, IValidator<AdressCreateDto> validatorCreate)
         {
             _adressDal = adressDal;
             _validator = validator;
+            _validatorCreate = validatorCreate;
         }
 
         public IResult Add(AdressCreateDto dto, out List<ValidationFailure> errors)
         {
-            Adress model = AdressCreateDto.ToAdress(dto);
-            var validator = _validator.Validate(model);
+            var validator = _validatorCreate.Validate(dto);
             errors = validator.Errors;
 
             if(!validator.IsValid) 
                 return new ErrorResult();
 
+            Adress model = AdressCreateDto.ToAdress(dto);
             _adressDal.Add(model);
 
             return new SuccessResult(UiMessages.SuccessAddedMessage(model.Email));

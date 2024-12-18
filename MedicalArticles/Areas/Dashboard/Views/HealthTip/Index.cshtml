@@ -6,11 +6,14 @@
         <div class="card-body">
             <div class="table-responsive">
 
+                @if (ViewBag.ShowButton)
+                {
                     <form action="HealthTip/Create" method="get">
                         <p>
                             <button class="btn btn-primary">Əlavə et</button>
                         </p>
                     </form>
+                }
                 
 
 

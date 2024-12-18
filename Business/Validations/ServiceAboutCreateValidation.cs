@@ -1,5 +1,6 @@
 ﻿using Business.BaseMessages;
 using DataAccess.SqlServerDBContext;
+using Entities.Dtos;
 using Entities.TableModels;
 using FluentValidation;
 using System;
@@ -10,10 +11,15 @@ using System.Threading.Tasks;
 
 namespace Business.Validations
 {
-    public class ServiceAboutValidation : AbstractValidator<ServiceAbout>
+    public class ServiceAboutCreateValidation : AbstractValidator<ServiceAboutCreateDto>
     {
-        public ServiceAboutValidation()
+        private readonly ApplicationDbContext _context;
+        public ServiceAboutCreateValidation(ApplicationDbContext context)
         {
+            _context = context;
+            RuleFor(x => x.LanguageId)
+            .Must(languageId => !_context.ServiceAbouts.Any(a => a.LanguageId == languageId))
+            .WithMessage(UiMessages.DublicatLanguageMessage("məlumat"));
 
             RuleFor(x => x.Title)
                    .MinimumLength(3)

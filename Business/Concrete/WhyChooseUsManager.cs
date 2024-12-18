@@ -23,17 +23,18 @@ namespace Business.Concrete
     {
         private readonly IWhyChooseUsDal _whyChooseUsDal;
         private readonly IValidator<WhyChooseUs> _validator;
+        private readonly IValidator<WhyChooseUsCreateDto> _validatorCreate;
 
-        public WhyChooseUsManager(IValidator<WhyChooseUs> validator, IWhyChooseUsDal whyChooseUsDal)
+        public WhyChooseUsManager(IValidator<WhyChooseUs> validator, IWhyChooseUsDal whyChooseUsDal, IValidator<WhyChooseUsCreateDto> validatorCreate)
         {
             _validator = validator;
             _whyChooseUsDal = whyChooseUsDal;
+            _validatorCreate = validatorCreate;
         }
 
         public IResult Add(WhyChooseUsCreateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
-            WhyChooseUs model = WhyChooseUsMapper.ToModel(dto);
-            var validator = _validator.Validate(model);
+            var validator = _validatorCreate.Validate(dto);
 
             errors = validator.Errors;
 
@@ -42,6 +43,7 @@ namespace Business.Concrete
                 errors.Add(new ValidationFailure("PhotoUrl", UiMessages.NotEmptyMessage("Foto")));
                 return new ErrorResult();
             }
+            WhyChooseUs model = WhyChooseUsMapper.ToModel(dto);
             model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
             _whyChooseUsDal.Add(model);
 
