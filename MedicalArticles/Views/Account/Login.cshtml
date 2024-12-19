@@ -1,0 +1,37 @@
+﻿@using Entities.Dtos.Memberships
+@model LoginDto
+
+
+<div class="modal-dialog modal-dialog-centered shadow-lg" style="width:300px; ">
+    <div class="modal-content"
+        <div class="modal-body">
+            <div class="cl-login-form" style="padding :10px" >
+                <h2 class="cl-login-title">Login</h2>
+                <form method="post" asp-action="Login" asp-controller="Account" class="user">
+                    @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-danger">
+                                @ViewBag.Message
+                            </div>
+                        </div>
+                    }
+                    <div class="form-group">
+                        <input class="form-control form-control-user"
+                               asp-for="Email" placeholder="Email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-user"
+                               asp-for="Password" placeholder="Password" type="password">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                        Sign In
+                    </button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

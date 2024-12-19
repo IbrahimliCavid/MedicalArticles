@@ -11,6 +11,7 @@ using Entities.TableModels;
 using FluentValidation;
 using FluentValidation.Resources;
 using MedicalArticles.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
 using System.Globalization;
@@ -28,10 +29,27 @@ namespace MedicalArticles
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddAuthentication();
+            builder.Services.AddAuthorization();
       
             builder.Services.AddDbContext<ApplicationDbContext>()
                 .AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequiredLength = 8;
+
+                options.User.RequireUniqueEmail = true;
+            });
+
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.ExpireTimeSpan = TimeSpan.FromDays(365);
+            });
 
 
             builder.Services.AddScoped<IAboutService, AboutManager>();
@@ -146,6 +164,7 @@ namespace MedicalArticles
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             //app.MapControllerRoute(

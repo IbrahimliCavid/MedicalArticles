@@ -2,11 +2,13 @@
 using Business.Mapper;
 using Entities.Dtos;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
 {
     [Area("Dashboard")]
+    [Authorize]
     public class AboutController : Controller
     {
         private readonly IAboutService _aboutService;

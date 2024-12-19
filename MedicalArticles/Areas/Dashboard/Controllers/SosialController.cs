@@ -2,12 +2,15 @@
 using Business.Mapper;
 using Entities.Dtos;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
 {
     [Area("Dashboard")]
+    [Authorize]
+
     public class SosialController : Controller
     {
 

@@ -3,11 +3,14 @@ using Business.Mapper;
 using Entities.Dtos;
 using FluentValidation.Results;
 using MedicalArticles.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalArticles.Areas.Dashboard.Controllers
 {
     [Area("Dashboard")]
+    [Authorize]
+
     public class WhyChooseUsController : Controller
     {
         private readonly IWhyChooseUsService _whyChooseUsService;
