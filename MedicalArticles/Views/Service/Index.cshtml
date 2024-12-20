@@ -33,20 +33,20 @@
                     <!-- Single Item -->
                         @foreach (var item in Model.Services)
                         {
-                                 <div class="item">
-                            <div class="info" ;">
-                                <h4>
-                                    <a href="#">@item.Title</a>
-                                </h4>
-                                <div style="border-radius: 100%; width:100px; height:100px; overflow:hidden; margin-left:auto; margin-right:auto">
-                                       <img src="@item.PhotoUrl" width="100px" />
-                                 </div>
-                                <p>
+                                         <div class="item">
+                                    <div class="info" ;">
+                                        <h4>
+                                            <a href="#">@item.Title</a>
+                                        </h4>
+                                        <div style="border-radius: 100%; width:100px; height:100px; overflow:hidden; margin-left:auto; margin-right:auto">
+                                               <img src="@item.PhotoUrl" width="100px" />
+                                         </div>
+                                        <p>
                                         @item.Description
-                                </p>
-                                <a class="btn btn-theme border circle btn-md" href="#">@_localization.GetKey("ReadMore").Value</a>
-                            </div>
-                        </div>
+                                        </p>
+                                        <a class="btn btn-theme border circle btn-md" href="#">@_localization.GetKey("ReadMore").Value</a>
+                                    </div>
+                                </div>
                         }
 
                     <!-- End Single Item -->
@@ -56,71 +56,81 @@
             </div>
         </div>
     </div>
-<!-- End Services -->
-<!-- Start Why Chose Us
-============================================= -->
-<div class="chose-us-area default-padding item-half">
-    <div class="container">
-        <div class="row">
-            @foreach (var whyUs in Model.WhyUs)
+    <!-- End Services -->
+    <!-- Start Why Chose Us
+    ============================================= -->
+    <div class="chose-us-area default-padding item-half">
+        <div class="container">
+            <div class="row">
+                @foreach (var whyUs in Model.WhyUs)
                 {
-                   <div class="col-md-6 info">
-                <div class="heading">
-                    <h2>@_localization.GetKey("WhyUs").Value</h2>
-                    <p>
-                        @whyUs.Header
-                    </p>
-                </div>
-                <ul>
-                    @foreach (var item in whyUs.WhyChooseUsItems)
+                    <div class="col-md-6 info">
+                        <div class="heading">
+                            <h2>@_localization.GetKey("WhyUs").Value</h2>
+                            <p>
+                                @whyUs.Header
+                            </p>
+                        </div>
+                        <ul>
+                            @foreach (var item in whyUs.WhyChooseUsItems)
                             {
                                 <li>
-                                        <h4>@item.Title</h4>
-                                        <p>
-                                            @item.Description
-                                        </p>
+                                    <h4>@item.Title</h4>
+                                    <p>
+                                        @item.Description
+                                    </p>
                                 </li>
                             }
-                </ul>
-            </div> 
+                        </ul>
+                    </div>
                 }
-           
-            <!-- Start Faq -->
-            <div class="col-md-6 faq-area">
-                <div class="heading">
-                    <h2>@_localization.GetKey("Faq").Value</h2>
-                </div>
-                <div class="acd-items acd-arrow">
-                    <div class="panel-group symb" id="accordion">
 
-                        @foreach (var item in Model.Faqs)
-                            {
-                                <!-- Single Item -->
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#ac1">
-                                                @item.Question
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="ac1" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                            <p>
-                                                @item.Answer
-                                            </p>
-                                           
+                <!-- Start Faq -->
+                <div class="col-md-6 faq-area">
+                    <div class="heading">
+                        <h2>@_localization.GetKey("Faq").Value</h2>
+                    </div>
+                    <div class="acd-items acd-arrow">
+                        <div class="panel-group symb" id="accordion">
+
+                            @{
+                                var i = 1;
+
+                                @foreach (var item in Model.Faqs)
+                                {
+                                    {
+                                        var idValue = $"ac{i}";
+                                        var hrefValue = $"#ac{i}";
+                                        <!-- Single Item -->
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href=@hrefValue>
+                                                        @item.Question
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id=@idValue class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <p>
+                                                        @item.Answer
+                                                    </p>
+
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <!-- End Single Item -->
-                            }
+                                        <!-- End Single Item -->
+                                        i++;
 
+                                    }
+
+                                }
+                            }
+                        </div>
                     </div>
                 </div>
+                <!-- End Faq -->
             </div>
-            <!-- End Faq -->
         </div>
     </div>
-</div>
-<!-- End Why Chose Us -->
+    <!-- End Why Chose Us -->
