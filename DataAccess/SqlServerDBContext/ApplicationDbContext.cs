@@ -38,5 +38,7 @@ namespace DataAccess.SqlServerDBContext
         public DbSet<WhyChooseUsItem> WhyChooseUsItems { get; set; }
         public DbSet<Statistic> Statistics { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     } 
 }
