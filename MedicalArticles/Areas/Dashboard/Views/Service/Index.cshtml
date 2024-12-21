@@ -17,6 +17,7 @@
                             <th>Başlıq</th>
                             <th>Açıqlama</th>
                             <th>Şəkil</th>
+                            <th >Ana səhifədə var?</th>
                             <th style="width:30px;"></th>
                         </tr>
                     </thead>
@@ -27,6 +28,7 @@
                                 <td style="align-content:center;">@item.Title</td>
                                 <td style="align-content:center;">@item.Description</td>
                                 <td style="align-content:center;"> <img src="@item.PhotoUrl" alt="Service Photo" width="100px"/> </td>
+                                <td style="align-content:center;">@(item.IsHomePage ? "Bəli" : "Xeyr")</td>
                                     <td style="align-content:center;">
 
                                     <a asp-action="Edit" asp-route-id="@item.Id" style="cursor:pointer;" title="Redaktə et">

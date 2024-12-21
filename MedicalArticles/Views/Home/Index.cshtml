@@ -1,5 +1,5 @@
-﻿@model HomeViewModel 
- 
+﻿@model HomeViewModel
+
 <!-- Start Banner
 ============================================= -->
 <div class="banner-area text-light gradient-bg standard auto-height">
@@ -11,7 +11,7 @@
             <div class="box-cell">
                 <div class="container">
                     <div class="row">
-                      @foreach (var item in Model.Slides)
+                        @foreach (var item in Model.Slides)
                         {
                             <div class="content double-items">
 
@@ -41,48 +41,52 @@
 <!-- Start top services
 ============================================= -->
 <div class="top-services-area default-padding-bottom default-padding-top">
-   <div class="services-area inc-icon carousel-shadow default-padding-bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="site-heading text-center">
-                    <h2><span>@_localization.GetKey("Service").Value</span></h2>
-                    <p>
+    <div class="services-area inc-icon carousel-shadow default-padding-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h2><span>@_localization.GetKey("Service").Value</span></h2>
+                        <p>
                             Sizin üçün xüsusi olaraq hazırladığımız ən yüksək standartlara uyğun şəkildə təqdim etdiyimiz peşəkar xidmətlər
-                    </p>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="services-items text-center services-carousel owl-carousel owl-theme"
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="services-items text-center services-carousel owl-carousel owl-theme"
                     <!-- Single Item -->
-                    @foreach (var item in Model.Services)
+                        @foreach (var item in Model.Services)
                         {
-                             <div class="item">
-                        <div class="info" ;">
-                            <h4>
-                                <a href="#">@item.Title</a>
-                            </h4>
-                            <div style="border-radius: 100%; width:100px; height:100px; overflow:hidden; margin-left:auto; margin-right:auto">
-                                   <img src="@item.PhotoUrl" width="100px" />
+                            if (item.IsHomePage)
+                            {
+                               <div class="item">
+                                   <div class="info" ;">
+                                      <h4>
+                                         <a href="#">@item.Title</a>
+                                      </h4>
+                                  <div style="border-radius: 100%; width:100px; height:100px; overflow:hidden; margin-left:auto; margin-right:auto">
+                                          <img src="@item.PhotoUrl" width="100px" />
+                                   </div>
+                                        <p>
+                                          @item.Description
+                                       </p>
+                                        <a class="btn btn-theme border circle btn-md" href="#">@_localization.GetKey("ReadMore").Value</a>
+                                   </div>
                              </div>
-                            <p>
-                                @item.Description
-                            </p>
-                            <a class="btn btn-theme border circle btn-md" href="#">@_localization.GetKey("ReadMore").Value</a>
-                        </div>
-                    </div>
+                            }
+
                         }
-                   
+
                     <!-- End Single Item -->
-                   
+
+                </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- End Services -->
+    <!-- End Services -->
     <div class="container default-padding-bottom">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -100,43 +104,42 @@
                 <div class="tab-content">
                     @foreach (var about in Model.ServiceAbouts)
                     {
-                          <div id="tab1" class="tab-pane fade active in">
-                        <div class="row item-flex center">
-                            <div class="col-md-5 thumb">
-                                <img src="@about.PhotoUrl" alt="Thumb">
-                            </div>
-                            <div class="col-md-7 info">
-                                <h2>@about.Title</h2>
-                                <p>
-                                    @about.Description
-                                </p>
-                                <ul>
-                                    @foreach (var item in about.ServiceAboutItems)
+                        <div id="tab1" class="tab-pane fade active in">
+                            <div class="row item-flex center">
+                                <div class="col-md-5 thumb">
+                                    <img src="@about.PhotoUrl" alt="Thumb">
+                                </div>
+                                <div class="col-md-7 info">
+                                    <h2>@about.Title</h2>
+                                    <p>
+                                        @about.Description
+                                    </p>
+                                    <ul>
+                                        @foreach (var item in about.ServiceAboutItems)
                                         {
-                                           <li>@item.Text</li>
-                                            
+                                            <li>@item.Text</li>
+
                                         }
-                                </ul>
-                                <a class="btn circle btn-theme effect btn-md" href="#">@_localization.GetKey("ReadMore").Value</a>
+                                    </ul>
+                                    <a class="btn circle btn-theme effect btn-md" href="#">@_localization.GetKey("ReadMore").Value</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
+
                     }
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- End top services -->
-<!-- Start Services
-============================================= -->
-
-<!-- Start Fun Factor
-============================================= -->
-<div class="fun-fact-area default-padding shadow light text-center bg-fixed text-light" style="background-image: url(assets/img/banner/2.jpg);">
-    <div class="container">
-        <div class="row">
-            @foreach (var item in Model.Statistics)
+    <!-- End top services -->
+    <!-- Start Services
+    ============================================= -->
+    <!-- Start Fun Factor
+    ============================================= -->
+    <div class="fun-fact-area default-padding shadow light text-center bg-fixed text-light" style="background-image: url(assets/img/banner/2.jpg);">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.Statistics)
                 {
                     <div class="col-md-3 col-sm-6 item">
                         <div class="fun-fact">
@@ -146,45 +149,45 @@
                         </div>
                     </div>
                 }
-           
-        </div>
-    </div>
-</div>
-<!-- End Fun Factor -->
-<!-- Start Doctors Tips
-============================================= -->
-<div class="doctor-tips-area default-padding bg-gray">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="site-heading text-center">
-                    <h2><span>@_localization.GetKey("HealthTip").Value</span></h2>
-                    <p>
-                            Sağlam həyat tərzi bədəninizə və ruhunuza olan qayğı ilə başlayır. Hər birimiz gündəlik həyatımızda kiçik dəyişikliklər edərək daha sağlam bir həyata addım ata bilərik.
-                    </p>
-                </div>
+
             </div>
         </div>
-        <div class="row">
-            <div class="health-tips-items tips-carousel owl-carousel owl-theme">
+    </div>
+    <!-- End Fun Factor -->
+    <!-- Start Doctors Tips
+    ============================================= -->
+    <div class="doctor-tips-area default-padding bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h2><span>@_localization.GetKey("HealthTip").Value</span></h2>
+                        <p>
+                            Sağlam həyat tərzi bədəninizə və ruhunuza olan qayğı ilə başlayır. Hər birimiz gündəlik həyatımızda kiçik dəyişikliklər edərək daha sağlam bir həyata addım ata bilərik.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="health-tips-items tips-carousel owl-carousel owl-theme">
 
                     <!-- Single Item -->
                     @foreach (var info in Model.HealthTips)
                     {
-                       
-                    
-                
-                <div class="single-item">
+
+
+
+                        <div class="single-item">
                             <div class="col-md-5">
                                 <div class="thumb">
                                     <img src="@info.PhotoUrl" alt="">
                                 </div>
                             </div>
-                 
-                    <div class="col-md-7">
-                     
-                        <div class="info">
-                               
+
+                            <div class="col-md-7">
+
+                                <div class="info">
+
                                     <div class="doctor">
                                         <h4>@info.Name @info.Surname</h4>
                                         <h5>@info.Header</h5>
@@ -195,71 +198,74 @@
                                     </p>
                                     <h4>@info.SubTitle</h4>
 
-                         
-                            <ul>
-                                @foreach (var item in info.HealthTipItems)
-                                    {
-                                        <li>@item.Text</li>
-                                    }
-                               
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                    }
 
-                <!-- End Single Item -->
-             
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Doctors Tips -->
-<!-- Start Doctors
-============================================= -->
-<div class="doctor-area default-padding bottom-less">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="site-heading text-center">
-                    <h2><span>@_localization.GetKey("Team").Value</span></h2>
-                    <p>
-                        Komandamızla tanış olun 
-                    </p>
-                </div>
-            </div>
-        </div>
-          <div class="row">
-               <div class="doctor-items text-center">
-
-                   @foreach (var item in Model.TeamBoards)
-                {
-                    <div class="col-md-4 equal-height">
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="@item.PhotoUrl" alt="Thumb">
-                               
-                                <div class="social">
                                     <ul>
-                                        <li class="facebook">
-                                            <a href="@item.FacebookUrl"><i class="fab fa-facebook-f"></i></a>
-                                        </li>
-                                        <li class="instagram">
-                                            <a href="@item.InstagramUrl"><i class="fab fa-instagram"></i></a>
-                                        </li>
-                                        <li class="linkedin">
-                                            <a href="@item.LinkedinUrl"><i class="fab fa-linkedin-in"></i></a>
-                                        </li>
+                                        @foreach (var item in info.HealthTipItems)
+                                        {
+                                            <li>@item.Text</li>
+                                        }
+
                                     </ul>
                                 </div>
                             </div>
-                            <div class="info">
-                                <h4>@item.Name @item.Surname</h4>
-                                <h5>@item.Profession</h5>
-                                
-                            </div>
                         </div>
+                    }
+
+                    <!-- End Single Item -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Doctors Tips -->
+    <!-- Start Doctors
+    ============================================= -->
+    <div class="doctor-area default-padding bottom-less">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h2><span>@_localization.GetKey("Team").Value</span></h2>
+                        <p>
+                            Komandamızla tanış olun
+                        </p>
                     </div>
-                }
-             
-<!-- End Doctors -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="doctor-items text-center">
+
+                    @foreach (var item in Model.TeamBoards)
+                    {
+                        if (item.IsHomePage)
+                        {
+                            <div class="col-md-4 equal-height">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <img src="@item.PhotoUrl" alt="Thumb">
+
+                                        <div class="social">
+                                            <ul>
+                                                <li class="facebook">
+                                                    <a href="@item.FacebookUrl"><i class="fab fa-facebook-f"></i></a>
+                                                </li>
+                                                <li class="instagram">
+                                                    <a href="@item.InstagramUrl"><i class="fab fa-instagram"></i></a>
+                                                </li>
+                                                <li class="linkedin">
+                                                    <a href="@item.LinkedinUrl"><i class="fab fa-linkedin-in"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="info">
+                                        <h4>@item.Name @item.Surname</h4>
+                                        <h5>@item.Profession</h5>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                    <!-- End Doctors -->

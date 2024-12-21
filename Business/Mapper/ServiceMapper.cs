@@ -18,12 +18,14 @@ namespace Business.Mapper
                 Description = model.Description,
                 Title = model.Title,
                 PhotoUrl = model.PhotoUrl,
+                IsHomePage = model.IsHomePage,
                 LanguageId = model.LanguageId,
             };
             return dto;
         }
 
-        public static List<ServiceDto> ToDto(List<Service> models) { 
+        public static List<ServiceDto> ToDto(List<Service> models)
+        {
             return models.Select(x => ToDto(x)).ToList();
         }
 
@@ -36,6 +38,7 @@ namespace Business.Mapper
                 Description = model.Description,
                 Title = model.Title,
                 PhotoUrl = model.PhotoUrl,
+                IsHomePage = model.IsHomePage,
                 LanguageId = model.LanguageId,
             };
 
@@ -55,6 +58,7 @@ namespace Business.Mapper
                 Title = createDto.Title,
                 Description = createDto.Description,
                 PhotoUrl = createDto.PhotoUrl,
+                IsHomePage = createDto.IsHomePage,
                 LanguageId = createDto.LanguageId,
             };
 
@@ -69,6 +73,7 @@ namespace Business.Mapper
                 Title = dto.Title,
                 Description = dto.Description,
                 PhotoUrl = dto.PhotoUrl,
+                IsHomePage = dto.IsHomePage,
                 LanguageId = dto.LanguageId,
             };
 
@@ -83,6 +88,7 @@ namespace Business.Mapper
                 Title = updateDto.Title,
                 Description = updateDto.Description,
                 PhotoUrl = updateDto.PhotoUrl,
+                IsHomePage = updateDto.IsHomePage,
                 LanguageId = updateDto.LanguageId,
             };
 

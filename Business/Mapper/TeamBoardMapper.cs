@@ -22,6 +22,7 @@ namespace Business.Mapper
                 FacebookUrl = model.FacebookUrl,
                 LinkedinUrl = model.LinkedinUrl,
                 InstagramUrl = model.InstagramUrl,
+                IsHomePage = model.IsHomePage,
                 LanguageId  = model.LanguageId,
                 Deleted = model.Deleted,
             };
@@ -48,6 +49,7 @@ namespace Business.Mapper
                 LinkedinUrl = model.LinkedinUrl,
                 InstagramUrl = model.InstagramUrl,
                 LanguageId = model.LanguageId,
+                IsHomePage= model.IsHomePage,
                 Deleted = model.Deleted,
             };
 
@@ -71,6 +73,7 @@ namespace Business.Mapper
                 FacebookUrl = createDto.FacebookUrl,
                 LinkedinUrl = createDto.LinkedinUrl,
                 InstagramUrl = createDto.InstagramUrl,
+                IsHomePage = createDto.IsHomePage,
                 LanguageId = createDto.LanguageId,
             };
 
@@ -90,6 +93,7 @@ namespace Business.Mapper
                 LinkedinUrl = dto.LinkedinUrl,
                 InstagramUrl = dto.InstagramUrl,
                 LanguageId = dto.LanguageId,
+                IsHomePage= dto.IsHomePage,
                 Deleted = dto.Deleted
             };
 
@@ -108,6 +112,7 @@ namespace Business.Mapper
                 FacebookUrl = updateDto.FacebookUrl,
                 LinkedinUrl = updateDto.LinkedinUrl,
                 InstagramUrl = updateDto.InstagramUrl,
+                IsHomePage = updateDto.IsHomePage,
                 LanguageId = updateDto.LanguageId,
                 Deleted = updateDto.Deleted
             };

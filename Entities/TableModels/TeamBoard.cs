@@ -16,7 +16,7 @@ namespace Entities.TableModels
         public string? FacebookUrl {  get; set; }
         public string? LinkedinUrl { get; set; }
         public string? InstagramUrl {  get; set; }
-
+        public bool IsHomePage {  get; set; }
         public int LanguageId { get; set; }
         public virtual Language Language { get; set; }
 

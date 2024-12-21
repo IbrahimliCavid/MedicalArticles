@@ -27,6 +27,8 @@ namespace DataAccess.Configurations
             builder.Property(x => x.PhotoUrl)
                 .IsRequired()
                 .HasMaxLength(200);
+            builder.Property(x => x.IsHomePage)
+                .HasDefaultValue(false);
 
             builder.HasOne(x => x.Language)
                    .WithMany()
