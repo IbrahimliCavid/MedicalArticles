@@ -10,5 +10,6 @@ namespace DataAccess.Abstract
 {
     public interface IBlogDal : IBaseRepository<Blog>
     {
+        List<Blog> GetAllByLanguage(string culture);
     }
 }

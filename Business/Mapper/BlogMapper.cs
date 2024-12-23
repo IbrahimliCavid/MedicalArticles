@@ -21,6 +21,7 @@ namespace Business.Mapper
                 Text = model.Text,
                 IsHomePage = model.IsHomePage,
                 Comments = model.Comments,
+                PhotoUrl = model.PhotoUrl,
                 LanguageId = model.LanguageId,
             };
 
@@ -43,6 +44,7 @@ namespace Business.Mapper
                 Text = model.Text,
                 IsHomePage = model.IsHomePage,
                 Comments = model.Comments,
+                PhotoUrl= model.PhotoUrl,
                 LanguageId = model.LanguageId,
             };
 
@@ -60,6 +62,7 @@ namespace Business.Mapper
                 Text = dto.Text,
                 IsHomePage = dto.IsHomePage,
                 Comments = dto.Comments,
+                PhotoUrl= dto.PhotoUrl,
                 LanguageId = dto.LanguageId,
             };
 
@@ -75,6 +78,7 @@ namespace Business.Mapper
                 Title = createDto.Title,
                 Text = createDto.Text,
                 IsHomePage = createDto.IsHomePage,
+                PhotoUrl = createDto.PhotoUrl,
                 LanguageId = createDto.LanguageId,
             };
 
@@ -91,6 +95,7 @@ namespace Business.Mapper
                 Text = updateDto.Text,
                 IsHomePage = updateDto.IsHomePage,
                 Comments = updateDto.Comments,
+                PhotoUrl = updateDto.PhotoUrl,
                 LanguageId = updateDto.LanguageId,
             };
 

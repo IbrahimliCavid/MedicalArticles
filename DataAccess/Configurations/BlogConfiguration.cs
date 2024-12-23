@@ -33,6 +33,10 @@ namespace DataAccess.Configurations
               .IsRequired()
               .HasMaxLength(5000);
 
+             builder.Property(x => x.PhotoUrl)
+              .IsRequired()
+              .HasMaxLength(200);
+
             builder.Property(x=>x.IsHomePage)
             .HasDefaultValue(false);
         }

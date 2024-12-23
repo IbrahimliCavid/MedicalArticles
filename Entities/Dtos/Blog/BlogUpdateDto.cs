@@ -15,6 +15,7 @@ namespace Entities.Dtos
         public string Title { get; set; }
         public string Text { get; set; }
         public bool IsHomePage { get; set; }
+        public string PhotoUrl { get; set; }
         public int LanguageId { get; set; }
         public virtual Language Language { get; set; }
         public ICollection<Comment> Comments { get; set; }

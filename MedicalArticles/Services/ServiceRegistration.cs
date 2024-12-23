@@ -108,6 +108,10 @@ namespace MedicalArticles.Services
             services.AddScoped<IStatisticService, StatisticManager>();
             services.AddScoped<IStatisticDal, StatisticDal>();
             services.AddScoped<IValidator<Statistic>, StatisticValidation>();
+
+            services.AddScoped<IBlogService, BlogManager>();
+            services.AddScoped<IBlogDal, BlogDal>();
+            services.AddScoped<IValidator<Blog>, BlogValidation>();
            
             services.AddScoped<ILanguageService, Business.Concrete.LanguageManager>();
             services.AddScoped<ILanguageDal, LanguageDal>();
