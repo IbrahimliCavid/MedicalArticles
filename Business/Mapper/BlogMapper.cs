@@ -21,6 +21,7 @@ namespace Business.Mapper
                 Text = model.Text,
                 IsHomePage = model.IsHomePage,
                 Comments = model.Comments,
+                CreatedDate = model.CreatedDate,
                 PhotoUrl = model.PhotoUrl,
                 LanguageId = model.LanguageId,
             };
@@ -44,6 +45,7 @@ namespace Business.Mapper
                 Text = model.Text,
                 IsHomePage = model.IsHomePage,
                 Comments = model.Comments,
+                CreatedDate = model.CreatedDate,
                 PhotoUrl= model.PhotoUrl,
                 LanguageId = model.LanguageId,
             };
@@ -63,6 +65,8 @@ namespace Business.Mapper
                 IsHomePage = dto.IsHomePage,
                 Comments = dto.Comments,
                 PhotoUrl= dto.PhotoUrl,
+                Deleted = dto.Deleted,
+                CreatedDate= dto.CreatedDate,
                 LanguageId = dto.LanguageId,
             };
 
@@ -89,10 +93,12 @@ namespace Business.Mapper
         {
             Blog model = new Blog()
             {
+                Id = updateDto.Id,
                 Name = updateDto.Name,
                 Surname = updateDto.Surname,
                 Title = updateDto.Title,
                 Text = updateDto.Text,
+                CreatedDate = updateDto.CreatedDate,
                 IsHomePage = updateDto.IsHomePage,
                 Comments = updateDto.Comments,
                 PhotoUrl = updateDto.PhotoUrl,

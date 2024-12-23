@@ -1,0 +1,65 @@
+﻿@using Entities.TableModels
+@model BlogUpdateDto;
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LanguageId" class="control-label">Dil</label>
+                <select asp-for="LanguageId" class="form-control">
+                    @foreach (var item in ViewData["Languages"] as IEnumerable<Language>)
+                    {
+                        <option value="@item.Id">@item.Value</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Ad</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname" class="control-label">Soyad</label>
+                <input asp-for="Surname" class="form-control" id="answer" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Başlıq</label>
+                <input asp-for="Title" class="form-control" id="answer" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Text" class="control-label">Məzmun</label>
+                <input asp-for="Text" class="form-control" id="answer" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="min-height:300px;">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="img-fluid" src="@Model.PhotoUrl" alt="Yeni şəkil seçməsəz, sonuncu şəkil yüklənəcək." />
+                    </div>
+                    <div class="card p-3 mt-3">
+                        <input type="file" asp-for="PhotoUrl" name="photoURL" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group d-flex align-items-center">
+                <span style="margin-right:1rem;">Ana səhifədə olsun?:</span>
+                <input asp-for="IsHomePage" type="checkbox" />
+            </div>
+
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Redaktə et" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Geri</a>
+</div>
