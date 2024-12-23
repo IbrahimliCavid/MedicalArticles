@@ -13,7 +13,7 @@ namespace Entities.Dtos
         public string Content { get; set; }
         public int? ParentCommentId { get; set; }
         public int BlogId { get; set; }
-        public int Delted { get; set; }
+        public int Deleted { get; set; }
         public DateTime CreatedDate { get; set; }
         public Blog Blog { get; set; }
         public Comment ParentComment { get; set; }
