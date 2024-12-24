@@ -269,3 +269,58 @@
                     }
 
                     <!-- End Doctors -->
+                    <!-- Start Blog
+                    ============================================= -->
+                    <div class="blog-area default-padding">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="site-heading text-center">
+                                        <h2>Recent <span>Blog</span></h2>
+                                        <p>
+                                            While mirth large of on front. Ye he greater related adapted proceed entered an. Through it examine express promise no. Past add size game cold girl off how old
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="blog-items">
+                                  
+                                    @foreach (var blog in Model.Blogs)
+                                    {
+                                        @if (blog.IsHomePage)
+                                        {
+                                            <!-- Single Item -->
+                                            <div class="col-md-4 single-item">
+                                                <div class="item">
+                                                    <div class="thumb">
+                                                        <a href="blog-single-right-sidebar.html">
+                                                            <img src="@blog.PhotoUrl" alt="Thumb" width="430px" height="322.5px">
+                                                        </a>
+                                                    </div>
+                                                    <div style=" padding: 30px 5px 5px;">
+                                                        <div class="meta">
+                                                            <ul>
+                                                                <li style="text-align:initial"><a href="#" style="color:#0cb8b6">@blog.Name @blog.Surname</a></li>
+                                                                <li style="text-align:initial">@blog.CreatedDate.ToString("dd.MM.yyyy")</li>
+                                                            </ul>
+                                                        </div>
+                                                        <h4 style="text-align:initial">
+                                                            <a href="blog-single-right-sidebar.html">@blog.Title</a>
+                                                        </h4>
+                                                        <p style="text-align:initial">
+                                                            @(blog.Text.Length > 130 ? blog.Text.Substring(0, 150) + "..." : blog.Text)
+                                                        </p>
+                                                        <a class="btn btn-theme circle border btn-sm" href="blog-single-right-sidebar.html">@_localization.GetKey("ReadMore").Value <i class="fas fa-angle-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Item -->
+                                        }
+                                    }
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Blog -->

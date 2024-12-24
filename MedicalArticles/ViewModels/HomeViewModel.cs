@@ -12,7 +12,7 @@ namespace MedicalArticles.ViewModels
         public List<HealthTipDto> HealthTips { get; set; }
         public List<TeamBoardDto> TeamBoards { get; set; }
         public List<StatisticDto> Statistics { get; set; }
-
+        public List<BlogDto> Blogs { get; set; }
 
     }
 }

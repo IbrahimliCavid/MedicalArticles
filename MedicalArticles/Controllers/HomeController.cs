@@ -17,6 +17,7 @@ namespace MedicalArticles.Controllers
         private readonly IServiceAboutService _serviceAboutService;
         private readonly IHealthTipService _healthTipService;
         private readonly IStatisticService _statisticService;
+        private readonly IBlogService _blogService;
         public readonly LanguageService _localization;
 
 
@@ -28,7 +29,8 @@ namespace MedicalArticles.Controllers
             IServiceAboutService serviceAboutService,
             IHealthTipService healthTipService,
             LanguageService localization,
-            IStatisticService statisticService)
+            IStatisticService statisticService,
+            IBlogService blogService)
         {
             _serviceService = serviceService;
             _teamBoardService = teamBoardService;
@@ -38,6 +40,7 @@ namespace MedicalArticles.Controllers
             _healthTipService = healthTipService;
             _localization = localization;
             _statisticService = statisticService;
+            _blogService = blogService;
         }
 
         public IActionResult Index()
@@ -51,6 +54,7 @@ namespace MedicalArticles.Controllers
             var serviceAboutData = _serviceAboutService.GetAllByLanguage(currentCulture).Data;
             var healthTipData = _healthTipService.GetAllByLanguage(currentCulture).Data;
             var statisticData = _statisticService.GetAllByLanguage(currentCulture).Data;
+            var blogData = _blogService.GetAllByLangauge(currentCulture).Data;
 
             ViewBag.Service = _localization.GetKey("Service").Value;
 
@@ -63,6 +67,7 @@ namespace MedicalArticles.Controllers
                 ServiceAbouts = serviceAboutData,
                 HealthTips = healthTipData,
                 Statistics = statisticData,
+                Blogs = blogData,
             };
 
             return View(viewModel);
