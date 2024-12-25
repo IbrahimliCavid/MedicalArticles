@@ -168,4 +168,7 @@
   <data name="Send" xml:space="preserve">
     <value>Göndər</value>
   </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Bloq</value>
+  </data>
 </root>
