@@ -15,7 +15,13 @@ namespace MedicalArticles.Controllers
         public IActionResult Index()
         {
             var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
-            var data = _blogService.GetAllByLangauge(currentCulture).Data;
+            var datas = _blogService.GetAllByLangauge(currentCulture).Data;
+            return View(datas);
+        }
+
+        public IActionResult Details(int id) {
+
+            var data = _blogService.GetById(id).Data;
             return View(data);
         }
     }
