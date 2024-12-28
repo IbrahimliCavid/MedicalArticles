@@ -30,7 +30,7 @@
                                 </a>
                             </div>
                             <div class="info">
-                                <div class="meta">
+                                <div class="meta" asp-action = "Details">
                                     <ul>
                                         <li><a href="#">@item.Name @item.Surname</a></li>
                                         <li>@item.CreatedDate.ToString("dd.MM.yyyy")</li>
@@ -42,7 +42,7 @@
                                 <p>
                                     @(item.Text.Length > 200 ? @item.Text.Substring(0, 200) + "..." : @item.Text)
                                 </p>
-                                <a class="btn btn-theme circle border btn-sm" href="blog-single-right-sidebar.html">@_localization.GetKey("ReadMore").Value <i class="fas fa-angle-right"></i></a>
+                                <a asp-route-id = "@item.Id" asp-action = "Details" class="btn btn-theme circle border btn-sm" >@_localization.GetKey("ReadMore").Value <i class="fas fa-angle-right"></i></a>
                             </div>
                         </div>
                         <!-- End Single Item -->

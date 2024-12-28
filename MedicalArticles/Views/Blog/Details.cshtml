@@ -27,11 +27,8 @@
                     <div class="item">
 
                         <!-- Start Post Thumb -->
-                        <div class="thumb">
+                        <div class="thumb" style="width: 750px; height:400px; overflow = "hidden" ">
                             <img src="@Model.PhotoUrl" alt="Thumb">
-                            <div class="post-type">
-                                <i class="fas fa-images"></i>
-                            </div>
                         </div>
                         <!-- Start Post Thumb -->
 
@@ -42,20 +39,10 @@
                                     <li>@Model.CreatedDate.ToString("dd.MM.yyyy")</li>
                                 </ul>
                             </div>
-                            <h3>increasing in companions acceptance</h3>
+                            <h3>@Model.Title</h3>
                             <p>
-                                Give lady of they such they sure it. Me contained explained my education. Vulgar as hearts by garret. Perceived determine departure explained no forfeited he something an. Contrasted dissimilar get joy you instrument out reasonably. Again keeps at no meant stuff. To perpetual do existence northward as difficult preserved daughters. Continued at up to zealously necessary breakfast. Surrounded sir motionless she end literature. Gay direction neglected but supported yet her.
+                               @Model.Text
                             </p>
-                            <p>
-                                New had happen unable uneasy. Drawings can followed improved out sociable not. Earnestly so do instantly pretended. See general few civilly amiable pleased account carried. Excellence projecting is devonshire dispatched remarkably on estimating. Side in so life past. Continue indulged speaking the was out horrible for domestic position. Seeing rather her you not esteem men settle genius excuse. Deal say over you age from. Comparison new ham melancholy son themselves.
-                            </p>
-                            <blockquote>
-                                Depending propriety sweetness distrusts belonging collected. Smiling mention he in thought equally musical. Wisdom new and valley answer. Contented it so is discourse recommend. Man its upon him call mile. An pasture he himself believe ferrars besides cottage.
-                            </blockquote>
-                            <p>
-                                Surrounded to me occasional pianoforte alteration unaffected impossible ye. For saw half than cold. Pretty merits waited six talked pulled you. Conduct replied off led whether any shortly why arrived adapted. Numerous ladyship so raillery humoured goodness received an. So narrow formal length my highly longer afford oh. Tall neat he make or at dull ye.
-                            </p>
-
                             <!-- Start Post Pagination -->
                             <div class="post-pagi-area">
                                 <a href="#"><i class="fas fa-angle-double-left"></i> Previus Post</a>
@@ -73,25 +60,12 @@
                                 </div>
                             </div>
                             <!-- End Post Tags -->
-                            <!-- Start Author Post -->
-                            <div class="author-bio">
-                                <div class="avatar">
-                                    <img src="assets/img/team/6.jpg" alt="Author">
-                                </div>
-                                <div class="content">
-                                    <p>
-                                        Supply as so period it enough income he genius. Themselves acceptance bed sympathize get dissimilar way admiration son. Design for are edward regret met lovers. This are calm case roof and.
-
-                                    </p>
-                                    <h4> - Jonkey Rotham</h4>
-                                </div>
-                            </div>
-                            <!-- End Author Post -->
+                           
                             <!-- Start Comments Form -->
                             <div class="comments-area">
                                 <div class="comments-title">
                                     <h4>
-                                        5 comments
+                                        @* @Model.Comments.Count(); *@
                                     </h4>
                                     <div class="comments-list">
                                         <div class="commen-item">
