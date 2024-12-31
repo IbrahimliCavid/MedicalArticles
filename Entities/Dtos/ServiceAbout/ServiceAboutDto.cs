@@ -15,7 +15,7 @@ namespace Entities.Dtos
         public string PhotoUrl { get; set; }
         public int Deleted {  get; set; }
         public int LanguageId { get; set; }
-
+        public DateTime CreatedDate { get; set; }
         public virtual ICollection<ServiceAboutItem> ServiceAboutItems { get; set; }
     }
 }

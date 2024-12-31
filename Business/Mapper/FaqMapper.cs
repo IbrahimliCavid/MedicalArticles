@@ -18,6 +18,7 @@ namespace Business.Mapper
                 Answer = model.Answer,
                 Question = model.Question,
                 LanguageId = model.LanguageId,
+                CreatedDate = model.CreatedDate,
             };
 
             return dto;
@@ -37,6 +38,7 @@ namespace Business.Mapper
                 Answer = model.Answer,
                 Question = model.Question,
                 LanguageId = model.LanguageId,
+                CreatedDate = model.CreatedDate
             };
 
             return updateDto;
@@ -69,6 +71,7 @@ namespace Business.Mapper
                 Answer = dto.Answer,
                 Deleted = dto.Deleted,
                 LanguageId = dto.LanguageId,
+                CreatedDate = dto.CreatedDate
             };
 
             return model;
@@ -82,6 +85,7 @@ namespace Business.Mapper
                 Question = updateDto.Question,
                 Answer = updateDto.Answer,
                 LanguageId = updateDto.LanguageId,
+                CreatedDate = updateDto.CreatedDate
             };
 
             return model;

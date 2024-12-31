@@ -20,6 +20,7 @@ namespace Business.Mapper
                 PhotoUrl = model.PhotoUrl,
                 LanguageId = model.LanguageId,
                 Deleted = model.Deleted,
+                CreatedDate = model.CreatedDate,
                 
             };
 
@@ -42,6 +43,7 @@ namespace Business.Mapper
                 LanguageId = model.LanguageId,
                 PhotoUrl = model.PhotoUrl,
                 Deleted = model.Deleted,
+                CreatedDate = model.CreatedDate
             };
 
             return updateDto;
@@ -77,6 +79,7 @@ namespace Business.Mapper
                 LanguageId = dto.LanguageId,
                 PhotoUrl = dto.PhotoUrl,
                 Deleted = dto.Deleted,
+                CreatedDate = dto.CreatedDate
             };
 
             return model;
@@ -92,6 +95,7 @@ namespace Business.Mapper
                 PhotoUrl = updateDto.PhotoUrl,
                 LanguageId = updateDto.LanguageId,
                 Deleted= updateDto.Deleted,
+                CreatedDate= updateDto.CreatedDate
             };
 
             return model;

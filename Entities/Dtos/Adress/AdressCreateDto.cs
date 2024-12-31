@@ -11,18 +11,5 @@ namespace Entities.Dtos
         public string Email { get; set; }
         public int LanguageId { get; set; }
 
-
-        public static Adress ToAdress(AdressCreateDto dto)
-        {
-            return new Adress
-            {
-                Location = dto.Location,
-                Phone1 = dto.Phone1,
-                Phone2 = dto.Phone2,
-                Phone3 = dto.Phone3,
-                Email = dto.Email,
-                LanguageId = dto.LanguageId
-            };
-        }
     }
 }

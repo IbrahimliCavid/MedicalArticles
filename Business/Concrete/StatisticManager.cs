@@ -103,7 +103,6 @@ namespace Business.Concrete
             if (!validator.IsValid)
                 return new ErrorResult();
 
-            model.UpdatedDate = DateTime.Now;
             _statisticDal.Update(model);
 
             return new SuccessResult(UiMessages.SuccessUpdatedMessage(model.Name));

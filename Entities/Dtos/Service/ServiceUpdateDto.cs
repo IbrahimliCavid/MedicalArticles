@@ -10,18 +10,6 @@ namespace Entities.Dtos
         public string PhotoUrl { get; set; }
         public bool IsHomePage { get; set; }
         public int LanguageId { get; set; }
-
-        public static Service ToService(ServiceUpdateDto dto)
-        {
-            return new Service
-            {
-                Id = dto.Id,
-                Title = dto.Title,
-                Description = dto.Description,
-                PhotoUrl = dto.PhotoUrl,
-                IsHomePage = dto.IsHomePage,
-                LanguageId = dto.LanguageId,
-            };
-        }
+        public DateTime CreatedDate { get; set; }
     }
 }

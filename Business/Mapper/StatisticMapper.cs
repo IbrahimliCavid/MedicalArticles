@@ -19,6 +19,7 @@ namespace Business.Mapper
                 Count = model.Count,
                 LanguageId = model.LanguageId,
                 Icon = model.Icon,
+                CreatedDate = model.CreatedDate,
             };
 
             return dto;
@@ -38,7 +39,8 @@ namespace Business.Mapper
                 Count = dto.Count,
                 Icon = dto.Icon,
                 LanguageId= dto.LanguageId,
-                Deleted = dto.Deleted
+                Deleted = dto.Deleted,
+                CreatedDate = dto.CreatedDate,
             };
 
             return model;
@@ -51,6 +53,7 @@ namespace Business.Mapper
                 Count  = dto.Count,
                 Icon = dto.Icon,
                 LanguageId = dto.LanguageId,
+                CreatedDate = dto.CreatedDate
             };
 
             return updateDto;
@@ -78,6 +81,7 @@ namespace Business.Mapper
                 Count = updateDto.Count,
                 Icon = updateDto.Icon,
                 LanguageId= updateDto.LanguageId,
+                CreatedDate= updateDto.CreatedDate
             };
 
             return model;

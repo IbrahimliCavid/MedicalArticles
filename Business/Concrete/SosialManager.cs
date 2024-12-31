@@ -60,7 +60,7 @@ namespace Business.Concrete
 
             if (!validator.IsValid)
                 return new ErrorResult();
-            model.UpdatedDate = DateTime.Now;
+
             _sosialDal.Update(model);
             return new SuccessResult(UiMessages.SuccessUpdatedMessage("Məlumat"));
         }

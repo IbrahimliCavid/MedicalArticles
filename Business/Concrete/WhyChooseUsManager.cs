@@ -113,7 +113,6 @@ namespace Business.Concrete
             else
                 model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
 
-            model.UpdatedDate = DateTime.Now;
             _whyChooseUsDal.Update(model);
 
             return new SuccessResult(UiMessages.SuccessUpdatedMessage(""));

@@ -15,20 +15,6 @@ namespace Entities.Dtos
         public string? InstagramUrl { get; set; }
         public string? Telegram { get; set; }
         public string? TwitterUrl { get; set; }
-
-        public static Sosial ToSosial(SosialUpdateDto dto)
-        {
-            Sosial sosial = new Sosial()
-            {
-                Id = dto.Id,
-                WhatsappUrl = dto.WhatsappUrl,
-                FacebookUrl = dto.FacebookUrl,
-                InstagramUrl = dto.InstagramUrl,
-                Telegram = dto.Telegram,
-                TwitterUrl = dto.TwitterUrl,
-            };
-
-            return sosial;
-        }
+        public DateTime CreatedDate { get; set; }
     }
 }

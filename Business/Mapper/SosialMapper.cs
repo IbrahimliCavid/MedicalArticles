@@ -19,7 +19,8 @@ namespace Business.Mapper
                 FacebookUrl = model.FacebookUrl,
                 InstagramUrl = model.InstagramUrl,
                 Telegram  = model.Telegram,
-                TwitterUrl = model.TwitterUrl
+                TwitterUrl = model.TwitterUrl,
+                CreatedDate = model.CreatedDate,
                 };
 
             return dto;
@@ -40,7 +41,8 @@ namespace Business.Mapper
                 FacebookUrl = model.FacebookUrl,
                 InstagramUrl = model.InstagramUrl,
                 Telegram = model.Telegram,
-                TwitterUrl = model.TwitterUrl
+                TwitterUrl = model.TwitterUrl,
+                CreatedDate = model.CreatedDate
             };
 
             return updateDto;
@@ -75,7 +77,8 @@ namespace Business.Mapper
                 FacebookUrl = dto.FacebookUrl,
                 InstagramUrl = dto.InstagramUrl,
                 Telegram = dto.Telegram,
-                TwitterUrl = dto.TwitterUrl
+                TwitterUrl = dto.TwitterUrl,
+                CreatedDate = dto.CreatedDate
             };
 
             return model;
@@ -90,7 +93,8 @@ namespace Business.Mapper
                 FacebookUrl = updateDto.FacebookUrl,
                 InstagramUrl = updateDto.InstagramUrl,
                 Telegram = updateDto.Telegram,
-                TwitterUrl = updateDto.TwitterUrl
+                TwitterUrl = updateDto.TwitterUrl, 
+                CreatedDate = updateDto.CreatedDate
             };
 
             return model;

@@ -18,6 +18,7 @@ namespace Business.Mapper
                 Id = model.Id,
                 Text = model.Text,
                 Deleted = model.Deleted,
+                CreatedDate = model.CreatedDate,
             };
 
             return dto;
@@ -35,7 +36,8 @@ namespace Business.Mapper
             {
                 Id = model.Id,
                 Text = model.Text,
-                Deleted = model.Deleted
+                Deleted = model.Deleted,
+                CreatedDate = model.CreatedDate,
             };
 
             return updateDto;
@@ -64,7 +66,8 @@ namespace Business.Mapper
             {
                 Id = dto.Id,
                 Text = dto.Text,
-                Deleted = dto.Deleted
+                Deleted = dto.Deleted,
+                CreatedDate = dto.CreatedDate,
             };
 
             return model;
@@ -77,7 +80,8 @@ namespace Business.Mapper
                 Id = updateDto.Id,
                 Text = updateDto.Text,
                 ServiceAboutId = updateDto.ServiceAboutId,
-                Deleted = updateDto.Deleted
+                Deleted = updateDto.Deleted,
+                CreatedDate = updateDto.CreatedDate
             };
 
             return model;

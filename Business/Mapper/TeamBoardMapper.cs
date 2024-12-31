@@ -25,6 +25,7 @@ namespace Business.Mapper
                 IsHomePage = model.IsHomePage,
                 LanguageId  = model.LanguageId,
                 Deleted = model.Deleted,
+                CreatedDate = model.CreatedDate,
             };
 
             return dto;
@@ -51,6 +52,7 @@ namespace Business.Mapper
                 LanguageId = model.LanguageId,
                 IsHomePage= model.IsHomePage,
                 Deleted = model.Deleted,
+                CreatedDate = model.CreatedDate,
             };
 
             return updateDto;
@@ -94,7 +96,8 @@ namespace Business.Mapper
                 InstagramUrl = dto.InstagramUrl,
                 LanguageId = dto.LanguageId,
                 IsHomePage= dto.IsHomePage,
-                Deleted = dto.Deleted
+                Deleted = dto.Deleted,
+                CreatedDate = dto.CreatedDate,
             };
 
             return model;
@@ -114,7 +117,8 @@ namespace Business.Mapper
                 InstagramUrl = updateDto.InstagramUrl,
                 IsHomePage = updateDto.IsHomePage,
                 LanguageId = updateDto.LanguageId,
-                Deleted = updateDto.Deleted
+                Deleted = updateDto.Deleted, 
+                CreatedDate = updateDto.CreatedDate,
             };
 
             return model;

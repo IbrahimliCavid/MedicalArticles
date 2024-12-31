@@ -10,19 +10,6 @@ namespace Entities.Dtos
         public string PhotoUrl { get; set; }
         public int Deleted {  get; set; }
         public int LanguageId { get; set; }
-
-
-        public static Slide ToSlide(SlideUpdateDto dto)
-        {
-            return new Slide
-            {
-                Id = dto.Id,
-                Title = dto.Title,
-                Content = dto.Content,
-                LanguageId = dto.LanguageId,
-                PhotoUrl = dto.PhotoUrl,
-                Deleted = dto.Deleted,
-            };
-        }
+        public DateTime CreatedDate { get; set; }
     }
 }

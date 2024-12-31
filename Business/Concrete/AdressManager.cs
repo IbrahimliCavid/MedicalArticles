@@ -32,7 +32,7 @@ namespace Business.Concrete
             if(!validator.IsValid) 
                 return new ErrorResult();
 
-            Adress model = AdressCreateDto.ToAdress(dto);
+            Adress model = AdressMapper.ToModel(dto);
             _adressDal.Add(model);
 
             return new SuccessResult(UiMessages.SuccessAddedMessage(model.Email));
@@ -80,14 +80,13 @@ namespace Business.Concrete
 
         public IResult Update(AdressUpdateDto dto, out List<ValidationFailure> errors)
         {
-            Adress model = AdressUpdateDto.ToAdress(dto);
+            Adress model = AdressMapper.ToModel(dto);
             Adress existData = GetById(model.Id).Data;
             var validator = _validator.Validate(model);
             errors = validator.Errors;
             if (!validator.IsValid)
                 return new ErrorResult();
 
-            model.UpdatedDate = DateTime.Now;
             _adressDal.Update(model);
 
             return new SuccessResult(UiMessages.SuccessUpdatedMessage(existData.Email));

@@ -113,7 +113,6 @@ namespace Business.Concrete
             else
                 model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
 
-            model.UpdatedDate = DateTime.Now;
             _blogDal.Update(model);
 
             return new SuccessResult(UiMessages.SuccessUpdatedMessage(model.Name));

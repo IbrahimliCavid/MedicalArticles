@@ -12,18 +12,6 @@ namespace Entities.Dtos
         public string Comments { get; set; }
         public bool IsAnswer { get; set; }
         public bool IsRead {  get; set; }
-        public static Contact ToContact(ContactUpdateDto dto)
-        {
-            return new Contact
-            {
-                Id = dto.Id,
-                Name = dto.Name,
-                Email = dto.Email,
-                Phone = dto.Phone,
-                Comments = dto.Comments,
-                IsAnswer = dto.IsAnswer,
-                IsRead = dto.IsRead,
-            };
-        }
+        public DateTime CreatedDate { get; set; }
     }
 }

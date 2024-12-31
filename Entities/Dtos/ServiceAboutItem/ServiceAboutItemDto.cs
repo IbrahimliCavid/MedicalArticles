@@ -16,6 +16,7 @@ namespace Entities.Dtos
         public string Title { get; set; }
         public string Description { get; set; }
         public string PhotoUrl { get; set; }
+        public DateTime CreatedDate { get; set; }
         public ServiceAbout ServiceAbout { get; set; }
     }
 }

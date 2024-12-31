@@ -18,6 +18,7 @@ namespace Business.Mapper
                 Text = model.Text,
                 HealthTipId = model.HealthTipId,
                 Deleted = model.Deleted,
+                CreatedDate = model.CreatedDate,
             };
 
             return dto;
@@ -37,6 +38,7 @@ namespace Business.Mapper
                 Text = model.Text,
                 HealthTipId = model.HealthTipId,
                 Deleted = model.Deleted,
+                CreatedDate = model.CreatedDate
             };
 
             return updateDto;
@@ -67,6 +69,7 @@ namespace Business.Mapper
                 Text= dto.Text,
                 HealthTipId = dto.HealthTipId,
                 Deleted= dto.Deleted,
+                CreatedDate = dto.CreatedDate
             };
 
             return model;
@@ -80,6 +83,7 @@ namespace Business.Mapper
                 Text = updateDto.Text,
                 HealthTipId = updateDto.HealthTipId,
                 Deleted = updateDto.Deleted,
+                CreatedDate = updateDto.CreatedDate,
             };
 
             return model;

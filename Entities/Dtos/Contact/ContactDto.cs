@@ -16,5 +16,6 @@ namespace Entities.Dtos
         public bool IsAnswer {  get; set; }
         public bool IsRead {  get; set; }
         public int Deleted {  get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

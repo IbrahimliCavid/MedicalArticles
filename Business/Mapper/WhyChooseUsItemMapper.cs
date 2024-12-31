@@ -18,6 +18,7 @@ namespace Business.Mapper
                 Title = model.Title,
                 Description = model.Description,
                 Deleted = model.Deleted,
+                CreatedDate = model.CreatedDate,
             };
 
             return dto;
@@ -37,6 +38,7 @@ namespace Business.Mapper
                 Description = model.Description,
                 Title = model.Title,
                 Deleted = model.Deleted,
+                CreatedDate = model.CreatedDate
             };
 
             return updateDto;
@@ -68,6 +70,7 @@ namespace Business.Mapper
                 Description = dto.Description,
                 Title = dto.Title,
                 Deleted = dto.Deleted,
+                CreatedDate = dto.CreatedDate
             };
 
             return model;
@@ -82,6 +85,7 @@ namespace Business.Mapper
                 Title = updateDto.Title,
                 Deleted = updateDto.Deleted,
                 WhyChooseUsId = updateDto.WhyChooseUsId,
+                CreatedDate = updateDto.CreatedDate
             };
 
             return model;

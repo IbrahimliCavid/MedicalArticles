@@ -8,17 +8,7 @@ namespace Entities.Dtos
         public string Question { get; set; }
         public string Answer { get; set; }
         public int LanguageId { get; set; }
+        public DateTime CreatedDate { get; set; }
 
-
-        public static Faq ToFaq(FaqUpdateDto dto)
-        {
-            return new Faq
-            {
-                Id = dto.Id,
-                Question = dto.Question,
-                Answer = dto.Answer,
-                LanguageId = dto.LanguageId,
-            };
-        }
     }
 }

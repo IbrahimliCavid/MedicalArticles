@@ -14,5 +14,6 @@ namespace Entities.Dtos
         public int LanguageId { get; set; }
 
         public string PhotoUrl { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace Business.Mapper
                Phone = model.Phone,
                Comments = model.Comments,
                IsAnswer = model.IsAnswer,
+               CreatedDate = model.CreatedDate,
                IsRead = model.IsRead,
             };
 
@@ -43,6 +44,7 @@ namespace Business.Mapper
                 Comments = model.Comments,
                 IsAnswer = model.IsAnswer,
                 IsRead = model.IsRead,
+                CreatedDate= model.CreatedDate,
             };
 
             return updateDto;
@@ -79,6 +81,7 @@ namespace Business.Mapper
                 Comments = dto.Comments,
                IsAnswer = dto.IsAnswer,
                IsRead = dto.IsRead,
+               CreatedDate = dto.CreatedDate,
             };
 
             return model;
@@ -95,6 +98,7 @@ namespace Business.Mapper
                 Comments = updateDto.Comments,
                 IsAnswer = updateDto.IsAnswer,
                 IsRead = updateDto.IsRead,
+                CreatedDate = updateDto.CreatedDate,
             };
 
             return model;

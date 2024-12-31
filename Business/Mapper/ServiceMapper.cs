@@ -18,6 +18,7 @@ namespace Business.Mapper
                 Description = model.Description,
                 Title = model.Title,
                 PhotoUrl = model.PhotoUrl,
+                CreatedDate = model.CreatedDate,
                 IsHomePage = model.IsHomePage,
                 LanguageId = model.LanguageId,
             };
@@ -38,6 +39,7 @@ namespace Business.Mapper
                 Description = model.Description,
                 Title = model.Title,
                 PhotoUrl = model.PhotoUrl,
+                CreatedDate = model.CreatedDate,
                 IsHomePage = model.IsHomePage,
                 LanguageId = model.LanguageId,
             };
@@ -73,6 +75,7 @@ namespace Business.Mapper
                 Title = dto.Title,
                 Description = dto.Description,
                 PhotoUrl = dto.PhotoUrl,
+                CreatedDate = dto.CreatedDate,
                 IsHomePage = dto.IsHomePage,
                 LanguageId = dto.LanguageId,
             };
@@ -88,6 +91,7 @@ namespace Business.Mapper
                 Title = updateDto.Title,
                 Description = updateDto.Description,
                 PhotoUrl = updateDto.PhotoUrl,
+                CreatedDate = updateDto.CreatedDate,
                 IsHomePage = updateDto.IsHomePage,
                 LanguageId = updateDto.LanguageId,
             };

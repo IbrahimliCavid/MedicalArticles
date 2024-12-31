@@ -19,6 +19,7 @@ namespace Entities.Dtos
         public int LanguageId { get; set; }
 
         public int Deleted { get; set; }
+        public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
     }
 }

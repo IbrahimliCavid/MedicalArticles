@@ -27,7 +27,7 @@ namespace Business.Concrete
 
         public IResult Add(AboutCreateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
-            About model = AboutCreateDto.ToAbout(dto);
+            About model = AboutMapper.ToModel(dto);
             var validator = _validator.Validate(model);
 
             errors = validator.Errors;
@@ -88,7 +88,7 @@ namespace Business.Concrete
 
         public IResult Update(AboutUpdateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
-            About model = AboutUpdateDto.ToAbout(dto);
+            About model = AboutMapper.ToModel(dto);
             About existData = GetById(model.Id).Data;
             var validator = _validator.Validate(model);
             errors = validator.Errors;

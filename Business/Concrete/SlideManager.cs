@@ -47,7 +47,7 @@ namespace Business.Concrete
                 
 
 
-            Slide model = SlideCreateDto.ToSlide(dto);
+            Slide model = SlideMapper.ToModel(dto);
             model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
             _slideDal.Add(model);
 
@@ -104,7 +104,7 @@ namespace Business.Concrete
 
         public IResult Update(SlideUpdateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
-            Slide model = SlideUpdateDto.ToSlide(dto);
+            Slide model = SlideMapper.ToModel(dto);
             Slide existData = SlideMapper.ToModel( GetById(model.Id).Data);
             var validator = _validator.Validate(model);
             errors = validator.Errors;
@@ -119,7 +119,6 @@ namespace Business.Concrete
                 model.PhotoUrl = existData.PhotoUrl;
             else
                 model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
-            model.UpdatedDate = DateTime.Now;
             _slideDal.Update(model);
 
             return new SuccessResult(UiMessages.SuccessUpdatedMessage(model.Title));

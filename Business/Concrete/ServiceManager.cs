@@ -33,7 +33,7 @@ namespace Business.Concrete
 
         public IResult Add(ServiceCreateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
-            Service model = ServiceCreateDto.ToService(dto);
+            Service model = ServiceMapper.ToModel(dto);
             var validator = _validator.Validate(model);
 
             errors = validator.Errors;
@@ -100,7 +100,7 @@ namespace Business.Concrete
 
         public IResult Update(ServiceUpdateDto dto, IFormFile photoUrl, string webRootPath, out List<ValidationFailure> errors)
         {
-            Service model = ServiceUpdateDto.ToService(dto);
+            Service model = ServiceMapper.ToModel(dto);
             Service existData =ServiceMapper.ToModel(GetById(model.Id).Data);
             var validator = _validator.Validate(model);
             errors = validator.Errors;
@@ -113,7 +113,6 @@ namespace Business.Concrete
             else
                 model.PhotoUrl = PictureHelper.UploadImage(photoUrl, webRootPath);
 
-            model.UpdatedDate = DateTime.Now;
             _serviceDal.Update(model);
 
             return new SuccessResult(UiMessages.SuccessUpdatedMessage(model.Title));

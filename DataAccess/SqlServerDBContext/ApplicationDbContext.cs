@@ -1,4 +1,5 @@
 ﻿
+using Core.Entities.Abstract;
 using Entities.Concrete.TableModels.Membership;
 using Entities.TableModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -22,6 +23,19 @@ namespace DataAccess.SqlServerDBContext
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
+        public override int SaveChanges()
+        {
+            var datas = ChangeTracker.Entries<BaseEntity>();
+            foreach (var data in datas) 
+            {
+                _ = data.State switch
+                {
+                    EntityState.Added => data.Entity.CreatedDate = DateTime.Now,
+                    EntityState.Modified => data.Entity.UpdatedDate = DateTime.Now,
+                };
+            }
+            return base.SaveChanges();
+        }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Adress> Adresses { get; set; }
         public DbSet<Faq> Faqs { get; set; }

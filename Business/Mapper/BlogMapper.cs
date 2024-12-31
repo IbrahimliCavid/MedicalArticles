@@ -24,6 +24,7 @@ namespace Business.Mapper
                 CreatedDate = model.CreatedDate,
                 PhotoUrl = model.PhotoUrl,
                 LanguageId = model.LanguageId,
+                
             };
 
             return dto;

@@ -8,17 +8,5 @@ namespace Entities.Dtos
         public string Description { get; set; }
         public string PhotoUrl { get; set; }
         public int LanguageId {  get; set; }
-        public static About ToAbout(AboutCreateDto dto)
-        {
-            About about = new About()
-            {
-                Title = dto.Title,
-                Description = dto.Description,
-                PhotoUrl = dto.PhotoUrl,
-                LanguageId = dto.LanguageId,
-            };
-
-            return about;
-        }
     }
 }

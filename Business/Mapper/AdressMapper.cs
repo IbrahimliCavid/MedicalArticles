@@ -22,6 +22,7 @@ namespace Business.Mapper
                 Phone3 = model.Phone3,
                 Email = model.Email,
                 LanguageId = model.LanguageId,
+                CreatedDate = model.CreatedDate,
             };
 
             return dto;
@@ -43,6 +44,7 @@ namespace Business.Mapper
                 Phone3 = model.Phone3,
                 Email = model.Email,
                 LanguageId=model.LanguageId,
+                CreatedDate=model.CreatedDate,
             };
 
             return dto;
@@ -59,6 +61,7 @@ namespace Business.Mapper
                 Phone3 = dto.Phone3,
                 Email = dto.Email,
                 LanguageId  = dto.LanguageId,
+                CreatedDate=dto.CreatedDate,
             };
 
             return model;
@@ -90,6 +93,7 @@ namespace Business.Mapper
                 Phone3 = updateDto.Phone3,
                 Email = updateDto.Email,
                 LanguageId = updateDto.LanguageId,
+                CreatedDate = updateDto.CreatedDate,
             };
 
             return model;

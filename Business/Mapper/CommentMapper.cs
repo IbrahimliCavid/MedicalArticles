@@ -21,6 +21,7 @@ namespace Business.Mapper
                 ParentCommentId = model.ParentCommentId,
                 Replies = model.Replies,
                 Deleted = model.Deleted,
+                CreatedDate = model.CreatedDate,
             };
 
             return dto;
@@ -57,6 +58,7 @@ namespace Business.Mapper
                 ParentCommentId = dto.ParentCommentId,
                 Replies = dto.Replies,
                 Deleted = dto.Deleted,
+                CreatedDate = dto.CreatedDate,
             };
 
             return model;
