@@ -112,6 +112,10 @@ namespace MedicalArticles.Services
             services.AddScoped<IBlogService, BlogManager>();
             services.AddScoped<IBlogDal, BlogDal>();
             services.AddScoped<IValidator<Blog>, BlogValidation>();
+
+            services.AddScoped<ICommentDal, CommentDal>();
+            services.AddScoped<ICommentService, CommentManager>();
+            services.AddScoped<IValidator<Comment>, CommentValidation>();
            
             services.AddScoped<ILanguageService, Business.Concrete.LanguageManager>();
             services.AddScoped<ILanguageDal, LanguageDal>();

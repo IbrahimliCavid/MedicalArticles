@@ -24,7 +24,9 @@ namespace DataAccess.Concrete
             var data = _context.Blogs
                  .Include(d => d.Language)
                  .Where(d => d.Language.Key == culture)
-                 .Where(d => d.Deleted == 0).ToList();
+                 .Where(d => d.Deleted == 0)
+                 .Include(b => b.Comments)
+                 .ThenInclude(c=>c.Replies).ToList();
             return data;
         }
     }

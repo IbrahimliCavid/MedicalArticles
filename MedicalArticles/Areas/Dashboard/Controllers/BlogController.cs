@@ -120,5 +120,6 @@ namespace MedicalArticles.Areas.Dashboard.Controllers
             var data = _blogService.GetAllDeleted().Data;
             return View(data);
         }
+
     }
 }
